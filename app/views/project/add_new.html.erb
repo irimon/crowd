@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+
+<body>
+	<div class="new_project">
+		<h1>Add new project </h1>
+		<%= twitter_bootstrap_form_for @project do |project|  %>
+			<%= project.text_field :name, 'Project name', :class => 'medium' %>
+			<%= project.text_field :amount, 'Requsted funding', :class => 'medium' %>
+			<%= project.date_select :name, 'End funding date', {}, :class => 'small' %>
+		<% end %>
+	</div>
+</body>

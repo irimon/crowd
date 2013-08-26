@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<body>
+	<div class="new_project">
+		<h1>Add new project </h1>
+		<%= twitter_bootstrap_form_for @project do |project|  %>
+			<%= project.text_field :name, 'Project name', :class => 'medium' %>
+			<%= project.text_area :description, 'Description', :class => 'medium' %>
+ 			<%-#= project.file_field (:post, :image, :multiple => true) :image_file, 'Image', :class => 'medium' -%>		
+			<%= project.text_field :amount, 'Requsted funding', :class => 'medium' %>
+			
+			<%= project.select(:phase, [['Proof of concept',1], ['Construction',2]]) %>
+		
+			
+		<!-- 	<%= project.toggles 'Project phase' do %>
+				<%= project.radio_button :phase, 'Proof of Concept', :plain, :checked => false, :id => 'Feasabilty' %>
+				<%= project.text_field :amount, 'Offered return', :class => 'medium' , :id => 'Feas-offer', :value => '30' %>
+				<%= project.radio_button :phase, 'Construction', :plain, :id => 'Construction' %>
+				<%= project.text_field :amount, 'Offered return', :class => 'medium' , :id => 'Cons-offer', :value => '5' %>
+				<%= project.radio_button :phase, 'Operational', :plain, :id => 'Ongoing' %>
+				<%= project.text_field :amount, 'Offered return', :class => 'medium' , :id => 'Ong-offer', :value => '5' %>
+			<% end %> -->
+			
+			<%= project.toggles 'Project type' do %>
+				<%= project.radio_button :phase, 'Solar', :plain, :checked => false, :id => 'Solar' %>
+				<%= project.radio_button :phase, 'Wind', :plain, :id => 'Wind' %>
+				<%= project.radio_button :phase, 'Trash to electricity', :plain, :id => 'Trash' %>
+			<% end %>
+			<%= project.toggles 'Contact limit' do %>
+				<%= project.text_field :direct_contact_amount, 'From which sum would you like to allow direct contact to investor', 
+																												:class => 'medium' %>
+				<%= project.radio_button :direct_contact_amount, 'Do not allow access', :plain, :checked => false, :value => -1 %>
+				<%= project.radio_button :direct_contact_amount, 'Always allow access', :plain, :checked => false, :id => 'AlwaysCon' ,:value => 0 %>
+			<% end %>																							
+																		
+			
+			<%= project.date_select :end_date, 'End funding date', {}, :class => 'small' %>
+			<%= project.actions do %>
+				<%= project.submit 'Create' %>
+				<%= button_tag  'Cancel', :type => 'reset', :class => 'btn' , :id => 'Cancel' %>
+			<% end %>
+		<% end %>
+		
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+		<script>
+		(function() {
+		
+			$('#Feasabilty').change(function() {
+				$('#Feas-offer').show();
+				$('#Ong-offer').hide();
+			});
+			
+			$('#Ongoing').change(function() {
+				$('#Feas-offer').hide();
+				$('#Ong-offer').show();	
+			});
+			
+			$('#AlwaysCon').change(function() {
+				confirm("Are you sure you want to allow every investor to contact you directly?");
+			});
+			
+		})();
+
+
+	</script>
+	
+	</div>
+</body>

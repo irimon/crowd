@@ -1,0 +1,147 @@
+@import "bootstrap";
+body { padding-top: 60px; }
+@import "bootstrap-responsive";
+
+body {
+		//background-image: url("https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSF7Wp6EeOa1Eb0Cq9rnsCFYfJbeJcu0MwAF0-vTzlstVoub4Nu8w");
+		//background-repeat: no-repeat;
+		//background-size: 500px, 500px;
+		//.background {
+		//	filter: alpha(opacity=30);
+		//}
+
+}
+.navbar {
+  font-size: 125%;
+
+}
+// .navbar .logo  {
+//       background-image: url("rails.png");
+//        background-repeat: no-repeat;
+//        background-position: top left;
+//       height: 64px;
+//  }
+ .navbar .navbar-inner {
+        padding: 0;
+      }
+      .navbar .nav {
+        margin: 0;
+        display: table;
+        width: 100%;
+      }
+      .navbar .nav li {
+        display: table-cell;
+        width: 1%;
+        float: none;
+      }
+      .navbar .nav li a {
+        font-weight: bold;
+        text-align: center;
+        border-left: 1px solid rgba(255,255,255,.75);
+        border-right: 1px solid rgba(0,0,0,.1);
+      }
+      .navbar .nav li:first-child a {
+        border-left: 0;
+        border-radius: 3px 0 0 3px;
+      }
+      .navbar .nav li:last-child a {
+        border-right: 0;
+        border-radius: 0 3px 3px 0;
+      }
+	  
+	  
+	  
+ .Main_Massage {
+	text-align: center;
+}
+.lower_body .span4 {
+	margin-top: 10%;
+}
+
+.thumbnail {
+	img {
+		height: 200px;
+	}
+	.btn {
+		background-color: green;
+		background-image: linear-gradient(to bottom, white, green);
+		margin-left: 40%;
+		margin-top: 0;
+
+	}
+	
+	#closed {
+			background-color: orange;
+			background-image: linear-gradient(to bottom, white, orange);
+	}
+}
+
+.new_project {
+		margin-top: 2%;
+}
+
+.funded .label, .badge {
+	font-size: 200%;
+	line-height: 120%;
+	white-space: wrap;
+}
+
+.navbar-search {
+	margin-bottom: 2%;
+}
+
+.new_project .primary  {
+	//.primary {
+		background-color: blue;
+		background-image: linear-gradient(to bottom, white, blue);
+	//}
+}
+
+.new_project {
+	textarea {
+		height: 200px;
+	}
+	
+	
+}
+	
+	.Feas-offer {
+			width: 100;
+	}
+.Main_Massage {
+	a {
+		margin-right:30px
+	}
+}
+
+.secondary_massage {
+	a {
+		margin-left:150px;
+	}
+}
+.Fancy_wrapper {
+	dl {
+		margin-right:30px
+	}
+
+	dd {
+		margin: 0;
+		
+		padding: 1em 0;
+	}
+
+	dt {
+		cursor: pointer;
+		padding-left: 10px;
+		
+		font-weight: bold;
+		font-size : 1.5em;
+		line-height: 2em;
+		background: #e3e3e3;
+		border-bottom: 1px solid #c5c5c5;
+		border-top: 1px solid white;
+	}
+
+	dt:first-child { border-top: none; }
+	dt:nth-last-child(2) { border-bottom: none; }
+}

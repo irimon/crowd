@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+
+
+<body>
+	<style>
+		background-image: url("https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSF7Wp6EeOa1Eb0Cq9rnsCFYfJbeJcu0MwAF0-vTzlstVoub4Nu8w");
+	</style>
+
+	<div class="Main_Massage">
+        <h1>Welcome to Crowdfunding energy projects</h1>
+       
+		<h4> Already a member - sign in <%= link_to "here", home_path %> </h4>
+      </div>
+	  
+	 <div class="Fancy_wrapper">
+		<div class="row-fluid lower_body">
+		 <div class="span6">
+			
+			<div class="secondary_massage">
+				<a class="btn btn-large btn-success " href="#">A new investor</a> 	  
+				<h3>Why should you invest through this platform</h3>
+			</div>
+			
+			 <div class="row">
+				 <dl>
+					<dt>Great visibility into the companies asking for funding</dt>
+					<dd>You can see the track record of the company asking for funding, as well as the current project's detailed insurance and return plans</dd>
+					<dt>Multiple options to invest, both in higher and lower risk ventures</dt>
+					<dd>On one side, ability to invest in projects that are already built and insured, and just more money for opperations.
+					    On the other side, ability to invest in a proof of concept, or at the initial construction of the projects.</dd>
+					<dt>Invest in a growing and maturing industry</dt>
+					<dd>Trends show that the cost of renewable energy technologies will continue to decrease 
+					     faster than conventional energy technologies as the renewable sector matures.</dd>
+
+				</dl>
+
+				
+			  </div>
+			</div>	
+			 
+			 <div class="span6">
+			   <div class="secondary_massage">
+					<a class="btn btn-large btn-success" href="#">A new funds-seeker</a> 
+					<h3>Why should you look for investment here</h3>
+				</div>
+			
+			 <div class="row">
+				 <dl>
+					<dt>A good way to receive funding at different stages of the project</dt>
+					<dd>Ask for funding for all phases of the project: From proof of concept, to infrastracture, 
+					    to buying insurance and finally for the ongoing operation of the project</dd>
+					<dt>Gain credit and reduce your future insurance costs</dt>
+					<dd>We work with a number of large insurance companies, and have come to an agreement with them that 
+					   companies that show a solid track record will getter better insurance rates.
+						In addition, once a good trace record is established, lesser equity can be granted in the earlier phases of the project</dd>
+					<dt>ccc</dt>
+					<dd>ddd</dd>
+
+
+				</dl>
+			
+		 </div>
+	</div>
+   
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
+	<script>
+
+					(function() {
+						
+						$('dd').filter(':nth-child(n+4)').addClass('hide');
+
+						$('dl').on('mouseenter', 'dt', function() {
+							$(this)
+								.next()
+									.slideDown(200)
+									.siblings('dd')
+										.slideUp(200);
+						});
+					})();
+
+
+	</script>	
+   
+</body>
+ 
+	
+	  
