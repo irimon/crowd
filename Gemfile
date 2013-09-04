@@ -31,7 +31,8 @@ gem 'twitter_bootstrap_form_for'
 # gem 'jbuilder'
 
 gem 'annotate'
-
+gem 'gmaps4rails'
+#gem 'geokit'
 # Use unicorn as the app server
 # gem 'unicorn'
 

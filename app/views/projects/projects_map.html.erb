@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+
+
+<body>
+	<h1>Map of all projects </h1>
+</body>
+
+<script src="/assets/gmaps4rails/gmaps4rails.googlemaps.js?body=1" type="text/javascript"></script>
+  <%= stylesheet_link_tag 'gmaps4rails' %>
+   
+  <%= gmaps4rails(@json) %>
+  <%= yield :scripts %>

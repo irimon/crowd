@@ -7,14 +7,17 @@
 	</style>
 
 	<div class="Main_Massage">
-        <h1>Welcome to Crowdfunding energy projects</h1>
+        <h1>Welcome to your best source for Crowdfunding renewable energy projects</h1>
+		<h3>Bringing together companies in need of capital, with potential investors and insurance companies to reduce risks</h3>
+
        
 		<h4> Already a member - sign in <%= link_to "here", home_path %> </h4>
       </div>
 	  
 	 <div class="Fancy_wrapper">
 		<div class="row-fluid lower_body">
-		 <div class="span6">
+		
+		<div class="span4">
 			
 			<div class="secondary_massage">
 				<a class="btn btn-large btn-success " href="#">A new investor</a> 	  
@@ -36,9 +39,9 @@
 
 				
 			  </div>
-			</div>	
+		</div>	
 			 
-			 <div class="span6">
+		<div class="span4">
 			   <div class="secondary_massage">
 					<a class="btn btn-large btn-success" href="#">A new funds-seeker</a> 
 					<h3>Why should you look for investment here</h3>
@@ -53,21 +56,48 @@
 					<dd>We work with a number of large insurance companies, and have come to an agreement with them that 
 					   companies that show a solid track record will getter better insurance rates.
 						In addition, once a good trace record is established, lesser equity can be granted in the earlier phases of the project</dd>
-					<dt>ccc</dt>
-					<dd>ddd</dd>
+					
 
 
 				</dl>
 			
+			</div>
 		 </div>
-	</div>
-   
+		 
+		 <div class="span4">
+			   <div class="secondary_massage">
+					<a class="btn btn-large btn-success" href="#">A new insurance company</a> 
+					<h3>Why should you look for clients here</h3>
+				</div>
+			
+			 <div class="row">
+				 <dl>
+					<dt>Get access to promising companies at an early stage</dt>
+					<dd>As a member of our insurance company portfolio you will manage to get access to many new 
+					    early stage renewable energy companies that will later grow into much larger companies that will 
+						require match larger insurance policies</dd>
+					<dt>View track record of companies</dt>
+					<dd>Our platform aims to be as transparent as possible, enabling an insurance company to look at the track record of the company, 
+						thereby understanding whether the company is capable of the tasks at hand. This greatly reduces some of the uncertenties of 
+						insuring renewable energy project at an early stage</dd>
+
+
+				</dl>
+			
+			</div>
+		 
+		</div>
+   	</div>
+
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 
 	<script>
 
 					(function() {
-						
+						$(this)
+								.next()
+									.slideDown(200);
+									
 						$('dd').filter(':nth-child(n+4)').addClass('hide');
 
 						$('dl').on('mouseenter', 'dt', function() {

@@ -1,5 +1,7 @@
 CrowdMoc::Application.routes.draw do
 
+  get "companies/new"
+
   root to: 'static_pages#landing_page'
 
   get "seekers/new"
@@ -16,14 +18,19 @@ CrowdMoc::Application.routes.draw do
 
   #get "static_pages/start_project"
 
-  get "static_pages/portfolio"
+  get "projects/show_portfolio"
 
   get "static_pages/about"
   
   
   match '/projects',  to: 'projects#search'
   match '/start_project',  to: 'projects#add_new'
+  match '/projects_map', to:  'projects#projects_map'
   match '/home',  to: 'static_pages#home'
+  match '/portfolio',  to: 'projects#show_portfolio'
+  
+  match '/companies',  to: 'static_pages#show_company'
+  
   #match '/signin', to: '#'
 
   # The priority is based upon order of creation:

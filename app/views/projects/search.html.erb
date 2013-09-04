@@ -3,6 +3,8 @@
 
 <body>
 	<h1>Current projects </h1>
+	<h2><%= link_to "Switch to map view", projects_map_path %></h2>
+
 	<form class="row-fluid navbar-search pull-left">
 		<input type="text" class="search-query" placeholder="Search">
 	</form>
@@ -13,8 +15,8 @@
                 <div class="thumbnail">
                    <img src="../assets/cat1.jpg" alt="some great picture of a cat">
                   <div class="caption">
-                    <h3>Project A</h3>
-					<h4>by <%= link_to "SolarCorp", projects_path %></h4>
+                    <h3>Newfort solar panels</h3>
+					<h4>by <%= link_to "SolarCorp", companies_path %></h4>
                     <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
                     <div class="progress progress-striped">
 						<div class="bar" style="width: 40%;"></div>
@@ -31,7 +33,7 @@
                 <div class="thumbnail">
 				  <img src="../assets/cat2.jpg" alt="some great picture of a cat">
                   <div class="caption">
-                    <h3>Project B</h3>
+                    <h3>Windyvally wind farm </h3>
 					<h4>by <%= link_to "CleanFuture", projects_path %></h4>
                     <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
                     <div class="progress progress-striped">
@@ -48,28 +50,76 @@
               <li class="span4">
                 <div class="thumbnail">
 					<img src="../assets/cat3.jpg" alt="some great picture of a cat">   
-					<div class="funded">
-						<span class="label label-success">Funded</span>
-					</div>					
-                    <h3>Project C</h3>
-					<h4>by <%= link_to "SolarCorp", projects_path %></h4>
-                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                    <div class="progress progress-striped">
-						<div class="bar" style="width: 100%;"></div>
-					</div>
-					<div>
-						<h4>Recieved $ 500,000</h4>
-						<h5>100% funded</h5>
-					 </div>
+					<div class="caption-fund">
+						<div class="funded">
+							<span class="label label-success">Funded</span>
+						</div>					
+						<h3>EastFort dessert solar farm</h3>
+						<h4>by <%= link_to "SolarCorp", projects_path %></h4>
+						<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+						<div class="progress progress-striped">
+							<div class="bar" style="width: 100%;"></div>
+						</div>
+						<div>
+							<h4>Recieved $ 500,000</h4>
+							<h5>100% funded</h5>
+						 </div>
+					    </div>
 					   <a class="btn" id="closed" href="#">Closed</a>
                   </div>
-                </div>
               </li>
+			
+			</ul>
+            </div>			
+				
+			 	<% if @projects %>
+				<% ind = 0 %>
+				<% for proj in @projects %>
+					
+					<% if ind%3 == 0 %>
+						<div class="row-fluid">
+						<ul class="thumbnails">
+					<% end %>
+					<li class="span4">
+						<div class="thumbnail">
+							<%  if proj.picture_url? %>
+								<%= image_tag(proj.picture_url, alt="some great picture of a cat")  %>
+							<% else %>
+								<img src="../assets/cat2.jpg" alt="some great picture of a cat">   
+							<% end %>
+							<%= proj.inspect %>
+						  <div class="caption">
+							<h3><%= proj.name %></h3>
+							<p><%= proj.description %></p>
+							<div class="progress progress-striped">
+								<div class="bar" style="width: 40%;"></div>
+							</div>
+							 <div>
+								<h4>Received $ <%= proj.funding_received %></h4>
+								
+								<h5><%= proj.percent_funded %>% funded</h5>
+							 </div>
+						  </div>
+						  <a class="btn" href="#">Join in</a>
+						</div>
+					</li>
+					
+					<% if ind%3 == 2 %>
+						 </ul>
+						</div>
+					<% end %>
+					<%  ind = ind+1 %>
+				<% end %>
+			<% end %> 
+			  
+			  
+			  
+			  
             </ul>
          </div>
      </div>
 	 
-	 <div class="new_projects_list">
+	<!--  <div class="new_projects_list">
 		<div class="row-fluid">
             <ul class="thumbnails">
 			<% if @projects %>
@@ -81,7 +131,7 @@
 							<% else %>
 								<img src="../assets/cat2.jpg" alt="some great picture of a cat">   
 							<% end %>
-
+							<%= proj.inspect %>
 						  <div class="caption">
 							<h3><%= proj.name %></h3>
 							<p><%= proj.description %></p>
@@ -101,5 +151,5 @@
 			<% end %>
 			</ul>
          </div>
-	 </div>
+	 </div> -->
 </body>

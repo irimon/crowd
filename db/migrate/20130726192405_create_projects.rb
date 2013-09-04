@@ -5,6 +5,6 @@ class CreateProjects < ActiveRecord::Migration
       t.string :amount
 
       t.timestamps
-    end
+    end 
   end
 end

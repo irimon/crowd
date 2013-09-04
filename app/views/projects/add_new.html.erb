@@ -3,6 +3,59 @@
 <body>
 	<div class="new_project">
 		<h1>Add new project </h1>
+		
+		<%= form_for @project, :html => {:multipart => true} do |pr|  %>
+			
+			 <div class="top-form">
+			  <%= pr.label :name, 'Project name' %>
+			  <%= pr.text_field :name %>
+
+			  <%= pr.label :description, 'Project Description' %>
+			  <%= pr.text_area :description %>
+			  
+			  <%= pr.label :latitude, 'Latitude' %>
+			  <%= pr.text_field :latitude %>
+			  <%= pr.label :longitude, 'Longitude' %>
+			  <%= pr.text_field :longitude %>
+			  
+			<!--   <%= pr.label :pic, 'Picture' %>
+			  <%= pr.file_field :pic %>		 -->	  
+			  
+			  <%= pr.label :phase, 'Phase of project' %>
+			  <%= pr.select(:phase, [['Proof of concept',1], ['Construction',2], ['Operational',3]]) %>
+			
+			 
+			  <%= pr.label :project_kind, 'Type of project' %>
+			  <%= pr.select(:project_kind, [['Solar',1], ['Wind',2], ['Trash to electricity',3], ['Hydro',4], ['Other',5]]) %>
+			 </div>
+			 <div class="btn-group" data-toggle="buttons-radio">
+				 <!-- 	  <h5> Project Kind	  </h5>
+
+					  <%= pr.label :project_kind, 'Solar' %>
+					  <%= pr.radio_button  :project_kind, 'Solar' %>
+					  <%= pr.label :project_kind, 'Wind' %>
+					  <%= pr.radio_button  :project_kind, 'Wind' %>
+					  <%= pr.label :project_kind, 'Trash to electricity' %>
+					  <%= pr.radio_button  :project_kind, 'Trash' %>
+				</div> -->
+			    
+				<div class="other-project" id="Other-text" >
+					<!--   <%= pr.label :project_kind, 'Other' %>
+					  <%= pr.radio_button  :project_kind, 'Other' %> -->
+				      <%= pr.text_field :project_kind%>
+			    </div>
+			
+			<div class="bottom-form">
+			  <%= pr.label :amount, 'Requested funding' %>
+			  <%= pr.text_field :amount %>
+            </div>
+			
+			<div class="submit-form">
+			  <%= pr.submit "Create", class: "btn btn-large btn-primary" %>
+			 </div>  
+			 
+		<% end %>
+		<!-- 
 		<%= twitter_bootstrap_form_for @project do |project|  %>
 			<%= project.text_field :name, 'Project name', :class => 'medium' %>
 			<%= project.text_area :description, 'Description', :class => 'medium' %>
@@ -12,14 +65,15 @@
 			<%= project.select(:phase, [['Proof of concept',1], ['Construction',2]]) %>
 		
 			
-		<!-- 	<%= project.toggles 'Project phase' do %>
+			<%= project.toggles 'Project phase' do %>
 				<%= project.radio_button :phase, 'Proof of Concept', :plain, :checked => false, :id => 'Feasabilty' %>
 				<%= project.text_field :amount, 'Offered return', :class => 'medium' , :id => 'Feas-offer', :value => '30' %>
 				<%= project.radio_button :phase, 'Construction', :plain, :id => 'Construction' %>
 				<%= project.text_field :amount, 'Offered return', :class => 'medium' , :id => 'Cons-offer', :value => '5' %>
 				<%= project.radio_button :phase, 'Operational', :plain, :id => 'Ongoing' %>
 				<%= project.text_field :amount, 'Offered return', :class => 'medium' , :id => 'Ong-offer', :value => '5' %>
-			<% end %> -->
+			<% end %> 
+			
 			
 			<%= project.toggles 'Project type' do %>
 				<%= project.radio_button :phase, 'Solar', :plain, :checked => false, :id => 'Solar' %>
@@ -40,11 +94,36 @@
 				<%= button_tag  'Cancel', :type => 'reset', :class => 'btn' , :id => 'Cancel' %>
 			<% end %>
 		<% end %>
-		
+		-->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 		<script>
 		(function() {
-		
+		    $('#Other-text').hide(); 
+			$("#project_project_kind").change(function() {
+				var cur = $("#project_project_kind").val();
+<!-- 				console.log(cur);
+ -->				
+				if (cur == 5) {
+					$('#Other-text').show(); 
+				} else {
+					$('#Other-text').hide(); 
+				};	
+			});		
+			
+			$("#project_project_kind_solar").change(function() {
+				$('#Other-text').hide(); 
+				
+			});		
+			$("#project_project_kind_wind").change(function() {
+				$('#Other-text').hide(); 
+			});		
+			$("#project_project_kind_trash").change(function() {
+				$('#Other-text').hide(); 
+			});		
+			
+			
+				
+			
 			$('#Feasabilty').change(function() {
 				$('#Feas-offer').show();
 				$('#Ong-offer').hide();
