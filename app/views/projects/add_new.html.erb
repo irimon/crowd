@@ -2,6 +2,10 @@
 
 <body>
 	<div class="new_project">
+		
+		<a href="projects/create_demo_projects" class="btn" id="demo-button"><strong>Add Demo</Demo></a>
+	    <a href="projects/reset_demo_projects" class="btn" id="demo-button"><strong>Reset Demo</Demo></a>
+		
 		<h1>Add new project </h1>
 		
 		<%= form_for @project, :html => {:multipart => true} do |pr|  %>

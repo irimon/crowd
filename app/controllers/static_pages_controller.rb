@@ -3,6 +3,10 @@ class StaticPagesController < ApplicationController
    render :layout => "layout_without_header"
   end
   
+   def contact_company
+	render :layout => "layout_without_header"
+  end
+  
   def home
   end
 

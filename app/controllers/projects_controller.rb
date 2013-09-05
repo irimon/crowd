@@ -22,7 +22,52 @@ class ProjectsController < ApplicationController
 		@project.save
 		render 'projects/add_new'
   end
- 
+  
+  
+  def create_demo_projects 
+	first_project = Project.find(:first)
+	if (first_project != nil)
+		ind = first_project.id+1
+	else
+		ind=1
+	end
+	
+	kind_arry = ["Solar","Wind","Hydro","Other"]
+	pic_array = ["cat1.jpg" , "cat2.jpg", "cat3.jpg"]
+	for i in 0..2
+		par_num = rand(0..4)
+		if par_num == 0
+			desc = Lorem::Base.new('words', rand[5..50]).output
+		else
+			desc = Lorem::Base.new('paragraphs', par_num).output
+		end
+		
+		rand_amount = rand(1..20)*100000
+		rand_received = rand(1..20)*100000
+		fully_funded = rand_received >= rand_amount 
+		if fully_funded
+			percent_funded = 100
+		else
+			percent_funded = rand_received.to_f/rand_amount
+		end
+		rand_kind = rand(0..3)
+		pic = pic_array[rand(0..2)]
+		rand_name = kind_arry[rand_kind].to_s + " project " + rand(0..15).to_s
+		@project = Project.create( name: rand_name, amount: rand_amount,
+							  phase: nil, end_date: nil, picture_url: pic, description: desc, funding_received: rand_received , fully_funded: fully_funded, percent_funded: percent_funded,
+							  picture: nil,  project_kind: kind_arry[rand_kind], latitude: rand(20..50), longitude: rand(-90..90) )
+							  
+		#@project.update_funding(0)
+	end
+	render 'projects/add_new'
+	
+end
+
+def reset_demo_projects
+		 Project.destroy_all
+	     render 'static_pages/home'		 
+end
+  
   def search
 		if params[:search]
 			@projects = Project.find(:all, :conditions => ['name LIKE ?', "%#{search}%"])

@@ -67,6 +67,11 @@ body {
 		background-image: linear-gradient(to bottom, white, green);
 		margin-left: 40%;
 		margin-top: 0;
+	
+	}
+	#mail-button {
+				background-color: grey;
+				background-image: linear-gradient(to bottom, white, gray);
 
 	}
 	
@@ -222,4 +227,8 @@ body {
 	}
 }
 
-
+.portfolio {
+	.span8 {
+		margin-left: 0px;
+	}
+}

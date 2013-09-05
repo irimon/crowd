@@ -16,8 +16,11 @@
                    <img src="../assets/cat1.jpg" alt="some great picture of a cat">
                   <div class="caption">
                     <h3>Newfort solar panels</h3>
-					<h4>by <%= link_to "SolarCorp", companies_path %></h4>
-                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+					<h4>by <%= link_to "SolarCorp", companies_path %>
+					<a href="static_pages/contact_company" class="btn" id="mail-button"><i class="icon-envelope"></i></a>
+					</h4>
+					
+                   <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
                     <div class="progress progress-striped">
 						<div class="bar" style="width: 40%;"></div>
 					</div>
@@ -83,24 +86,29 @@
 					<li class="span4">
 						<div class="thumbnail">
 							<%  if proj.picture_url? %>
-								<%= image_tag(proj.picture_url, alt="some great picture of a cat")  %>
+								<%= image_tag(proj.picture_url)  %>
 							<% else %>
 								<img src="../assets/cat2.jpg" alt="some great picture of a cat">   
 							<% end %>
-							<%= proj.inspect %>
+						
 						  <div class="caption">
+						  
 							<h3><%= proj.name %></h3>
 							<p><%= proj.description %></p>
 							<div class="progress progress-striped">
-								<div class="bar" style="width: 40%;"></div>
+								<div class="bar" style="width: <%= proj.percent_funded*100 %>%;"></div>
 							</div>
 							 <div>
 								<h4>Received $ <%= proj.funding_received %></h4>
 								
-								<h5><%= proj.percent_funded %>% funded</h5>
+								<h5><%= (proj.percent_funded*100).to_int %>% funded</h5>
 							 </div>
 						  </div>
-						  <a class="btn" href="#">Join in</a>
+						  <% if proj.percent_funded*100 < 100 %>
+								<a class="btn" href="#">Join in</a>
+						  <% else %>
+						  		<a class="btn" id="closed" href="#">Closed</a>
+						  <% end %>
 						</div>
 					</li>
 					
@@ -118,38 +126,5 @@
             </ul>
          </div>
      </div>
-	 
-	<!--  <div class="new_projects_list">
-		<div class="row-fluid">
-            <ul class="thumbnails">
-			<% if @projects %>
-				<% for proj in @projects %>
-					<li class="span4">
-						<div class="thumbnail">
-							<%  if proj.picture_url? %>
-								<%= image_tag(proj.picture_url, alt="some great picture of a cat")  %>
-							<% else %>
-								<img src="../assets/cat2.jpg" alt="some great picture of a cat">   
-							<% end %>
-							<%= proj.inspect %>
-						  <div class="caption">
-							<h3><%= proj.name %></h3>
-							<p><%= proj.description %></p>
-							<div class="progress progress-striped">
-								<div class="bar" style="width: 40%;"></div>
-							</div>
-							 <div>
-								<h4>Received $ <%= proj.funding_received %></h4>
-								
-								<h5><%= proj.percent_funded %>% funded</h5>
-							 </div>
-						  </div>
-						  <a class="btn" href="#">Join in</a>
-						</div>
-					</li>
-				<% end %>
-			<% end %>
-			</ul>
-         </div>
-	 </div> -->
+	
 </body>
