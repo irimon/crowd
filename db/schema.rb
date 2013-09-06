@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130829182559) do
+ActiveRecord::Schema.define(:version => 20130906172815) do
 
   create_table "companies", :force => true do |t|
     t.string   "company_name"
@@ -30,8 +30,23 @@ ActiveRecord::Schema.define(:version => 20130829182559) do
     t.datetime "updated_at",   :null => false
   end
 
-# Could not dump table "projects" because of following StandardError
-#   Unknown type 'bool' for column 'fully_funded'
+  create_table "projects", :force => true do |t|
+    t.string   "name"
+    t.string   "amount"
+    t.string   "phase"
+    t.datetime "end_date"
+    t.text     "picture_url"
+    t.text     "description"
+    t.integer  "funding_received"
+    t.float    "percent_funded"
+    t.boolean  "fully_funded"
+    t.integer  "direct_contact_amount"
+    t.string   "project_kind"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
+  end
 
   create_table "seekers", :force => true do |t|
     t.string   "name"
