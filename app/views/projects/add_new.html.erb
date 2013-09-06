@@ -17,11 +17,6 @@
 			  <%= pr.label :description, 'Project Description' %>
 			  <%= pr.text_area :description %>
 			  
-			  <%= pr.label :latitude, 'Latitude' %>
-			  <%= pr.text_field :latitude %>
-			  <%= pr.label :longitude, 'Longitude' %>
-			  <%= pr.text_field :longitude %>
-			  
 			  
 			  <%= pr.label :phase, 'Phase of project' %>
 			  <%= pr.select(:phase, [['Proof of concept',1], ['Construction',2], ['Operational',3]]) %>
@@ -51,6 +46,11 @@
 			  <%= pr.label :amount, 'Requested funding' %>
 			  <%= pr.text_field :amount %>
             </div>
+			
+			 <%= pr.label :latitude, 'Latitude' %>
+			  <%= pr.text_field :latitude %>
+			  <%= pr.label :longitude, 'Longitude' %>
+			  <%= pr.text_field :longitude %>
 			
 			<div class="submit-form">
 			  <%= pr.submit "Create", class: "btn btn-large btn-primary" %>
