@@ -37,7 +37,7 @@ class ProjectsController < ApplicationController
 	for i in 0..2
 		par_num = rand(0..4)
 		if par_num == 0
-			desc = Lorem::Base.new('words', rand[5..50]).output
+			desc = Lorem::Base.new('words', rand(5..50)).output
 		else
 			desc = Lorem::Base.new('paragraphs', par_num).output
 		end
