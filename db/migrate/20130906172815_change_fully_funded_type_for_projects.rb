@@ -8,8 +8,8 @@ class ChangeFullyFundedTypeForProjects < ActiveRecord::Migration
       t.string :amount
       t.string :phase               
       t.datetime  :end_date             
-      t.text :picture_url      
-      t.text :description         
+      t.text :picture_url      , :limit => nil
+      t.text :description       , :limit => nil  
       t.integer :funding_received     
 	  t.float :percent_funded       
 	  t.boolean :fully_funded          
