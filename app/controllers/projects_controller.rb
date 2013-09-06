@@ -55,7 +55,7 @@ class ProjectsController < ApplicationController
 		rand_name = kind_arry[rand_kind].to_s + " project " + rand(0..15).to_s
 		@project = Project.create( name: rand_name, amount: rand_amount,
 							  phase: nil, end_date: nil, picture_url: pic, description: desc, funding_received: rand_received , fully_funded: fully_funded, percent_funded: percent_funded,
-							  picture: nil,  project_kind: kind_arry[rand_kind], latitude: rand(20..50), longitude: rand(-90..90) )
+							  project_kind: kind_arry[rand_kind], latitude: rand(20..50), longitude: rand(-90..90) )
 							  
 		#@project.update_funding(0)
 	end

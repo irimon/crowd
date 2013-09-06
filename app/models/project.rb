@@ -23,7 +23,7 @@
 #
 
 class Project < ActiveRecord::Base
-  attr_accessible :amount, :name, :description, :phase, :project_kind, :end_date, :picture_url, :funding_received, :picture, :latitude, :longitude, :fully_funded, :percent_funded
+  attr_accessible :amount, :name, :description, :phase, :project_kind, :end_date, :picture_url, :funding_received,  :latitude, :longitude, :fully_funded, :percent_funded
   belongs_to :company
   
   acts_as_gmappable :process_geocoding => false
