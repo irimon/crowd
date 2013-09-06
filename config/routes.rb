@@ -32,7 +32,10 @@ CrowdMoc::Application.routes.draw do
    match '/about',  to: 'static_pages#about'
   match '/portfolio',  to: 'projects#show_portfolio'
   
-  match '/companies',  to: 'static_pages#show_company'
+  match '/companies_0',  to: 'static_pages#show_company_0'
+   match '/companies_1',  to: 'static_pages#show_company_1'
+    match '/companies_2',  to: 'static_pages#show_company_2'
+  
   #match '/contact_companies',  to: 'static_pages#contact_company'
   #match '/signin', to: '#'
 
