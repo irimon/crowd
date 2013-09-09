@@ -33,7 +33,9 @@ class ProjectsController < ApplicationController
 	end
 	
 	kind_arry = ["Solar","Wind","Hydro","Other"]
-	pic_array = ["cat1.jpg" , "cat2.jpg", "cat3.jpg"]
+	pic_array = ["wind_1.jpg" , "wind_2.jpg", "wind_3.jpg",
+					"solar_1.jpg" , "solar_2.jpg", "solar_3.jpg",
+					"hydro_2.jpg", "recycle_1.jpg", "recycle_2.jpg","plant.jpg"]
 	for i in 0..9
 		par_num = rand(0..4)
 		if par_num == 0
@@ -41,8 +43,8 @@ class ProjectsController < ApplicationController
 		else
 			desc = Lorem::Base.new('paragraphs', par_num).output
 		end
-		proj_name_list = ['Eastshore Wind Farms' , 'Mid Atlantic Solar', 'Medeteranian Hydro', 'Mohaby Desert Solar' , 'North Plains Wind', 'Green Sun Mexico', 'Baltic Sea Wind Farm', 'New Delhi Trash',
-						  'Recycle Sau Paulo', 'Pacific Ocean plantation']
+		proj_name_list = ['Eastshore Wind Farms' ,'North Plains Wind', 'Baltic Sea Wind Farm', 'Mid Atlantic Solar', 'Mohaby Desert Solar' ,  'Green Sun Mexico', 'Medeteranian Hydro', 
+							'New Delhi Trash',  'Recycle Sau Paulo', 'Pacific Ocean plantation']
 		rand_amount = rand(1..20)*100000
 		rand_received = rand(1..20)*100000
 		fully_funded = rand_received >= rand_amount 
@@ -51,9 +53,10 @@ class ProjectsController < ApplicationController
 		else
 			percent_funded = rand_received.to_f/rand_amount
 		end
+		rand_proj_num = rand(0..9)
 		rand_kind = rand(0..3)
-		pic = pic_array[rand(0..2)]
-		rand_name = proj_name_list[rand(0..9)]
+		pic = pic_array[rand_proj_num]
+		rand_name = proj_name_list[rand_proj_num]
 		@project = Project.create( name: rand_name, amount: rand_amount,
 							  phase: nil, end_date: nil, picture_url: pic, description: desc, funding_received: rand_received , fully_funded: fully_funded, percent_funded: percent_funded,
 							  project_kind: kind_arry[rand_kind], latitude: rand(20..50), longitude: rand(-90..90) )
