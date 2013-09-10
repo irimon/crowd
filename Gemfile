@@ -32,7 +32,9 @@ gem 'bootstrap-sass'
 gem 'twitter_bootstrap_form_for'
 gem 'lorem'
 gem 'will_paginate', '3.0.2'
-
+gem 'social-share-button'
+gem 'font-awesome-rails'
+gem 'social-buttons'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

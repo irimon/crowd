@@ -9,8 +9,17 @@ body {
 		//.background {
 		//	filter: alpha(opacity=30);
 		//}
-
+	
 }
+
+html {
+	overflow-y: scroll;
+	body {
+		height: 100%;
+	}
+}
+
+
 .navbar {
   font-size: 125%;
 
@@ -233,4 +242,43 @@ body {
 	.span8 {
 		margin-left: 0px;
 	}
+}
+
+.drop-down-menu {
+	overflow:auto;
+}
+
+
+/* footer */
+
+
+	  
+footer {
+	   
+	   float: left;
+       width: 100%;
+   
+	  color: $grayLight;
+	  
+	  a {
+		color: #555;
+		&:hover { 
+		   color: #222;
+		 }
+	  }
+	 
+		background-color: black;
+	
+	  .span3 {
+		background-color: black;
+	  }
+	  small {
+		float: left;
+	  }
+
+	 
+}
+ 
+ .social {
+	margin-top: 10px;
 }

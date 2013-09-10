@@ -1,19 +1,23 @@
 <header class="navbar ">
    <div class="logo"/>
   <div class="navbar-inner">
-    <div class="container">
-     <!--  <nav> -->
-	  <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-        <ul class="nav pull-right">
-          <li><%= link_to "Home", home_path %></li>
+    <div class="drop-down-menu">
+	 <a class="btn btn-navbar" data-toggle="collapse" dispaly="block" data-target=".nav-collapse">
+			<li class="icon-bar"></li>
+			<li class="icon-bar"></li>
+			<li class="icon-bar"></li>
+			<li class="icon-bar"></li>
+			<li class="icon-bar"></li>
+      </a>
+      <div class="nav-collapse">
+        <ul class="nav">
+           <li><%= link_to "Home", home_path %></li>
           <li><%= link_to "Projects", projects_path %></li>
 		  <li><%= link_to "Start a project", start_project_path %></li>
           <li><%= link_to "View Portfolio", portfolio_path %></li>
-          <li><%= link_to "About",    about_path %></li>
-		 
-        </ul>
-	  </a>
-     <!--  </nav> -->
+<!--           <li><%= link_to "About",    about_path %></li>
+ -->        </ul>
+      </div>
     </div>
   </div>
 </header>
