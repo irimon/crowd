@@ -25,10 +25,12 @@ class ProjectsController < ApplicationController
   
   def compare
 		@compare_projs = Array.new
-		for c_id in params[:checked_ids]
-			proj = Project.find_by_id(c_id) 	
-			@compare_projs << proj
-		end		
+		if params[:checked_ids]
+			for c_id in params[:checked_ids]
+				proj = Project.find_by_id(c_id) 	
+				@compare_projs << proj
+			end		
+		end
 end
   
   def create_demo_projects 

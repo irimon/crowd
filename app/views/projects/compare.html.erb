@@ -15,6 +15,7 @@
 			</thead>
 		
 			<tbody>
+			<% if @compare_projs  %>
 				<% for proj in @compare_projs %>
 					<tr>
 						<td><%= proj.name %> </td>
@@ -24,6 +25,7 @@
 						<td><%= proj.end_date %></td>
 					</tr>	
 				<% end  %> 
+			<% end  %> 
 			</tbody>
 		</table>
 	</div>
