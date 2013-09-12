@@ -23,6 +23,13 @@ class ProjectsController < ApplicationController
 		render 'projects/add_new'
   end
   
+  def compare
+		@compare_projs = Array.new
+		for c_id in params[:checked_ids]
+			proj = Project.find_by_id(c_id) 	
+			@compare_projs << proj
+		end		
+end
   
   def create_demo_projects 
 	first_project = Project.find(:first)
@@ -49,7 +56,7 @@ class ProjectsController < ApplicationController
 		rand_received = rand(1..20)*100000
 		fully_funded = rand_received >= rand_amount 
 		if fully_funded
-			percent_funded = 100
+			percent_funded = 1
 		else
 			percent_funded = rand_received.to_f/rand_amount
 		end
@@ -60,6 +67,7 @@ class ProjectsController < ApplicationController
 		@project = Project.create( name: rand_name, amount: rand_amount,
 							  phase: nil, end_date: nil, picture_url: pic, description: desc, funding_received: rand_received , fully_funded: fully_funded, percent_funded: percent_funded,
 							  project_kind: kind_arry[rand_kind], latitude: rand(20..50), longitude: rand(-90..90) )
+					
 							  
 		#@project.update_funding(0)
 	end

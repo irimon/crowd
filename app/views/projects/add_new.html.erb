@@ -3,8 +3,9 @@
 <body>
 	<div class="new_project">
 		
-		<a href="projects/create_demo_projects" class="btn" id="demo-button"><strong>Add Demo</Demo></a>
-	    <a href="projects/reset_demo_projects" class="btn" id="demo-button"><strong>Reset Demo</Demo></a>
+		<h3>For demo</h3>
+		<a href="projects/create_demo_projects" class="btn" id="demo-button"><strong>Add demo projects</Demo></a>
+	    <a href="projects/reset_demo_projects" class="btn" id="demo-button"><strong>Reset projects</Demo></a>
 		
 		<h1>Add new project </h1>
 		
@@ -46,7 +47,8 @@
 			  <%= pr.label :amount, 'Requested funding' %>
 			  <%= pr.text_field :amount %>
             </div>
-			
+			 <%= pr.label :end_date, 'Final funding date' %>
+		 	 <%= pr.date_select :end_date, :start_year => 2013%>
 			 <%= pr.label :latitude, 'Latitude' %>
 			  <%= pr.text_field :latitude %>
 			  <%= pr.label :longitude, 'Longitude' %>

@@ -23,7 +23,16 @@
 class Project < ActiveRecord::Base
   attr_accessible :amount, :name, :description, :phase, :project_kind, :end_date, :picture_url, :funding_received,  :latitude, :longitude, :fully_funded, :percent_funded
   belongs_to :company
+   before_save :default_values
   
+  def default_values
+	if (self.funding_received == nil)
+		self.picture_url  = "cat1.jpg"
+		self.fully_funded = false
+		self.percent_funded = 0
+		self.funding_received = 0
+	end
+  end
   acts_as_gmappable :process_geocoding => false
   
   def gmaps4rails_address

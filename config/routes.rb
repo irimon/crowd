@@ -21,6 +21,8 @@ CrowdMoc::Application.routes.draw do
   get "projects/show_portfolio"
   get "projects/create_demo_projects"
   get "projects/reset_demo_projects"
+    get "projects/compare"
+
   # get "static_pages/about"
   
   get "static_pages/contact_company"
