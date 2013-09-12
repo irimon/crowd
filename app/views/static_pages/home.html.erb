@@ -1,46 +1,128 @@
 <!DOCTYPE html>
 
-
 <body>
-	<style>
-		background-image: url("https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSF7Wp6EeOa1Eb0Cq9rnsCFYfJbeJcu0MwAF0-vTzlstVoub4Nu8w");
-	</style>
 
-	<div class="Main_Massage">
-        <h1>Energy projects financial matching</h1>
-        <p class="lead">
-			Matching between project in need of funding and investors looking to broaden their portfolio
-		</p>
-        <a class="btn btn-large btn-success" href="#">Get started today</a>
-		<br> Already a member - sign in <%= link_to "here", home_path %>
-      </div>
 
-	 <div class="row-fluid lower_body">
-		 
-		 <div class="span6">
-			<h2>Investor tools</h2>
-			<p>
-			
-			</p>
-		 </div>
-		 <div class="span6">
-			<h2>What are the risks</h2>
-			<p>
-				Nam fringilla aliquam porta. Sed pulvinar pellentesque odio, sit amet condimentum mauris pellentesque pharetra. 
-				Nam molestie lacus nulla, id tincidunt leo posuere non. Vestibulum euismod ligula vitae mi feugiat, quis aliquet 
-				nisl consectetur. Integer rhoncus sollicitudin leo sed tempor. Sed rhoncus eu enim sit amet ullamcorper. Sed at urna dui.
-				Etiam eget ultricies leo, at tempor arcu. Pellentesque sollicitudin placerat justo eget vulputate. In mollis ligula quam,
-				at accumsan sem sollicitudin id. Fusce fringilla magna urna, at mollis lectus hendrerit vitae. Aliquam placerat turpis 
-				eget sem sagittis lobortis. 
-				Phasellus venenatis mattis dolor, et hendrerit massa commodo eu. Ut rutrum ligula sed risus auctor, vel condimentum eros blandit.
-			</p>
-		 </div>
+
+<div id="carousel" class="">		
+	<div id="myCarousel" class="carousel slide mbottom0">
+	  <div class="carousel-inner">
+	    <div class="active item">
+	    	<img src="./assets/background.jpg" alt="background" />
+				<div class="container">
+ 						<h1>Matching investors with energy projects</h1>
+				</div>
+		</div>
+	  </div>
+	</div>
+</div>
+
+<div class="socialbar">
+		<a href="#"><img src="../assets/socials/facebook.png" alt="facebook" /></a>
+		<a href="#"><img src="../assets/socials/twitter.png" alt="twitter" /></a>
+		<a href="#"><img src="../assets/socials/youtube.png" alt="youtube" /></a>
+</div>
+
+<div class="content vspace40">
+	<div class="container marketing center">
+		<!-- <div class="row">
+			<div class="span12">
+				<h1 class="">A new way of funding energy projects</h1>
+				<p class=""></p>
+			</div>
+		</div>
+ -->
+		<hr class="soften" />
+
+		<div class="row">
+			<div class="span12 marketing">
+				<h1>Why should you invest </h1>
+				<div class="span12">
+						<div class="span3 "><img src="../assets/visable.jpg" alt="v"  width="245" height="200"/><p><br>Great visibility into the projects and companies asking for funding</p></div>
+						<div class="span3 "><img src="../assets/options.jpg" alt="v" width="260" height="200"/><p><br>Multiple options to invest, both in higher and lower risk ventures</p></div>
+						<div class="span3 " id="pic3"><img src="../assets/stats.jpg" alt="v" width="260" height="200"/><p><br>See portfolio statistics, as well as projected yearly returns</p></div>
+						<div class="span3 "><img src="../assets/comparison2.jpg" alt="v" width="243" height="185"/><p><br>Ability to compare between projects</p></div>
+
+						
+				</div>
+				<!-- <div>
+					<p>
+						<h2><img src="../assets/visable.jpg" alt="v"  width="200" height="200"/>Great visibility into the projects and companies asking for funding</h2>
+						<h2>Ability to compare between projects<img src="../assets/comparison.jpg" alt="v" width="200" height="200"/></h2>
+						<h2><img src="../assets/options.jpg" alt="v" width="200" height="200"/>Multiple options to invest, both in higher and lower risk ventures</h2>
+						<h2>See portfolio statistics, as well as projected yearly returns<img src="../assets/stats.jpg" alt="v" width="200" height="200"/></h2>
+						
+					</p>
+				</div> -->
+			</div>
+
+		</div>
+
+
+		<hr class="soften" />
 		
-		
-	 </div>
+		<div class="row-fluid span12" id="Platform">
+				<h1>The platform</h1>
+				<div class="span4">
+					<h2>Account and Tools</h2>
+					<p>
+						The system will hold all of the investor's portfolio and provide statistics and analytics
+						Each month money will be transferred into the account from the various projects 
+						A third party entity will hold all of the account's funds for safekeeping until the investor decides what to do with it
 
-   
+					</p>
+				</div>
+				<div class="span4">
+					<h2>Legal aspects</h2>
+					<p>
+						The platform will ensure that each project will a uphold to all of the legal requirements for running the project 
+					</p>
+				</div>
+				<div class="span4">
+					<h2>Fees</h2>
+					<p>
+						For every successfully funded project the platform will collect from the project owner a small percentage each year
+					</p>
+				</div>
+		</div>
+		
+		<div class="row">
+			<div class="span12">
+				<h1 class="">Recently funded projects</h1>
+			</div>
+		</div>
+
+		<div class="suc-projects">
+			<div class="span12">
+				<ul class="thumbnails">
+					<li class="span3 zoom">
+						<a href="./project_1" class="thumbnail tip" title="A solar farm near the delta of the Nile">
+							<img src="../assets/solar_1.jpg" alt="This is the Image Alt Attribute used as description">
+						</a>						
+					</li>
+					<li class="span3 zoom">
+						<a href="./project_2" class="thumbnail tip" title="A new wind farm in the Netherlands">
+							<img src="../assets/wind_1.jpg" alt="This is the Image Alt Attribute used as description">
+						</a>
+					</li>
+					<li class="span3 zoom">
+						<a href="./project_3" class="thumbnail tip" title="A new hydroelectric dam in northern Thailand">
+							<img src="../assets/hydro_1.jpg"" alt="This is the Image Alt Attribute used as description">
+						</a>
+					</li>
+					<li class="span3 zoom">
+						<a href="./project_4" class="thumbnail tip" title="A new project that takes the trash from landfills in New Delhi and turns it into electricity">
+							<img src="../assets/recycle_1.jpg" alt="This is the Image Alt Attribute used as description">
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+
+
 </body>
- 
-	
-	  
+</html>

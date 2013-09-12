@@ -1,81 +1,6 @@
 @import "bootstrap";
-body { padding-top: 20px; }
+body { padding-top: 60px; }
 @import "bootstrap-responsive";
-
-
-.navbar-static-top {
-	position: fixed;
-	top: 0;
-}
-
-.span3 .zoom {
-	margin-left:5px;
-}
-	
-.socialbar {
-		text-align:center;
-		 margin: auto;
-	a{
-			margin-left:auto;
-			margin-right:auto;
-	}		
-}
-
-.marketing {
-	.span3 {
-
-		margin-left:5px;
-		font-size:130%;
-		
-	}
-	#pic3 {
-	   margin-left:10px;
-	}
-	h2 {
-		text-align:left;
-/* 		border-bottom: 2px solid #c5c5c5;
- */		border-top: 2px solid light-blue;
-
-	}
-	p {
-		text-align:left;
-		margin-left:5px;
-	}	
-	h3 {
-		margin:0px;
-		background-color:#DAECFF;
-		line-height:80px;
-		border-bottom: 2px solid #c5c5c5;
-		border-top: 2px solid light-blue;
-	}
-}
-
-/* .vspace40 {
-  background: url(../assets/cloud-background.jpg) no-repeat center center fixed;
-} */
-
-.nav {
-  a {
-	margin-top:10px;
-	margin-right:20px;
-  }
-}
-
-.maps {
-		margin-left:200px;
-}
-
-.container  {
-		 text-align:center;
-		 margin: auto;
-		 h1 {
-			display:block;
-			margin-left:auto;
-			margin-right:auto;
-
-		 }
-}
-
 
 body {
 		//background-image: url("https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSF7Wp6EeOa1Eb0Cq9rnsCFYfJbeJcu0MwAF0-vTzlstVoub4Nu8w");
@@ -87,14 +12,16 @@ body {
 	
 }
 
-
-	
 html {
 	overflow-y: scroll;
 	body {
+		height: 100%;
 	}
 }
 
+body {
+  background: url(../assets/cloud-background.jpg) no-repeat center center fixed;
+}  
 
 .navbar {
   font-size: 125%;
@@ -106,7 +33,35 @@ html {
 //        background-position: top left;
 //       height: 64px;
 //  }
- 
+ .navbar .navbar-inner {
+        padding: 0;
+      }
+      .navbar .nav {
+        margin: 0;
+        display: table;
+        width: 100%;
+      }
+      .navbar .nav li {
+        display: table-cell;
+        width: 1%;
+        float: none;
+      }
+      .navbar .nav li a {
+        font-weight: bold;
+        text-align: center;
+        border-left: 1px solid rgba(255,255,255,.75);
+        border-right: 1px solid rgba(0,0,0,.1);
+      }
+      .navbar .nav li:first-child a {
+        border-left: 0;
+        border-radius: 3px 0 0 3px;
+      }
+      .navbar .nav li:last-child a {
+        border-right: 0;
+        border-radius: 0 3px 3px 0;
+      }
+	  
+	  
 	  
  .Main_Massage {
 	text-align: center;
@@ -241,10 +196,9 @@ html {
 }
 
 
-.company-description, .project-description {
+.company-description {
 	p {
 		margin-top:52px;
-		text-align:left;
 	}
 }
 
@@ -330,26 +284,4 @@ footer {
  
  .social {
 	margin-top: 10px;
-}
-
-
-.empty-space {
-	min-height: 140px;
-}
-
-.empty-tabs {
-	min-height: 490px;
-}
-.suc-projects  {
-	margin-left:70px;
-}
-
-#Platform {
-	.span4{
-		margin-left:0;
-	}
-	
-	p {
-		margin-right:10px;
-	}	
 }

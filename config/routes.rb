@@ -2,7 +2,7 @@ CrowdMoc::Application.routes.draw do
 
   get "companies/new"
 
-  root to: 'static_pages#landing_page'
+  root to: 'static_pages#home'
 
   get "seekers/new"
 
@@ -31,11 +31,17 @@ CrowdMoc::Application.routes.draw do
   match '/home',  to: 'static_pages#home'
    match '/about',  to: 'static_pages#about'
   match '/portfolio',  to: 'projects#show_portfolio'
-  
+   match '/reports',  to: 'projects#reports'
+
   match '/companies_0',  to: 'static_pages#show_company_0'
    match '/companies_1',  to: 'static_pages#show_company_1'
     match '/companies_2',  to: 'static_pages#show_company_2'
-  
+ 
+ match '/project_1',  to: 'static_pages#show_project_1'
+ match '/project_2',  to: 'static_pages#show_project_2'
+  match '/project_3',  to: 'static_pages#show_project_3'
+   match '/project_4',  to: 'static_pages#show_project_4'
+
   #match '/contact_companies',  to: 'static_pages#contact_company'
   #match '/signin', to: '#'
 
