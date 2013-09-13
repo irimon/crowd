@@ -37,10 +37,10 @@ gem 'font-awesome-rails'
 gem 'social-buttons'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
-
+gem 'devise', '3.0.0'
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
-
+gem "node"
 gem 'annotate'
 gem 'gmaps4rails'
 #gem 'geokit'

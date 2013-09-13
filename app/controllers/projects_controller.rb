@@ -1,4 +1,7 @@
 class ProjectsController < ApplicationController
+before_filter :authenticate_user! , :except => [:search, :projects_map]
+
+
  def add_new
 	 @project = Project.new
   end

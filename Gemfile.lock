@@ -31,6 +31,7 @@ GEM
     annotate (2.5.0)
       rake
     arel (3.0.2)
+    bcrypt-ruby (3.1.2-x86-mingw32)
     bootstrap-sass (2.3.1.3)
       sass (~> 3.2)
     builder (3.0.4)
@@ -41,7 +42,14 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.6.3)
+    devise (3.0.0)
+      bcrypt-ruby (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 3.2.6, < 5)
+      warden (~> 1.2.3)
     erubis (2.7.0)
+    eventmachine (1.0.3)
+    eventmachine (1.0.3-x86-mingw32)
     execjs (1.4.0)
       multi_json (~> 1.0)
     font-awesome-rails (3.2.1.3)
@@ -60,6 +68,9 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.23)
     multi_json (1.7.7)
+    node (0.0.2)
+      eventmachine
+    orm_adapter (0.4.0)
     pg (0.15.1-x86-mingw32)
     polyglot (0.3.3)
     rack (1.4.5)
@@ -119,6 +130,8 @@ GEM
     uglifier (2.1.2)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
+    warden (1.2.3)
+      rack (>= 1.0)
     will_paginate (3.0.2)
 
 PLATFORMS
@@ -128,10 +141,12 @@ DEPENDENCIES
   annotate
   bootstrap-sass
   coffee-rails (~> 3.2.1)
+  devise (= 3.0.0)
   font-awesome-rails
   gmaps4rails
   jquery-rails
   lorem
+  node
   pg (= 0.15.1)
   rails (= 3.2.13)
   rails_12factor (= 0.0.2)

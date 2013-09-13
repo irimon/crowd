@@ -1,5 +1,9 @@
 CrowdMoc::Application.routes.draw do
 
+  devise_for :users
+
+  get "users/new"
+
   get "companies/new"
 
   root to: 'static_pages#home'
@@ -44,6 +48,8 @@ CrowdMoc::Application.routes.draw do
   match '/project_3',  to: 'static_pages#show_project_3'
    match '/project_4',  to: 'static_pages#show_project_4'
 
+  #  match '/signup',  to: 'users#new'
+   # match '/signout', to: 'users#sign_out'
   #match '/contact_companies',  to: 'static_pages#contact_company'
   #match '/signin', to: '#'
 

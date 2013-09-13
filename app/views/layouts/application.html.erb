@@ -11,13 +11,17 @@
   <body>
     <header class="navbar navbar-fixed-top">
       <nav class="navbar-inner">
+	  
         <div class="container">
           <%= render 'layouts/navigation' %>
         </div>
-      </nav>
+	</nav>
     </header>
     <main role="main">
       <div class="container">
+			  <% flash.each do |key, value| %>
+					<div class="alert alert-<%= key %>"><%= value %></div>
+			<% end %>
               <%= render 'layouts/messages' %>
               <%= yield %>
           </div>
