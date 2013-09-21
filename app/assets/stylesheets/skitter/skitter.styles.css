@@ -240,7 +240,7 @@
 	color: #fff;
 	text-indent: -9999em;
 	overflow: hidden;
-	background: url(../images/ajax-loader.gif) no-repeat left top;
+	background: url(ajax-loader.gif) no-repeat left top;
 	width: 32px;
 	height: 32px;
 }
@@ -608,7 +608,7 @@
 .skitter-clean .focus_button 
 {
 	display: block;
-	background: url('../images/sprite-clean.png') no-repeat;
+	background: url('sprite-clean.png') no-repeat;
 }
 
 .skitter-clean .prev_button {
