@@ -40,7 +40,7 @@ body {
 /* line 33, ../sass/typica-login.scss */
 .btn-black:hover {
   background: #333333;
-  color: white;
+  color: gray;
 }
 
 /* ########### */
@@ -55,8 +55,10 @@ body {
 }
 /* line 49, ../sass/typica-login.scss */
 .navbar .navbar-inner {
-  height: 70px;
-  background: white;
+/*   height: 70px;
+ */ 
+  background: black;
+  opacity: 0.8;
   filter: none;
 }
 /* line 54, ../sass/typica-login.scss */

@@ -1,8 +1,11 @@
 <header class="navbar ">
-   <div class="logo"/>
+
+
   <div class="navbar-inner">
     <div class="drop-down-menu">
 	 <a class="btn btn-navbar" data-toggle="collapse" dispaly="block" data-target=".nav-collapse">
+	    	<li class="icon-bar"></li>
+			<li class="icon-bar"></li>
 			<li class="icon-bar"></li>
 			<li class="icon-bar"></li>
 			<li class="icon-bar"></li>
@@ -11,11 +14,25 @@
       </a>
       <div class="nav-collapse">
         <ul class="nav">
+		   <li><img src="assets/rails.png"></li>
            <li><%= link_to "Home", home_path %></li>
           <li><%= link_to "Projects", projects_path %></li>
 		  <li><%= link_to "New project", start_project_path %></li>
           <li><%= link_to "Portfolio", portfolio_path %></li>
-		   <li><%= link_to "Reports", reports_path %></li>
+		  <li><%= link_to "Reports", reports_path, :id => "reports_nav" %></li>
+		   <li>   <div class="signup">
+					<% if user_signed_in? %>
+ 						<%= link_to current_user.name, "#"  , :id => "name_nav"%>
+						<br>
+						<%= link_to "Sign out",  destroy_user_session_path, :method => :delete , :id => "sign_out_nav"%>
+					
+					<% else %>
+							<%= link_to "Login", new_user_session_path, :id => "login" %> <br>
+							<%= link_to "Sign up", new_user_registration_path, :id => "sign_up_nav" %> 
+							
+					<% end %>
+				</div>
+			</li>
 <!--           <li><%= link_to "About",    about_path %></li>
  -->        </ul>
       </div>
