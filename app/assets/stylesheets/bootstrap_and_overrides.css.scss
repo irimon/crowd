@@ -24,9 +24,10 @@ body { padding-top: 20px; }
 .marketing {
 	.span3 {
 
-		margin-left:5px;
-		font-size:130%;
-		
+		margin-left:0px;
+/* 		font-size:130%;
+ */		
+ 
 	}
 	#pic3 {
 	   margin-left:10px;
@@ -40,6 +41,7 @@ body { padding-top: 20px; }
 	p {
 		text-align:left;
 		margin-left:5px;
+		font-size:130%;
 	}	
 	h3 {
 		margin:0px;
@@ -340,18 +342,43 @@ footer {
 .empty-tabs {
 	min-height: 490px;
 }
-.suc-projects  {
+/* .suc-projects  {
 	margin-left:70px;
-}
+} */
 
+
+#main-shadow {
+	margin-top: 0;
+}
+/* .element
+{
+text-shadow: 4px 4px 8px rgba(32, 58, 120, 0.55);
+color: #2773AD;
+font-size: 50px;
+} */
+
+#suc-projects {
+	margin-left:0px;
+	.span3{
+		margin-left:0px;
+		margin-right:20px;
+	}
+}
 #Platform {
+	margin-left:0px;
 	.span4{
-		margin-left:0;
+		margin-left:0px;
+		margin-right:20px;
 	}
 	
 	p {
-		margin-right:10px;
-	}	
+		width: 355px;
+	}
+	
+	h2 {
+		text-align:center;
+	}
+	
 }
 
 .compare-table {
@@ -362,4 +389,253 @@ footer {
 /* 	float: left;
  */	overflow:auto;
 
+}
+
+#proj-icons li {
+    list-style:none;
+}
+
+
+
+/* .image-grid {
+margin-right: 0;
+padding: 0;
+border: 0;
+background: transparent;
+content: "";
+display: block;
+height: 0;
+overflow: hidden;
+clear: both;
+
+
+}
+ */
+ .empty-buffer {
+	height: 500px;
+
+ }
+ 
+.image-grid  li{
+  margin-left: 45px;	
+/* margin: 20px 0 0 35px;
+ */
+ float: left;
+text-align: center;
+font-family: "Helvetica Neue",sans-serif;
+line-height: 17px;
+overflow: hidden;
+
+list-style: square;
+padding: 0;
+border: 0;
+font-size: 100%;
+vertical-align: baseline;
+background: transparent;
+display: list-item;
+
+}
+
+.zoom {
+	margin-right: 0;
+	margin-left: 15px;
+	width: 250px;
+
+}
+.zoom img {
+	box-shadow: 0px 2px 10px 2px rgba(119, 119, 119, 0.75);
+	-moz-box-shadow: 0px 2px 10px 2px rgba(119, 119, 119, 0.75);
+	-webkit-box-shadow: 0px 2px 10px 2px rgba(119, 119, 119, 0.75);
+	height: 203px;
+	width: 250px;
+	margin-bottom: 30px;
+
+} 
+
+.zoom img:hover {
+		position:relative;
+		top:3px;
+		box-shadow:none;
+		-moz-box-shadow:none;
+		-webkit-box-shadow:none;
+}
+
+/* .carousel-inner img, .features img {
+	
+	
+	box-shadow: 0px 2px 10px 2px rgba(119, 119, 119, 0.75);
+-moz-box-shadow: 0px 2px 10px 2px rgba(119, 119, 119, 0.75);
+-webkit-box-shadow: 0px 2px 10px 2px rgba(119, 119, 119, 0.75);
+}
+
+.features img {
+
+}
+.features img:hover {
+position:relative;
+top:3px;
+box-shadow:none;
+-moz-box-shadow:none;
+-webkit-box-shadow:none;
+} */
+
+
+ .map_info_container { 
+	/* border: 3px solid blue;  */
+	margin-top: 8px; 
+	padding: 5px;
+	width:200px;
+	height:300px;
+	background-color:#E2E2E2;
+	text-align:left;
+	overflow-y: scroll;
+	
+
+}
+ 
+
+/* .tooltip{
+		margin:8px;
+		padding:8px;
+		border:1px solid blue;
+		background-color:black;
+		font-color: white;
+		position: absolute;
+		z-index: 2;
+	} */
+	
+	
+/* ***************8 Flipping images in home screen **********************/
+
+/* entire container, keeps perspective */
+.flip-container {
+  -webkit-perspective: 1000;
+    -moz-perspective: 1000;
+    -o-perspective: 1000;
+    perspective: 1000;
+}
+	/* flip the pane when hovered */
+/* 	.flip-container:hover .flipper, .flip-container.hover .flipper {
+		transform: rotateY(180deg);
+	} */
+	
+	.flip-container:hover .back, .flip-container.hover .back {
+    -webkit-transform: rotateY(0deg);
+    -moz-transform: rotateY(0deg);
+    -o-transform: rotateY(0deg);
+    -ms-transform: rotateY(0deg);
+    transform: rotateY(0deg);
+}
+
+.flip-container:hover .front, .flip-container.hover .front {
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    -o-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+}
+
+
+.flip-container, .front, .back {
+	width: 270px;
+	height: 270px;
+}
+
+/* flip speed goes here */
+.flipper {
+   -moz-transform: perspective(1000px);
+    -moz-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+
+    position: relative;
+	
+	transition: 0.6s;
+
+}
+
+/* hide back of pane during swap */
+.front, .back {
+-webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -o-backface-visibility: hidden;
+    backface-visibility: hidden;
+
+    -webkit-transition: 0.6s;
+    -webkit-transform-style: preserve-3d;
+
+    -moz-transition: 0.6s;
+    -moz-transform-style: preserve-3d;
+
+    -o-transition: 0.6s;
+    -o-transform-style: preserve-3d;
+
+    -ms-transition: 0.6s;
+    -ms-transform-style: preserve-3d;
+
+    transition: 0.6s;
+    transform-style: preserve-3d;
+
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+}
+
+/* front pane, placed above back */
+.front {
+	z-index: 2;
+	-webkit-transform: rotateY(0deg);
+}
+
+/* back, initially hidden pane */
+.back {
+	 -webkit-transform: rotateY(-180deg);
+    -moz-transform: rotateY(-180deg);
+    -o-transform: rotateY(-180deg);
+    -ms-transform: rotateY(-180deg);
+    transform: rotateY(-180deg);
+}
+
+/* *************** End of Flipping images in home screen **********************/
+	
+.flipper2 {
+	margin-left: 0px;
+}
+.flipper3 {
+	margin-left: 10px;
+}
+.flipper4 {
+	margin-left: 5px;
+}
+
+/* ***********************radio button styling ********************************8 */
+/*
+  Hide radio button (the round disc)
+  we will use just the label to create pushbutton effect
+*/
+#filter {
+	input[type=radio] {
+		display:none;
+		margin:10px;
+	}
+	 
+	/*
+	  Change the look'n'feel of labels (which are adjacent to radiobuttons).
+	  Add some margin, padding to label
+	*/
+	input[type=radio] + label {
+		display:inline-block;
+		margin:-2px;
+		padding: 4px 12px;
+		background-color: #e7e7e7;
+		border-color: #ddd;
+	}
+	/*
+	 Change background color for label next to checked radio button
+	 to make it look like highlighted button
+	*/
+	input[type=radio]:checked + label {
+	   background-image: none;
+		background-color:#d0d0d0;
+	}
 }

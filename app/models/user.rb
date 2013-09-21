@@ -27,4 +27,12 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me
   # attr_accessible :title, :body
+  has_many :relationships, dependent: :destroy
+  has_many :projects, through: :relationships
+  
+  
+  def join_project(project)
+    relationships.create!(project_id: project.id)
+  end
+  
 end

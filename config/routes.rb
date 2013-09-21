@@ -1,5 +1,7 @@
 CrowdMoc::Application.routes.draw do
 
+  get "relationships/create"
+
   devise_for :users
 
   get "users/new"
@@ -13,6 +15,10 @@ CrowdMoc::Application.routes.draw do
   get "projects/add_new"
 
   resources :projects, only: [:new, :create, :destroy]
+  resources :relationships, only: [:create]
+  resources :users
+   
+  post "relationships/create"
 
   get "project/add_new"
 
@@ -25,18 +31,26 @@ CrowdMoc::Application.routes.draw do
   get "projects/show_portfolio"
   get "projects/create_demo_projects"
   get "projects/reset_demo_projects"
-    get "projects/compare"
+  get "projects/compare"
+  get "projects/join"
+  get "projects/unpdate_investment"
+  get "projects/join"
+  post "projects/join"
 
   # get "static_pages/about"
   
   get "static_pages/contact_company"
   
+  match 'projects/unpdate_investment',  to: 'projects#show'
+  
   match '/projects',  to: 'projects#search'
   match '/start_project',  to: 'projects#add_new'
+  match '/show_project',  to: 'projects#show'
+
   match '/projects_map', to:  'projects#projects_map'
   match '/home',  to: 'static_pages#home'
    match '/about',  to: 'static_pages#about'
-  match '/portfolio',  to: 'projects#show_portfolio'
+  match '/portfolio',  to: 'users#show_portfolio'
    match '/reports',  to: 'projects#reports'
 
   match '/companies_0',  to: 'static_pages#show_company_0'

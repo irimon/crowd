@@ -21,9 +21,12 @@
 #
 
 class Project < ActiveRecord::Base
-  attr_accessible :amount, :name, :description, :phase, :project_kind, :end_date, :picture_url, :funding_received,  :latitude, :longitude, :fully_funded, :percent_funded
+  attr_accessible :amount, :name, :description, :phase, :project_kind, :end_date, :picture_url, :funding_received,  :latitude, :longitude, :interese, :fully_funded, :percent_funded
   belongs_to :company
    before_save :default_values
+  
+  has_many :relationships, dependent: :destroy
+  has_many :users, through: :relationships
   
   def default_values
 	if (self.funding_received == nil)

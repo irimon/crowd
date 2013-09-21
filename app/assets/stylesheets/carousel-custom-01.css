@@ -21,7 +21,7 @@
 .carousel .item {
 	height: 500px;
 }
-.carousel img {
+#main-image {
 	position: absolute;
 	top: 0;
 	left: 0;

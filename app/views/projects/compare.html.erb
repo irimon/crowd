@@ -10,8 +10,9 @@
 					<td>Project name</td>
 					<td>Type of project</td>
 					<td>Requested amount</td>
+					<td>Yearly interest</td>
 					<td>% funded</td>
-					<td>End of funding date</td>
+					<td>Days to end of funding round</td>
 			</thead>
 		
 			<tbody>
@@ -21,8 +22,9 @@
 						<td><%= proj.name %> </td>
 						<td><%= proj.project_kind %></td>
 						<td><%= proj.amount %></td>
+						<td><%= proj.interese %></td>
 						<td><%= (proj.percent_funded*100).to_int%></td>
-						<td><%= proj.end_date %></td>
+						<td><%= (proj.end_date.to_date - Date.today).to_i %></td>
 					</tr>	
 				<% end  %> 
 			<% end  %> 

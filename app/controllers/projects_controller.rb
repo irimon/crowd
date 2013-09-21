@@ -43,7 +43,7 @@ end
 	else
 		ind=1
 	end
-	
+	years = [2013,2014]
 	kind_arry = ["Solar","Wind","Hydro","Other"]
 	pic_array = ["wind_1.jpg" , "wind_2.jpg", "wind_3.jpg",
 					"solar_1.jpg" , "solar_2.jpg", "solar_3.jpg",
@@ -58,7 +58,7 @@ end
 		proj_name_list = ['Eastshore Wind Farms' ,'North Plains Wind', 'Baltic Sea Wind Farm', 'Mid Atlantic Solar', 'Mohaby Desert Solar' ,  'Green Sun Mexico', 'Medeteranian Hydro', 
 							'New Delhi Trash',  'Recycle Sau Paulo', 'Pacific Ocean plantation']
 		rand_amount = rand(1..20)*100000
-		rand_received = rand(1..20)*100000
+		rand_received = rand(1..7)*100000
 		fully_funded = rand_received >= rand_amount 
 		if fully_funded
 			percent_funded = 1
@@ -69,9 +69,10 @@ end
 		rand_kind = rand(0..3)
 		pic = pic_array[rand_proj_num]
 		rand_name = proj_name_list[rand_proj_num]
+		rand_date = Date.new(years[rand(0..1)],rand(1..12),rand(1..28))
 		@project = Project.create( name: rand_name, amount: rand_amount,
-							  phase: nil, end_date: nil, picture_url: pic, description: desc, funding_received: rand_received , fully_funded: fully_funded, percent_funded: percent_funded,
-							  project_kind: kind_arry[rand_kind], latitude: rand(20..50), longitude: rand(-90..90) )
+							  phase: nil, end_date: rand_date, picture_url: pic, description: desc, funding_received: rand_received , fully_funded: fully_funded, percent_funded: percent_funded,
+							  project_kind: kind_arry[rand_kind], latitude: rand(20..50), longitude: rand(-90..90) , interese: rand(5..15))
 					
 							  
 		#@project.update_funding(0)
@@ -93,6 +94,58 @@ end
 		end
    end
    
+   def show 
+		if params[:selected_id]
+			@project = Project.find_by_id(params[:selected_id])
+		end		
+	end
+	
+	def join 
+		@inv = params[:investment] 
+		if params[:selected_id]
+			@project = Project.find_by_id(params[:selected_id])
+			Rails.logger.info(@project.errors.messages.inspect)
+			if @inv
+			    Rails.logger.info(@inv)
+				new_amount = @project.funding_received + @inv.to_i
+				new_percent = new_amount/@project.amount.to_i
+				if new_percent > 1
+					new_percent=1
+					new_fully_funded = true
+					@project.update_attribute(:fully_funded, new_fully_funded)
+				end
+				@project.update_attribute(:percent_funded, new_percent)
+				@project.update_attribute(:funding_received, new_amount)
+			end
+		end		
+		
+		if !current_user.relationships.find_by_project_id(params[:selected_id]) 	
+			current_user.relationships.join_project(@project)
+		end
+		
+	end	
+	
+	def unpdate_investment 
+		@project = Project.find_by_id(params[:selected_id])
+		puts params[:investment]
+		Rails.logger.info(@project.errors.messages.inspect)
+		if params[:selected_id]
+			@project = Project.find_by_id(params[:selected_id])
+			if params[:investment]
+				new_amount = funding_received = funding_received + params[:investment]
+				new_percent = funding_received/amount
+				if new_percent > 1
+					new_percent=1
+					new_fully_funded = true
+					@project.update_attribute(:fully_funded, new_fully_funded)
+				end
+				@project.update_attribute(:percent_funded, new_percent)
+				@project.update_attribute(:funding_received, new_amount)
+			end
+		end		
+		render 'show'
+	end	
+   
    def projects_map
 		
 		all_proj = Project.all
@@ -109,16 +162,14 @@ end
 		arr = ["http://spartanyouth.msu.edu/images/icon_sun.gif" , 
 		"http://wiki.openstreetmap.org/w/images/d/d5/Power_wind.png" ,
 		"http://www.vtenergyatlas-info.com/wp-content/uploads/2010/02/icon_hydro_potential.png"]
-		@json = all_proj.to_gmaps4rails do |device, marker|
+		@json = all_proj.to_gmaps4rails do |project, marker|
+			marker.infowindow render_to_string(:partial => "/projects/mapinfo", :locals => { :project => project})
+			marker.title "#{project.name}"
 			marker.picture({
 					:picture => arr[rand(0..2)]
 			})
 		end
 		
-		
-		#@json = Project.all.to_gmaps4rails
-		#@json = Project.all.to_gmaps4rails
-		#respond_with @json
 	end
    
 end
