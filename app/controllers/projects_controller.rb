@@ -50,25 +50,80 @@ end
 					"hydro_2.jpg", "recycle_1.jpg", "recycle_2.jpg","plant.jpg"]
 	for i in 0..9
 		par_num = rand(0..4)
-		if par_num == 0
-			desc = Lorem::Base.new('words', rand(5..50)).output
-		else
-			desc = Lorem::Base.new('paragraphs', par_num).output
-		end
-		proj_name_list = ['Eastshore Wind Farms' ,'North Plains Wind', 'Baltic Sea Wind Farm', 'Mid Atlantic Solar', 'Mohaby Desert Solar' ,  'Green Sun Mexico', 'Medeteranian Hydro', 
-							'New Delhi Trash',  'Recycle Sau Paulo', 'Pacific Ocean plantation']
+		# if par_num == 0
+			# desc = Lorem::Base.new('words', rand(5..50)).output
+		# else
+			# desc = Lorem::Base.new('paragraphs', par_num).output
+		# end
+		proj_desc_list  = ['The Eastshore Wind Farms Project is a wind farm located on Backbone Mountain east of Oakland, Maryland, United States. 
+		The project has a rated capacity of 70 MW and uses 28 Liberty Wind Turbines manufactured by Clipper Windpower. Each of the wind turbines is about 415 feet tall. 
+		The Criterion Wind Project is owned by Criterion Power Partners, LLC, which is a subisiary of Exelon, and interconnected with the transmission system of the 
+		Potomac Edison Company (a subsidiary ofFirstEnergy). Electricity and renewable energy credits from the project will be sold to the Old Dominion Electric Cooperative 
+		under a 20 year supply contract.',
+		'The North Plains Wind Project is 25MW wind farm with a proposed expansion to 5,050 MW, formerly known as Rolling Thunder, based in South Dakota. 
+		The project developers, Clipper Windpower and BP Alternative Energy, expect to build Titan in several phases and, when completed, it will be one of the largest
+		wind farms in the world. The complete wind farm would use up to 2,020 of Clippers Liberty 2.5 MW wind turbines.',
+		'The Baltic Sea Wind Project is an approved offshore wind farm on the Baltic sea. The project is proposed by a private developer Baltic Wind Associates.
+		 The wind farm may become the first offshore wind energy project in Bulgaria coastal waters.',
+		'Mid Atlantic Solar, is being built on the shores of Spain by Torresol Energy using previous solar projects technology for commercial electrical production of 15 MW. 
+		 Mid Atlantic Solar will be a massive 2,500 heliostats, each with a reflective surface of 96 m^2. The total reflective area will be 240,000 m^2 (2.6 million ft^2). 
+		 They will be made of a highly reflective glass with metal back to cut costs by about 45%. A larger molten nitrate salt storage tank will be used giving the plant 
+		 the ability to store 600 MWh, allowing the plant to run 24x7 during the summer.',
+		 'Mohaby Desert is a solar-thermal project built in the Mohaby Desert. It is a large-scale thermal solar power tower plant that was designed by the Department of Energy (DOE).
+		 Mohaby Desert method of collecting energy is based on concentrating the sun energy onto a common focal point to produce heat to run a steam turbine generator. 
+         It has hundreds of large mirror assemblies, or heliostats that track the sun, reflecting the solar energy onto a tower where a black receiver absorbed the heat. 
+		 High-temperature heat transfer fluid is used to carry the energy to a boiler on the ground where the steam was used to spin a series of turbines, much like a 
+		 traditional power plant.',
+		'The Green sun Mexico Project is the world largest photovoltaic solar generating facility, currently being built in northern Mexico using thin film solar 
+		 panels manufactured by First Solar. The project is expected to be completed in 2014, when it will reach an installed capacity of 397 MWp.
+		 The Series 3 thin film panels use CdS/CdTe, and are rated from 75 watts to 77 watts each, and are mounted at a fixed tilt angle. 20,940 are connected in each array, 
+		 rated at 1.26 MW AC, and over 400 SMA 720CP inverters are used. Two inverters are connected to each array.', 
+		 'The Mediterranean Hydroelectric Project is a complex project consisting of total three dams with the largest Dam built on the Nile River. 
+		 The project uses potential of water from the black Nile River. The project site is situated in the northern part of Sudan. 
+         The total Installed capacity of the project is 1,960 MW. The project consists of 3 stages of power generation. 
+		 All the generators are located in the underground Powerhouses excavated deep inside the surrounding mountains. A dam foot powerhouse also contributes to the 
+		 electricity generation.',
+		 'Bangkok Waste is a municipal waste incinerator and waste-to-energy power station, which provides 29.2 megawatts (MW) of electricity for the National Grid 
+		 by burning 390,000 tons of household and commercial waste a year. It is located on the outskirts of Bangkok, Thailand.',
+		 'Recycle Sau Paulo is a biogas plant that processes waste from a number of sectors that is difficult to recycle separately. Everything goes into it: 
+		 fish waste, sorted organic household waste, fizzy drinks, beer, alcohol, pharmaceuticals, food contaminated with bacteria or chemicals, any organic 
+		 matter with a high fat, protein or sugar content. The plant also processes slurry from 75 farms. The project will produce over 21 million kWh of electricity 
+		 annually as well as over 18 million kWh of heat from cooling installations. The energy produced will be used for covering the needs of one thousand homes!',
+		 'The Pacific Ocean Waves is a wave farm off the shores of Japan. It is located 5 km (3 mi) offshore near Tokyo. The farm is designed to use three Pelamis wave energy
+		 converters to convert the motion of the ocean surface waves into electricity, totalling to 2.25 MW in total installed capacity.
+		 The farm will be finished by the end of 2014.']
+
+		proj_name_list = ['Eastshore Wind Farms' ,'North Plains Wind', 'Baltic Sea Wind Farm', 'Mid Atlantic Solar', 'Mohaby Desert Solar' ,  'Green Sun Mexico', 'Mediterranean Hydro', 
+							'Bangkok Waste',  'Recycle Sau Paulo', 'Pacific Ocean Waves']
 		rand_amount = rand(1..20)*100000
 		rand_received = rand(1..7)*100000
 		fully_funded = rand_received >= rand_amount 
+		
 		if fully_funded
 			percent_funded = 1
 		else
 			percent_funded = rand_received.to_f/rand_amount
 		end
-		rand_proj_num = rand(0..9)
-		rand_kind = rand(0..3)
+		rand_proj_num = i #rand(0..9)
+	
+		case rand_proj_num
+			when 0..2
+				rand_kind = 2
+			when 3..6
+				rand_kind = 1
+			when 6
+				rand_kind = 4
+			when 7..8
+				rand_kind = 3
+			when 9
+				rand_kind = 5
+			else
+			  puts "You gave me #{rand_proj_num} -- I have no idea what to do with that."
+		end
+   	  
 		pic = pic_array[rand_proj_num]
 		rand_name = proj_name_list[rand_proj_num]
+		desc = proj_desc_list[rand_proj_num]
 		rand_date = Date.new(years[rand(0..1)],rand(1..12),rand(1..28))
 		@project = Project.create( name: rand_name, amount: rand_amount,
 							  phase: nil, end_date: rand_date, picture_url: pic, description: desc, funding_received: rand_received , fully_funded: fully_funded, percent_funded: percent_funded,
@@ -166,10 +221,12 @@ end
 			marker.infowindow render_to_string(:partial => "/projects/mapinfo", :locals => { :project => project})
 			marker.title "#{project.name}"
 			marker.picture({
-					:picture => arr[rand(0..2)]
+					:picture => arr[(project.project_kind == "Solar") ? 0 : ((project.project_kind == "Wind") ? 1 : 2)]
 			})
 		end
 		
 	end
+	
+	
    
 end

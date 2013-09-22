@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+
+<body>
+	<h1>Reports</h1>
+	<ul class="nav nav-tabs">
+		<% ind=0 %>
+		<% for proj in current_user.projects %>
+			<% if ind == 0 %>
+				<li class="active"><a href="#pane<%= proj.id %>" data-toggle="tab"><%= proj.name %></a></li>
+			<% else %>
+				<li><a href="#pane<%= proj.id %>" data-toggle="tab"><%= proj.name %></a></li>
+			<% end %>
+			<% ind=ind+1 %>
+		<% end %>
+	</ul>
+	
+	<div class="tab-content">
+		<% ind=0 %>
+		
+		<% for proj in current_user.projects %>
+			<% if ind == 0 %>
+				<div id="pane<%= proj.id %>" class="tab-pane active">
+				
+			<% else %>
+				<div id="pane<%= proj.id %>" class="tab-pane">
+				
+			<% end %>
+			<% ind=ind+1 %>
+				<h4><%= proj.name %> Reports</h4>
+				<img src="assets/Financial-Statement.jpg", alt="report" >
+				</div>
+		<% end %>	
+			
+  </div><!-- /.tab-content -->
+</div><!-- /.tabbable -->
+	
+</body>

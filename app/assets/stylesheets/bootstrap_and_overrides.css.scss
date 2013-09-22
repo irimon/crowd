@@ -21,6 +21,11 @@ body { padding-top: 20px; }
 	}		
 }
 
+#Features {
+	p {
+		font-size: 115%;
+	}
+}
 .marketing {
 	.span3 {
 
@@ -33,8 +38,8 @@ body { padding-top: 20px; }
 	   margin-left:10px;
 	}
 	h2 {
-		text-align:left;
-/* 		border-bottom: 2px solid #c5c5c5;
+/* 		text-align:left;
+ *//* 		border-bottom: 2px solid #c5c5c5;
  */		border-top: 2px solid light-blue;
 
 	}
@@ -44,14 +49,38 @@ body { padding-top: 20px; }
 		font-size:130%;
 	}	
 	h3 {
-		margin:0px;
+	/* 	margin:0px;
 		background-color:#DAECFF;
-		line-height:80px;
+		line-height:120px;
 		border-bottom: 2px solid #c5c5c5;
-		border-top: 2px solid light-blue;
+		border-top: 2px solid light-blue; */
 	}
 }
+#proj_bar {
+	height: 60%;
+	background-color: green;
+	background-image: linear-gradient(to bottom, #129632, #0D7956);
+}
+#project_progress {
+	margin-bottom: 0px;
+}
+.caption {
+	p {
+		text-align:left;
+	}
+}
+#how_works_1 {
+margin-left: 0px;
+}
+#how_works_2 {
+	margin-left: 130px;
+	margin-top: 30px;
+	margin-bottom: 30px;
 
+}
+#how_works_3 {
+	margin-left: 260px;
+}
 /* .vspace40 {
   background: url(../assets/cloud-background.jpg) no-repeat center center fixed;
 } */
@@ -110,10 +139,10 @@ html {
 
 }
 
-.nav {
+#actual-nav-text {
 	li {
 		a {
-			text-shadow: none;
+			text-shadow: 0 0 0 black;     
 		}
 	}
 }
@@ -151,8 +180,8 @@ html {
 	.btn {
 		background-color: green;
 		background-image: linear-gradient(to bottom, white, green);
-		margin-left: 40%;
 		margin-top: 0;
+		
 	
 	}
 	
@@ -277,10 +306,75 @@ html {
 	}
 }
 
+/* *****************  projects search page **************************** */
+
+#Current_projects {
+	text-align:left;
+	margin-top:0px;
+	margin-left:0px;
+	padding-left:0px;
+
+}
+.search-options {
+	text-align:left;
+	width: 500px;
+}
+#search_projects {
+	margin-left:0px;
+}
+#switch_to_map {
+	margin-left:0px;
+}
+#compare-btn {
+	text-align:left;
+	margin-bottom:10px;
+}
 .projects_list {
 	.span12 {
 		margin-left: -30px
 	}
+
+	.span3 {
+		.caption {
+			p {
+				max-height: 150px;
+				min-height: 150px;
+				overflow: auto;
+			}
+			h4 {
+				margin-top:0px;
+				margin-bottom:0px;
+				text-align:left;
+
+			}
+			h5 {
+				margin-top:0px;
+				margin-bottom:0px;
+				margin-left: 0px;
+				text-align:left;
+			
+			}
+			#mail-button {
+				float:right;
+				margin-left: 0px;
+			}
+			#funded_percent {
+				display: inline-block;
+				float:right;
+				margin-left: 0px;
+				margin-top: 0px;
+			}
+			#funded_amount {
+				float:left;
+				margin-top: 0px;
+			}
+			#project_description {
+				margin-top:10px;
+			}
+			
+		}
+		
+	}	
 	.span4 {
 		.caption {
 			p {
@@ -391,7 +485,7 @@ font-size: 50px;
 		margin-right:20px;
 	}
 }
-#Platform {
+#Platform  {
 	margin-left:0px;
 	.span4{
 		margin-left:0px;
@@ -406,6 +500,15 @@ font-size: 50px;
 		text-align:center;
 	}
 	
+}
+
+#bottom-market {
+	margin-left:0px;
+    .span7, .span6{
+		margin-left:0px;
+	}
+	
+
 }
 
 .compare-table {
@@ -563,8 +666,13 @@ box-shadow:none;
 
 
 .flip-container, .front, .back {
-	width: 270px;
-	height: 270px;
+	width: 250px;
+	height: 250px;
+}
+.front {
+	p {
+		text-align: center;
+	}
 }
 
 /* flip speed goes here */
@@ -623,6 +731,15 @@ box-shadow:none;
     transform: rotateY(-180deg);
 }
 
+.back {
+	text-align:left;
+	li {
+		list-style-type: circle;
+/* 		list-style-image: url('money_24.png');
+ */
+	}
+}
+
 /* *************** End of Flipping images in home screen **********************/
 	
 .flipper2 {
@@ -665,4 +782,58 @@ box-shadow:none;
 	   background-image: none;
 		background-color:#d0d0d0;
 	}
+}
+
+
+.testimonial { 
+margin: 0; 
+/* background: #B7EDFF;     
+ */padding: 10px 50px;     
+position: relative;     
+font-family: Georgia, serif;     
+color: #666;     
+border-radius: 5px;
+font-style: italic;     
+text-shadow: 0 1px 0 #ECFBFF;     
+/* background-image: linear-gradient(#CEF3FF, #B7EDFF); 
+ */} 
+.testimonial:before, .testimonial:after {     
+content: "\201C";     
+position: absolute;     
+font-size: 80px;     
+line-height: 1;     
+color: #999;     
+font-style: normal; 
+} 
+.testimonial:before {     
+top: 0;     
+left: 10px; 
+} 
+.testimonial:after {     
+content: "\201D";     
+right: 10px;     
+bottom: -0.5em; 
+} 
+.arrow-down {     
+width: 0;     
+height: 0;     
+border-left: 15px solid transparent;     
+border-right: 15px solid transparent;     
+border-top: 15px solid #666;     
+margin: 0 0 0 25px; 
+} 
+.testimonial-author {     
+margin: 0 0 0 25px;     
+font-family: Arial, Helvetica, sans-serif;     
+color: #999;     
+text-align:left; 
+} 
+.testimonial-author span {     
+font-size: 12px;     
+color: #666; 
+}
+
+.soften {
+	margin: 80px 0;
+	border-top: 1px solid #ACA7A7;
 }

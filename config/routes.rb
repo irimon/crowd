@@ -51,7 +51,7 @@ CrowdMoc::Application.routes.draw do
   match '/home',  to: 'static_pages#home'
    match '/about',  to: 'static_pages#about'
   match '/portfolio',  to: 'users#show_portfolio'
-   match '/reports',  to: 'projects#reports'
+   match '/reports',  to: 'users#reports'
 
   match '/companies_0',  to: 'static_pages#show_company_0'
    match '/companies_1',  to: 'static_pages#show_company_1'
