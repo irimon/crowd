@@ -4,13 +4,13 @@
 <body>
 	<h2 id="Current_projects">Projects </h2>
 	
-	<div class="row-fluid search-options">
+	<div class="row-fluid" id="search-options">
 		<form class="row-fluid navbar-search span3" id="search_projects" action="/projects" method="get">
 			<input type="text" id="search" name="search" class="search-query" placeholder="Search">
 		</form>
 		<h4 class="span3" id="switch_to_map"><%= link_to  image_tag("globe_24.png"), projects_map_path %> map view</h4>
 	</div>
-	<form action="/projects/compare" method="get">
+	<form id="compare-form" action="/projects/compare" method="get">
 	 <input class="btn btn-primary" id="compare-btn" type="submit" value="Compare" name="commit"></input>
 <!-- 	<a class="btn" id="compare" type="submit" href="projects/compare">Compare</a>
  -->
@@ -27,7 +27,7 @@
 						<ul class="thumbnails">
 					<% end %>
 					<li class="span3">
-						<div class="thumbnail">
+						<div class="thumbnail" id="my-project">
 							<div><%= check_box_tag "checked_ids[]", proj.id, false, class: 'mybox' %></div>
 							<%  if proj.picture_url? %>
 								<%= link_to image_tag(proj.picture_url), {:controller => "projects", :action => "show", :selected_id => proj.id} %>
@@ -59,6 +59,7 @@
  -->								</h5>
 								
 								<p id="project_description"><%= proj.description %></p>
+								<hr id="project_viw_hr"/>
 								<div class="progress" id="project_progress">
 									<div class="bar" id="proj_bar" style="width: <%= proj.percent_funded*100 %>%;"></div>
 								</div>
