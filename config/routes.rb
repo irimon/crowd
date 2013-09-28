@@ -27,7 +27,7 @@ CrowdMoc::Application.routes.draw do
   #get "static_pages/look_for_project"
 
   #get "static_pages/start_project"
-
+  get "static_pages/contact_company"
   get "projects/show_portfolio"
   get "projects/create_demo_projects"
   get "projects/reset_demo_projects"
@@ -41,7 +41,6 @@ CrowdMoc::Application.routes.draw do
 
   # get "static_pages/about"
   
-  get "static_pages/contact_company"
   
   match 'projects/unpdate_investment',  to: 'projects#show'
   
@@ -60,7 +59,8 @@ CrowdMoc::Application.routes.draw do
 	match '/press',  to: 'static_pages#press'
 	match '/faq',  to: 'static_pages#faq'
 	match '/contact', to: 'static_pages#contact_us'
-	
+
+
   match '/companies_0',  to: 'static_pages#show_company_0'
    match '/companies_1',  to: 'static_pages#show_company_1'
     match '/companies_2',  to: 'static_pages#show_company_2'

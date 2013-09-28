@@ -29,5 +29,6 @@ before_filter :authenticate_user!
 				
 			end
 		end
+		redirect_to show_project_path(:selected_id => @project.id)
 	end
 end

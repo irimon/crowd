@@ -1,4 +1,64 @@
 <!DOCTYPE html>
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+ <script>
+ $(function() {
+	   $( "#dialog-form" ).dialog({
+		autoOpen: false,  
+		height: 400,
+		width: 900,
+		 });
+		 
+    $( "#join-form" ).dialog({
+		autoOpen: false,  
+		height: 300,
+		width: 500,
+		 });
+ 
+    $( "#contact-company-btn" )
+      .button()
+      .click(function() {
+        $( "#dialog-form" ).dialog( "open" );
+      });
+	  
+	  $( "#join-project-btn" )
+      .button()
+      .click(function() {
+        $( "#join-form" ).dialog( "open" );
+      });
+  });
+  </script>
+	  
+<div id="dialog-form" title="Contact company">
+ 
+ <form class="well span8">
+	  <div class="row">
+			<div class="span3">
+				<label>First Name</label>
+				<input type="text" class="span3" placeholder="Your First Name">
+				<label>Last Name</label>
+				<input type="text" class="span3" placeholder="Your Last Name">
+				<label>Email Address</label>
+				<input type="text" class="span3" placeholder="Your email address">
+			</div>
+			<div class="span5">
+				<label>Message</label>
+				<textarea name="message" id="message" class="input-xlarge span5" rows="10"></textarea>
+			</div>
+		
+			<button type="submit" class="btn btn-primary pull-right">Send</button>
+		</div>
+	</form>
+</div>
+
+<div id="join-form" title="Join <%= @project.name %>">
+ 
+ 	<%= form_tag(:controller => "relationships", :action => "create",  :selected_id => @project.id ) do  %>
+			<%= text_field_tag "investment" %>
+			<%= submit_tag 'Submit' %>
+	<% end %>
+</div>
 
  <div class="row-fluid project_page">
  	    <% if @project %>
@@ -7,7 +67,7 @@
                  <%= image_tag( @project.picture_url)  %>
 								
 				<% if @project.percent_funded*100 < 100 %>
-						 <%= link_to "Join in", {:controller => "relationships", :action => "create", :selected_id => @project.id} %>
+						 <%= link_to "Join in", "#", :class => "btn", :id=> "join-project-btn" %>
 				<% end %>		 
 				 <% if @project.percent_funded*100 >= 100 %>
 						<a class="btn" id="closed" href="#">Closed</a>
@@ -24,7 +84,7 @@
 					
 				</p>
 					<div>
-								<h4>Received <%= @project.funding_received %></h4>
+								<h4>Received <%= number_with_delimiter(@project.funding_received, :delimiter => ",") %></h4>
 								<h5><%= (@project.percent_funded*100).to_int %>% funded</h5>
 								<div class="progress">
 									<div class="bar" style="width: <%=@project.percent_funded*100 %>%;"></div>
@@ -53,7 +113,7 @@
 											  </tr>	
 											  <tr>
 													<td>Contact Company </td>
-													<td><td><a href="static_pages/contact_company" class="btn"><i class="icon-envelope"></i></a></td></td>
+													<td><td><a href="#" class="btn" id="contact-company-btn" ><i class="icon-envelope" ></i></a></td></td>
 											  </tr>	
 									
 										
@@ -71,4 +131,5 @@
 	 
 	<% end %>
 	
+		
 </body>
