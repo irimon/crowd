@@ -16,6 +16,7 @@
 #  name                   :string(255)
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  admin                  :boolean          default(FALSE)
 #
 
 class User < ActiveRecord::Base
@@ -31,8 +32,8 @@ class User < ActiveRecord::Base
   has_many :projects, through: :relationships
   
   
-  def join_project(project)
-    relationships.create!(project_id: project.id)
+  def join_project(project,amount)
+    relationships.create!(project_id: project.id, amount: amount)
   end
   
 end

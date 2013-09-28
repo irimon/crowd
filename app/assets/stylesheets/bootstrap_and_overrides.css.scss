@@ -326,14 +326,20 @@ html {
 #search-options {
 	text-align:left;
 	width: 1100px;
+	margin-bottom:20px;
 }
 #search_projects {
 	margin-left:0px;
 }
 #switch_to_map {
 	margin-left:0px;
+	margin-right:0px;
+	float:left;
 }
-#compare-btn {
+#enable-compare {
+	margin-left:0px;
+}
+/* #compare-btn {
 	margin-bottom:30px;
 	margin-left:-130px;
 	text-align:left;
@@ -341,6 +347,12 @@ html {
 }
 #compare-form {
 	margin-top:-40px;
+}
+ */
+#location-img {
+	width: 20px;
+	height: 30px;
+	float:right;
 }
 
 .projects_list {
@@ -859,4 +871,97 @@ color: #666;
 .soften {
 	margin: 80px 0;
 	border-top: 1px solid #ACA7A7;
+}
+
+/********* Blog *****************/
+#blog {
+	text-align: left;
+	
+	
+	span  {
+		font-size:100%;
+	}
+	
+}	
+	
+	
+/*******************  pretty buttons *******************************/
+.All_types, .Solar, .Wind, .Hydro {
+-moz-box-shadow:inset 0px 0px 21px -50px #d9fbbe;
+	-webkit-box-shadow:inset 0px 0px 21px -50px #d9fbbe;
+	box-shadow:inset 0px 0px 21px -50px #d9fbbe;
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #b8e356), color-stop(1, #a5cc52) );
+	background:-moz-linear-gradient( center top, #b8e356 5%, #a5cc52 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#b8e356', endColorstr='#a5cc52');
+	background-color:#b8e356;
+	-webkit-border-top-left-radius:20px;
+	-moz-border-radius-topleft:20px;
+	border-top-left-radius:20px;
+	-webkit-border-top-right-radius:20px;
+	-moz-border-radius-topright:20px;
+	border-top-right-radius:20px;
+	-webkit-border-bottom-right-radius:20px;
+	-moz-border-radius-bottomright:20px;
+	border-bottom-right-radius:20px;
+	-webkit-border-bottom-left-radius:20px;
+	-moz-border-radius-bottomleft:20px;
+	border-bottom-left-radius:20px;
+	text-indent:0;
+	border:1px solid #83c41a;
+	display:inline-block;
+	color:#ffffff;
+	font-family:Comic Sans MS;
+	font-size:15px;
+	font-weight:bold;
+	font-style:normal;
+	height:20px;
+	line-height:20px;
+	width:55px;
+	text-decoration:none;
+	text-align:center;
+	text-shadow:0px 0px 0px #86ae47;
+}
+.All_types:hover, .Solar:hover, .Wind:hover, .Hydro:hover  {
+background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #a5cc52), color-stop(1, #b8e356) );
+	background:-moz-linear-gradient( center top, #a5cc52 5%, #b8e356 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#a5cc52', endColorstr='#b8e356');
+	background-color:#a5cc52;
+}
+.All_types:active, .Solar:active, .Wind:active, .Hydro:active  {
+	position:relative;
+	top:1px;
+}
+/* 
+#compare-form {
+	input[type="submit"] {
+		background: url(compare-24.png) no-repeat center ;
+		border: 0;
+	}
+} */
+
+/************ portfolio ***********************/
+#panel3 {
+font-family: 'Kavoon', cursive;
+color: green;
+
+}
+#home1 {
+	    position:absolute;
+}
+#home2 {
+	    position:relative;
+		margin-left:50px;
+}
+#home3 {
+	    position:relative;
+
+}
+
+
+/****** sortable table ******************/
+table.sortable thead {
+    background-color:#eee;
+    color:blue;
+    font-weight: bold;
+    cursor: default;
 }

@@ -18,10 +18,12 @@
 #  longitude             :float
 #  created_at            :datetime         not null
 #  updated_at            :datetime         not null
+#  gmaps                 :boolean
+#  interese              :float
 #
 
 class Project < ActiveRecord::Base
-  attr_accessible :amount, :name, :description, :phase, :project_kind, :end_date, :picture_url, :funding_received,  :latitude, :longitude, :interese, :fully_funded, :percent_funded
+  attr_accessible :amount, :name, :description, :phase, :project_kind, :end_date, :picture_url, :funding_received,  :latitude, :longitude, :interese, :fully_funded, :percent_funded, :payment_number, :first_payment
   belongs_to :company
    before_save :default_values
   

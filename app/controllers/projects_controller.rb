@@ -1,9 +1,12 @@
 class ProjectsController < ApplicationController
 before_filter :authenticate_user! , :except => [:search, :projects_map]
-
+# before_filter :admin_user,     only: [:add_new]
+ helper_method :sort_column, :sort_direction
 
  def add_new
-	 @project = Project.new
+	# if current_user.admin?
+		@project = Project.new
+	# end
   end
   
    def create
@@ -26,15 +29,8 @@ before_filter :authenticate_user! , :except => [:search, :projects_map]
 		render 'projects/add_new'
   end
   
-  def compare
-		@compare_projs = Array.new
-		if params[:checked_ids]
-			for c_id in params[:checked_ids]
-				proj = Project.find_by_id(c_id) 	
-				@compare_projs << proj
-			end		
-		end
-end
+  
+ 
   
   def create_demo_projects 
 	first_project = Project.find(:first)
@@ -108,15 +104,15 @@ end
 	
 		case rand_proj_num
 			when 0..2
-				rand_kind = 2
-			when 3..6
 				rand_kind = 1
+			when 3..5
+				rand_kind = 0
 			when 6
-				rand_kind = 4
+				rand_kind = 2
 			when 7..8
 				rand_kind = 3
 			when 9
-				rand_kind = 5
+				rand_kind = 3
 			else
 			  puts "You gave me #{rand_proj_num} -- I have no idea what to do with that."
 		end
@@ -124,10 +120,11 @@ end
 		pic = pic_array[rand_proj_num]
 		rand_name = proj_name_list[rand_proj_num]
 		desc = proj_desc_list[rand_proj_num]
-		rand_date = Date.new(years[rand(0..1)],rand(1..12),rand(1..28))
+		rand_date_delta =  rand(0..90)
+		rand_date = DateTime.now + rand_date_delta.day
 		@project = Project.create( name: rand_name, amount: rand_amount,
 							  phase: nil, end_date: rand_date, picture_url: pic, description: desc, funding_received: rand_received , fully_funded: fully_funded, percent_funded: percent_funded,
-							  project_kind: kind_arry[rand_kind], latitude: rand(20..50), longitude: rand(-90..90) , interese: rand(5..15))
+							  project_kind: kind_arry[rand_kind], latitude: rand(20..50), longitude: rand(-90..90) , interese: rand(5..15), payment_number: rand(10..20)*12 , first_payment: rand_date + rand(100..600))
 					
 							  
 		#@project.update_funding(0)
@@ -147,6 +144,15 @@ end
 		else
 			@projects = Project.find(:all)
 		end
+   end
+   
+    def sort_by_type
+		if params[:sort]
+			@projects = Project.find(:all, :conditions => ['project_kind LIKE ?', "%#{params[:sort]}%"])
+		else
+			@projects = Project.find(:all)
+		end
+		render 'projects/search'
    end
    
    def show 
@@ -175,7 +181,7 @@ end
 		end		
 		
 		if !current_user.relationships.find_by_project_id(params[:selected_id]) 	
-			current_user.relationships.join_project(@project)
+			current_user.relationships.join_project(@project,@inv)
 		end
 		
 	end	
@@ -200,7 +206,20 @@ end
 		end		
 		render 'show'
 	end	
-   
+   def show_project_location
+		arr = ["http://spartanyouth.msu.edu/images/icon_sun.gif" , 
+		"http://wiki.openstreetmap.org/w/images/d/d5/Power_wind.png" ,
+		"http://www.vtenergyatlas-info.com/wp-content/uploads/2010/02/icon_hydro_potential.png"]
+		@project = Project.find_by_id(params[:selected_id])	
+		@json = @project.to_gmaps4rails do |project, marker|
+			 marker.infowindow render_to_string(:partial => "/projects/mapinfo", :locals => { :project => project})
+			marker.title "#{project.name}"
+			marker.picture({
+					:picture => arr[(project.project_kind == "Solar") ? 0 : ((project.project_kind == "Wind") ? 1 : 2)]
+			})
+		end
+	end
+	
    def projects_map
 		
 		all_proj = Project.all
@@ -227,6 +246,27 @@ end
 		
 	end
 	
+
+  
+  def compare
+		#@compare_projs = Array.new
+		if params[:checked_ids]
+			@compare_projs = Project.find(params[:checked_ids].split())
+			# for c_id in params[:checked_ids]
+				# proj = Project.find_by_id(c_id) 	
+				# @compare_projs << proj
+			# end		
+		end
+		# @compare_projs = @compare_projs.order(sort_column + " " + sort_direction)
+	end
 	
+	
+	private
+	
+	def admin_user
+      redirect_to(root_url) unless current_user.admin?
+    end
    
+   
+  
 end

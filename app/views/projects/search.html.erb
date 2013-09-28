@@ -4,16 +4,26 @@
 <body>
 	<h2 id="Current_projects">Projects </h2>
 	
-	<div class="row-fluid" id="search-options">
-		<form class="row-fluid navbar-search span3" id="search_projects" action="/projects" method="get">
-			<input type="text" id="search" name="search" class="search-query" placeholder="Search">
-		</form>
-		<h4 class="span3" id="switch_to_map"><%= link_to  image_tag("globe_24.png"), projects_map_path %> map view</h4>
+	<div class="span12 row-fluid" id="search-options">
+		<div class="span3">
+			<form class="row-fluid navbar-search span3" id="search_projects" action="/projects" method="get">
+				<input type="text" id="search" name="search" class="search-query" placeholder="Search">
+			</form>
+			<br>
+			<br>
+			<%= link_to "All", {:controller => "projects", :action => "sort_by_type"}, class: "All_types" %>
+			<%= link_to "Solar",{:controller => "projects", :action => "sort_by_type", :sort => "Solar"}, class: "Solar" %>
+			<%= link_to "Wind", {:controller => "projects", :action => "sort_by_type", :sort => "Wind"}, class: "Wind" %>
+			<%= link_to "Hydro", {:controller => "projects", :action => "sort_by_type", :sort => "Hydro"}, class: "Hydro" %>
+		</div>
+		<h4 class="span2" id="switch_to_map"><%= link_to  image_tag("globe_24.png"), projects_map_path %> map view</h4>
+		<h4 class="span2" id="enable_compare"><%= link_to  image_tag("compare-24.png"), "#" %> Compare</h4>
+		
 	</div>
+	
 	<form id="compare-form" action="/projects/compare" method="get">
 	 <input class="btn btn-primary" id="compare-btn" type="submit" value="Compare" name="commit"></input>
-<!-- 	<a class="btn" id="compare" type="submit" href="projects/compare">Compare</a>
- -->
+	<h5 id="compare_message">Mark the projects you wish to compare and press the button</h5>
 	<div class="projects_list">
 			
 				
@@ -53,11 +63,11 @@
 									  <%  my_path = companies_2_path  %>
 								<% end %>
 								
+								<%= link_to image_tag("Location-32.png", id: "location-img") , {:controller => "projects", :action => "show_project_location", :selected_id => proj.id} %>
 								<h4><%= proj.name %></h4>
 								<h5>by <%= link_to company_list[rand_num], my_path %>
 <!-- 									<a href="static_pages/contact_company" class="btn" id="mail-button"><i class="icon-envelope"></i></a>
  -->								</h5>
-								
 								<p id="project_description"><%= proj.description %></p>
 								<hr id="project_viw_hr"/>
 								<div class="progress" id="project_progress">
@@ -101,12 +111,22 @@
 	 </form>
 	 
 	 <link rel="stylesheet" href="./assets/prettyCheckable/prettyCheckable.css">
-	 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+ 	 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
      <script language="javascript" src="/assets/prettyCheckable/prettyCheckable.js" type="text/javascript"></script>
 	
 	<script>
 		$().ready(function(){
-			$('input.mybox').prettyCheckable();
+			$('input.mybox').hide();
+			$('#compare_message').hide();
+			$('#compare-btn').hide();
+			$('#enable_compare').click(function() {
+				$('input.mybox').show();
+				$('input.mybox').prettyCheckable();
+				$('#compare_message').show();
+				$('#compare-btn').show();
+			});
 		});
 	</script>
+	
+	
 </body>

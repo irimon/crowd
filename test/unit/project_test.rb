@@ -18,6 +18,8 @@
 #  longitude             :float
 #  created_at            :datetime         not null
 #  updated_at            :datetime         not null
+#  gmaps                 :boolean
+#  interese              :float
 #
 
 require 'test_helper'

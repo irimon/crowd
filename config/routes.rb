@@ -37,6 +37,8 @@ CrowdMoc::Application.routes.draw do
   get "projects/join"
   post "projects/join"
 
+  get "projects/sort_by_type"
+
   # get "static_pages/about"
   
   get "static_pages/contact_company"
@@ -46,13 +48,19 @@ CrowdMoc::Application.routes.draw do
   match '/projects',  to: 'projects#search'
   match '/start_project',  to: 'projects#add_new'
   match '/show_project',  to: 'projects#show'
-
+ match '/show_project_location' ,  to: 'projects#show_project_location'
   match '/projects_map', to:  'projects#projects_map'
   match '/home',  to: 'static_pages#home'
    match '/about',  to: 'static_pages#about'
   match '/portfolio',  to: 'users#show_portfolio'
    match '/reports',  to: 'users#reports'
 
+    match '/blog',  to: 'static_pages#blog'
+	match '/career',  to: 'static_pages#career'
+	match '/press',  to: 'static_pages#press'
+	match '/faq',  to: 'static_pages#faq'
+	match '/contact', to: 'static_pages#contact_us'
+	
   match '/companies_0',  to: 'static_pages#show_company_0'
    match '/companies_1',  to: 'static_pages#show_company_1'
     match '/companies_2',  to: 'static_pages#show_company_2'

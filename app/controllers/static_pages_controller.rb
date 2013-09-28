@@ -7,6 +7,11 @@ class StaticPagesController < ApplicationController
 	render :layout => "layout_without_header"
   end
   
+  def contact_us
+	render :layout => "layout_without_header"
+  end
+  
+  
   def home
   end
 
@@ -20,5 +25,8 @@ class StaticPagesController < ApplicationController
   end
 
   def about
+  end
+  
+  def faq
   end
 end
