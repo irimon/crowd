@@ -36,4 +36,10 @@ class User < ActiveRecord::Base
     relationships.create!(project_id: project.id, amount: amount)
   end
   
+  def get_investment_amount(project_id)
+	if relationships.find_by_project_id(project_id)
+		relationships.find_by_project_id(project_id).amount
+	end
+  end
+  
 end

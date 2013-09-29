@@ -24,6 +24,7 @@
 				  <tr>
 					  <th>Project</th>
 					  <th>Funding status</th>
+					   <th>Amount invested</th>
 					  <th>Annual return</th>
 					  <th>Comments</th>  
 					  <th></th>  					  
@@ -53,7 +54,7 @@
 										<td><span class="label label-important">Not Funded</span></td>
 							<% end %>
 						<% end %>
-
+						<td><%= current_user.get_investment_amount(proj.id) %></td>
 						<td><%= proj.interese %></td>
 					
 						<td></td>
@@ -74,7 +75,7 @@
 						<th>Month <br></th>
 						<% for proj in current_user.projects %>
 						<th><%= proj.name %> <br>
-							invested <%= number_with_delimiter(current_user.relationships.find_by_project_id(proj.id).amount, :delimiter => ",")%>$
+							invested <%= number_with_delimiter(current_user.get_investment_amount(proj.id), :delimiter => ",")%>$
 						</th>
 						<% end %>
 						<th>Total <br></th>  			  
@@ -92,13 +93,12 @@
 								
 								<td>
 									<!-- interest compounded annually -->
-									<%  base=  current_user.relationships.find_by_project_id(proj.id)%>
-									<% if  base.amount %>
+									<% if  current_user.get_investment_amount(proj.id) %>
 										<% if (proj.first_payment.to_date > DateTime.now + ind.month) or (proj.first_payment.to_date + proj.payment_number.month <  DateTime.now + ind.month) %>
 											<%	new_amount = 0 %> 
 										<% else %>
 											<% year = (DateTime.now + ind.month - proj.first_payment.to_date).to_int/365 %>
-											<% new_amount = base.amount*((proj.interese/100 + 1)**(year+1) - (proj.interese/100 + 1)**(year))/12 %>   
+											<% new_amount = current_user.get_investment_amount(proj.id)*((proj.interese/100 + 1)**(year+1) - (proj.interese/100 + 1)**(year))/12 %>   
 										<% end %>
 										<%= new_amount.round(2) %>
 										<% sum = sum+new_amount %> 
@@ -116,8 +116,7 @@
 						<td>Total</td>
 						<%  sum = 0 %>
 						<% for proj in current_user.projects %>
-							<% base = current_user.relationships.find_by_project_id(proj.id) %>
-							<% total =  base.amount*((proj.interese/100 + 1)**(proj.payment_number/12)) %>
+							<% total =  current_user.get_investment_amount(proj.id)*((proj.interese/100 + 1)**(proj.payment_number/12)) %>
 							<td><%= total.round(2) %></td>
 							<%  sum = sum + total %>
 						<% end %>

@@ -4,4 +4,19 @@
 # If you change this key, all old signed cookies will become invalid!
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
-CrowdMoc::Application.config.secret_token = 'ffc620890e4f6465705782d19e04dc1ef2442d3bebacb0b8d2de238d1c7967cf6a7698d9079ed2c703b2d3e9f9b7ccbd3ea1f846a9ec554d6a554b91a6392832'
+require 'securerandom'
+
+def secure_token
+  token_file = Rails.root.join('.secret')
+  if File.exist?(token_file)
+    # Use the existing token.
+    File.read(token_file).chomp
+  else
+    # Generate a new token and store it in token_file.
+    token = SecureRandom.hex(64)
+    File.write(token_file, token)
+    token
+  end
+end
+
+CrowdMoc::Application.config.secret_token = secure_token
