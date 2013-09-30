@@ -10,13 +10,10 @@ before_filter :authenticate_user! , :except => [:search, :projects_map]
   end
   
    def create
-		# pic = params[:project][:pic]
-		# pic.inspect
+	
 		elem = params[:project]
 		elem.inspect
-		# File.open(Rails.root.join('public', 'uploads', pic.original_filename), 'w') do |file|
-			# file.write(pic.read)
-		# end
+		
 		
 		@project = Project.create(params[:project])
 		if (@project.project_kind == 'Solar')
@@ -46,11 +43,7 @@ before_filter :authenticate_user! , :except => [:search, :projects_map]
 					"hydro_2.jpg", "recycle_1.jpg", "recycle_2.jpg","plant.jpg"]
 	for i in 0..9
 		par_num = rand(0..4)
-		# if par_num == 0
-			# desc = Lorem::Base.new('words', rand(5..50)).output
-		# else
-			# desc = Lorem::Base.new('paragraphs', par_num).output
-		# end
+		
 		proj_desc_list  = ['The Eastshore Wind Farms Project is a wind farm located on Backbone Mountain east of Oakland, Maryland, United States. 
 		The project has a rated capacity of 70 MW and uses 28 Liberty Wind Turbines manufactured by Clipper Windpower. Each of the wind turbines is about 415 feet tall. 
 		The Criterion Wind Project is owned by Criterion Power Partners, LLC, which is a subisiary of Exelon, and interconnected with the transmission system of the 
@@ -229,10 +222,8 @@ end
 				proj.latitude = rand(20..50) #42.3616 #rand(20..40)
 				proj.longitude = rand(-90..90) #-71.084586 #rand(20..40)
 			end
-			#@json=proj.to_gmaps4rails
 		end
 		
-		#@json=all_proj.to_gmaps4rails -- working
 		arr = ["http://spartanyouth.msu.edu/images/icon_sun.gif" , 
 		"http://wiki.openstreetmap.org/w/images/d/d5/Power_wind.png" ,
 		"http://www.vtenergyatlas-info.com/wp-content/uploads/2010/02/icon_hydro_potential.png"]
@@ -249,15 +240,9 @@ end
 
   
   def compare
-		#@compare_projs = Array.new
 		if params[:checked_ids]
 			@compare_projs = Project.find(params[:checked_ids].split())
-			# for c_id in params[:checked_ids]
-				# proj = Project.find_by_id(c_id) 	
-				# @compare_projs << proj
-			# end		
 		end
-		# @compare_projs = @compare_projs.order(sort_column + " " + sort_direction)
 	end
 	
 	

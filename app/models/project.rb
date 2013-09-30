@@ -20,15 +20,22 @@
 #  updated_at            :datetime         not null
 #  gmaps                 :boolean
 #  interese              :float
+#  payment_number        :integer
+#  first_payment         :datetime
 #
 
 class Project < ActiveRecord::Base
-  attr_accessible :amount, :name, :description, :phase, :project_kind, :end_date, :picture_url, :funding_received,  :latitude, :longitude, :interese, :fully_funded, :percent_funded, :payment_number, :first_payment
+  attr_accessible :amount, :name, :description, :phase, :project_kind, :end_date, :picture_url, :funding_received,  :latitude, :longitude, :interese, 
+				  :fully_funded, :percent_funded, :payment_number, :first_payment
   belongs_to :company
    before_save :default_values
   
   has_many :relationships, dependent: :destroy
   has_many :users, through: :relationships
+  
+  validates :amount, :name, :description, :project_kind, :end_date,  :latitude, :longitude, :interese, :payment_number, presence: true
+  validates :amount, :funding_received, :latitude, :longitude, :interese, :percent_funded, :payment_number, numericality: true
+  
   
   def default_values
 	if (self.funding_received == nil)

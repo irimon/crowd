@@ -20,6 +20,8 @@
 #  updated_at            :datetime         not null
 #  gmaps                 :boolean
 #  interese              :float
+#  payment_number        :integer
+#  first_payment         :datetime
 #
 
 require 'test_helper'

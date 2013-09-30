@@ -22,11 +22,7 @@ CrowdMoc::Application.routes.draw do
 
   get "project/add_new"
 
-  #get "static_pages/home"
-
-  #get "static_pages/look_for_project"
-
-  #get "static_pages/start_project"
+ 
   get "static_pages/contact_company"
   get "projects/show_portfolio"
   get "projects/create_demo_projects"
@@ -38,8 +34,6 @@ CrowdMoc::Application.routes.draw do
   post "projects/join"
 
   get "projects/sort_by_type"
-
-  # get "static_pages/about"
   
   
   match 'projects/unpdate_investment',  to: 'projects#show'
@@ -70,10 +64,6 @@ CrowdMoc::Application.routes.draw do
   match '/project_3',  to: 'static_pages#show_project_3'
    match '/project_4',  to: 'static_pages#show_project_4'
 
-  #  match '/signup',  to: 'users#new'
-   # match '/signout', to: 'users#sign_out'
-  #match '/contact_companies',  to: 'static_pages#contact_company'
-  #match '/signin', to: '#'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

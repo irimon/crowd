@@ -25,7 +25,6 @@ before_filter :authenticate_user!
 			if !current_user.relationships.find_by_project_id(params[:selected_id]) 
 				relationship = Relationship.new( project_id: @project.id, user_id: current_user.id, amount: params[:investment])
 				relationship.build(@project.id, current_user.id, params[:investment])
-				# current_user.join_project(@project,@inv)
 				
 			end
 		end
