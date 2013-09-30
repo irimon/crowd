@@ -20,13 +20,14 @@
 		<h4 class="span2" id="enable_compare"><%= link_to  image_tag("compare-24.png"), "#" %> Compare</h4>
 		
 	</div>
-	
+	<%= will_paginate %>
 	<form id="compare-form" action="/projects/compare" method="get">
 	 <input class="btn btn-primary" id="compare-btn" type="submit" value="Compare" name="commit"></input>
 	<h5 id="compare_message">Mark the projects you wish to compare and press the button</h5>
 	<div class="projects_list">
 			
 				
+
 			 	<% if @projects %>
 				<% company_list = ['Lean&Green','CleanFuture','Energico']%>
 				<% ind = 0 %>
@@ -106,10 +107,13 @@
 			  
 			  
             </ul>
+			
+		
+
          </div>
      </div>
 	 </form>
-	 
+	 	<%= will_paginate %>
 	 <link rel="stylesheet" href="./assets/prettyCheckable/prettyCheckable.css">
  	 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
      <script language="javascript" src="/assets/prettyCheckable/prettyCheckable.js" type="text/javascript"></script>

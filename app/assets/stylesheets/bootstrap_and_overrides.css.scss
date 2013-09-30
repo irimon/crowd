@@ -12,7 +12,12 @@ body { padding-top: 20px; }
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
  }
-
+ 
+ /*************************  pagination ********************************/
+ .previous_page {
+	padding-left:30px;
+ }
+ /*****************  end pagination  *****************************/
 .navbar-static-top {
 	position: fixed;
 	top: 0;

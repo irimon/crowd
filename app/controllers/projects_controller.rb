@@ -133,17 +133,17 @@ end
   
   def search
 		if params[:search]
-			@projects = Project.find(:all, :conditions => ['name LIKE ?', "%#{params[:search]}%"])
+			@projects = Project.paginate(page: params[:page],:per_page => 12).find(:all, :conditions => ['name LIKE ?', "%#{params[:search]}%"])
 		else
-			@projects = Project.find(:all)
+			@projects = Project.paginate(page: params[:page],:per_page => 12)
 		end
    end
    
     def sort_by_type
 		if params[:sort]
-			@projects = Project.find(:all, :conditions => ['project_kind LIKE ?', "%#{params[:sort]}%"])
+			@projects = Project.paginate(page: params[:page],:per_page => 12).find(:all, :conditions => ['project_kind LIKE ?', "%#{params[:sort]}%"])
 		else
-			@projects = Project.find(:all)
+			@projects = Project.paginate(page: params[:page],:per_page => 12)
 		end
 		render 'projects/search'
    end
