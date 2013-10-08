@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 
+<div class="container">
 
 <body>
 	<script src="../assets/sorttable.js"></script>
@@ -15,18 +16,22 @@
 					<td><a href="#">Yearly interest</a></td>
 					<td><a href="#">% funded</a></td>
 					<td><a href="#">Days to end of funding round</a></td>
+					<td><a href="#">Remaining amount</a></td>
+
 			</thead>
 		
 			<tbody>
 			<% if @compare_projs  %>
 				<% for proj in @compare_projs %>
 					<tr>
-						<td><%= proj.name %> </td>
+						<td><%=  image_tag(proj.picture_url, height: "60", width: "60") %> 
+							<%= link_to proj.name , {:controller => "projects", :action => "show", :selected_id => proj.id} %> </td>
 						<td><%= proj.project_kind %></td>
 						<td><%= proj.amount %></td>
 						<td><%= proj.interese %></td>
 						<td><%= (proj.percent_funded*100).to_int%></td>
 						<td><%= (proj.end_date.to_date - Date.today).to_i %></td>
+						<td><%= ((proj.amount).to_f*(proj.percent_funded)).to_int %></td>
 					</tr>	
 				<% end  %> 
 			<% end  %> 
@@ -35,3 +40,5 @@
 	</div>
 	<div class="empty-tabs" />
 </body>
+
+</div>
