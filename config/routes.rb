@@ -1,5 +1,7 @@
 CrowdMoc::Application.routes.draw do
 
+  get "news_items/feed"
+
   get "relationships/create"
 
   devise_for :users
@@ -15,9 +17,17 @@ CrowdMoc::Application.routes.draw do
   get "projects/add_new"
 
   resources :projects, only: [:new, :create, :destroy]
+	  # match 'projects/feed' => 'projects#feed',
+      # :as => :feed,
+      # :defaults => { :format => 'atom' }
   resources :relationships, only: [:create]
   resources :users
    
+  resources :news_items
+	match '/feed' => 'news_items#feed',
+      :as => :feed,
+      :defaults => { :format => 'atom' }
+	  
   post "relationships/create"
 
   get "project/add_new"
@@ -34,10 +44,9 @@ CrowdMoc::Application.routes.draw do
   post "projects/join"
 
   get "projects/sort_by_type"
-  
-  
+
   match 'projects/unpdate_investment',  to: 'projects#show'
-  
+ 
   match '/projects',  to: 'projects#search'
   match '/start_project',  to: 'projects#add_new'
   match '/show_project',  to: 'projects#show'

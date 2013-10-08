@@ -26,7 +26,21 @@ before_filter :authenticate_user! , :except => [:search, :projects_map]
 		render 'projects/add_new'
   end
   
-  
+  def feed 
+		@title = "FEED title"
+		
+		#@news_items = NewsItem.find_by_project_id(params[:project_id]).sort_by("updated_at desc")
+		@project = Project.find_by_id(params[:project_id])
+	  	@news_items = @project.news_items.sort_by{|i| i.updated_at}
+		@updated = @news_items.first.updated_at unless @news_items.empty?
+
+	  
+		respond_to do |format|
+			format.atom { render :layout => false }
+			# we want the RSS feed to redirect permanently to the ATOM feed
+			format.rss { redirect_to feed_path(:format => :atom), :status => :moved_permanently }
+		end
+  end
  
   
   def create_demo_projects 
@@ -41,10 +55,8 @@ before_filter :authenticate_user! , :except => [:search, :projects_map]
 	pic_array = ["wind_1.jpg" , "wind_2.jpg", "wind_3.jpg",
 					"solar_1.jpg" , "solar_2.jpg", "solar_3.jpg",
 					"hydro_2.jpg", "recycle_1.jpg", "recycle_2.jpg","plant.jpg"]
-	for i in 0..9
-		par_num = rand(0..4)
-		
-		proj_desc_list  = ['The Eastshore Wind Farms Project is a wind farm located on Backbone Mountain east of Oakland, Maryland, United States. 
+					
+	proj_desc_list  = ['The Eastshore Wind Farms Project is a wind farm located on Backbone Mountain east of Oakland, Maryland, United States. 
 		The project has a rated capacity of 70 MW and uses 28 Liberty Wind Turbines manufactured by Clipper Windpower. Each of the wind turbines is about 415 feet tall. 
 		The Criterion Wind Project is owned by Criterion Power Partners, LLC, which is a subisiary of Exelon, and interconnected with the transmission system of the 
 		Potomac Edison Company (a subsidiary ofFirstEnergy). Electricity and renewable energy credits from the project will be sold to the Old Dominion Electric Cooperative 
@@ -82,8 +94,13 @@ before_filter :authenticate_user! , :except => [:search, :projects_map]
 		 converters to convert the motion of the ocean surface waves into electricity, totalling to 2.25 MW in total installed capacity.
 		 The farm will be finished by the end of 2014.']
 
-		proj_name_list = ['Eastshore Wind Farms' ,'North Plains Wind', 'Baltic Sea Wind Farm', 'Mid Atlantic Solar', 'Mohaby Desert Solar' ,  'Green Sun Mexico', 'Mediterranean Hydro', 
+	proj_name_list = ['Eastshore Wind Farms' ,'North Plains Wind', 'Baltic Sea Wind Farm', 'Mid Atlantic Solar', 'Mohaby Desert Solar' ,  'Green Sun Mexico', 'Mediterranean Hydro', 
 							'Bangkok Waste',  'Recycle Sau Paulo', 'Pacific Ocean Waves']
+					
+	for i in 0..9
+		par_num = rand(0..4)
+		
+	
 		rand_amount = rand(1..20)*100000
 		rand_received = rand(1..7)*100000
 		fully_funded = rand_received >= rand_amount 
@@ -109,7 +126,7 @@ before_filter :authenticate_user! , :except => [:search, :projects_map]
 			else
 			  puts "You gave me #{rand_proj_num} -- I have no idea what to do with that."
 		end
-   	  
+   	    rand_kwh = rand(100..2000)*1500
 		pic = pic_array[rand_proj_num]
 		rand_name = proj_name_list[rand_proj_num]
 		desc = proj_desc_list[rand_proj_num]
@@ -117,7 +134,8 @@ before_filter :authenticate_user! , :except => [:search, :projects_map]
 		rand_date = DateTime.now + rand_date_delta.day
 		@project = Project.create( name: rand_name, amount: rand_amount,
 							  phase: nil, end_date: rand_date, picture_url: pic, description: desc, funding_received: rand_received , fully_funded: fully_funded, percent_funded: percent_funded,
-							  project_kind: kind_arry[rand_kind], latitude: rand(20..50), longitude: rand(-90..90) , interese: rand(5..15), payment_number: rand(10..20)*12 , first_payment: rand_date + rand(100..600))
+							  project_kind: kind_arry[rand_kind], latitude: rand(20..50), longitude: rand(-90..90) , interese: rand(5..15), 
+							payment_number: rand(10..20)*12 , first_payment: rand_date + rand(100..600), yearly_kwh: rand_kwh)
 					
 							  
 		#@project.update_funding(0)
@@ -154,30 +172,30 @@ end
 		end		
 	end
 	
-	def join 
-		@inv = params[:investment] 
-		if params[:selected_id]
-			@project = Project.find_by_id(params[:selected_id])
-			Rails.logger.info(@project.errors.messages.inspect)
-			if @inv
-			    Rails.logger.info(@inv)
-				new_amount = @project.funding_received + @inv.to_i
-				new_percent = new_amount/@project.amount.to_i
-				if new_percent > 1
-					new_percent=1
-					new_fully_funded = true
-					@project.update_attribute(:fully_funded, new_fully_funded)
-				end
-				@project.update_attribute(:percent_funded, new_percent)
-				@project.update_attribute(:funding_received, new_amount)
-			end
-		end		
+	# def join 
+		# @inv = params[:investment] 
+		# if params[:selected_id]
+			# @project = Project.find_by_id(params[:selected_id])
+			# Rails.logger.info(@project.errors.messages.inspect)
+			# if @inv
+			    # Rails.logger.info(@inv)
+				# new_amount = @project.funding_received + @inv.to_i
+				# new_percent = new_amount/@project.amount.to_i
+				# if new_percent > 1
+					# new_percent=1
+					# new_fully_funded = true
+					# @project.update_attribute(:fully_funded, new_fully_funded)
+				# end
+				# @project.update_attribute(:percent_funded, new_percent)
+				# @project.update_attribute(:funding_received, new_amount)
+			# end
+		# end		
 		
-		if !current_user.relationships.find_by_project_id(params[:selected_id]) 	
-			current_user.relationships.join_project(@project,@inv)
-		end
+		# if !current_user.relationships.find_by_project_id(params[:selected_id]) 	
+			# current_user.relationships.join_project(@project,@inv)
+		# end
 		
-	end	
+	# end	
 	
 	def unpdate_investment 
 		@project = Project.find_by_id(params[:selected_id])

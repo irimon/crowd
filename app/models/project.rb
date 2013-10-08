@@ -22,16 +22,19 @@
 #  interese              :float
 #  payment_number        :integer
 #  first_payment         :datetime
+#  yearly_kwh            :integer
 #
 
 class Project < ActiveRecord::Base
   attr_accessible :amount, :name, :description, :phase, :project_kind, :end_date, :picture_url, :funding_received,  :latitude, :longitude, :interese, 
-				  :fully_funded, :percent_funded, :payment_number, :first_payment
+				  :fully_funded, :percent_funded, :payment_number, :first_payment, :yearly_kwh
   belongs_to :company
    before_save :default_values
   
   has_many :relationships, dependent: :destroy
   has_many :users, through: :relationships
+  
+  has_many :news_items, dependent: :destroy
   
   validates :amount, :name, :description, :project_kind, :end_date,  :latitude, :longitude, :interese, :payment_number, presence: true
   validates :amount, :funding_received, :latitude, :longitude, :interese, :percent_funded, :payment_number, numericality: true
