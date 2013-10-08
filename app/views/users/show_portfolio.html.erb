@@ -1,6 +1,8 @@
+ <% provide(:title, "Portfolio") %>
+
 <!DOCTYPE html>
 
-
+<div class="container">
 <body>
 	
 		<h2 style="text-align:left">Portfolio </h2>
@@ -195,12 +197,13 @@
 
 	 </script>
 		<div class="row-fluid"> 
-				<div class="span4" id="piechart_type" style="width: 900px; height: 500px;"></div>
-				<div class="span4" id="piechart_geo" style="width: 900px; height: 500px;"></div>
-				<div class="span5" id="area_income" style="width: 900px; height: 500px;"></div>
+				<div class="span6" id="piechart_type" style="width: 600px; height: 500px;"></div>
+				<div class="span6" id="piechart_geo" style="width: 600px; height: 500px;"></div>
+		</div>
+		<div class="span5" id="area_income" style="width: 900px; height: 500px;"></div>
 
 	
-		</div>
+	
  	</div>
 	</div> 
 	
@@ -219,7 +222,13 @@
 				<img src="assets/home_48.png" id="home1">
 					<img src="assets/home_48.png" id="home2">
 						<img src="assets/home_48.png" id="home3">
-				<h3>Your share in the projects is generating clean electricity that powers 150 homes!"</h3>
+				<% total_kwh=0 %>
+				<% for proj in current_user.projects %>
+						<% total_kwh=total_kwh+(proj.yearly_kwh)*current_user.get_investment_amount(proj.id)/proj.amount.to_f %>
+					<%= 	proj.yearly_kwh %>
+				<% end %>
+				<%= total_kwh %>
+				<h3>Your share in the projects is generating clean electricity that powers <%= total_kwh/11280 %> homes!"</h3>
 				
 			
 			<!-- 	<div class="clearfix">
@@ -264,3 +273,4 @@
 	</script> -->
 
 </body>
+</div>
