@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Energy Crowd</title>
+    <title>Energy Crowd | <%= yield(:title) %></title>
     <link rel="shortcut icon" type="image/x-icon" href="assets/Green-Solar-Energy.ico" />
 	<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
 	<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
@@ -10,8 +10,10 @@
     <%= stylesheet_link_tag "application", :media => "all" %>
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
-	<%= yield :scripts %>
 	
+	<%= yield :scripts %>
+	<%= auto_discovery_link_tag :atom, "/feed" %>
+	<%= auto_discovery_link_tag :rss, "/feed.rss" %>
 
   </head>
   <body>
@@ -24,7 +26,7 @@
 	</nav>
     </header>
     <main role="main">
-      <div class="container">
+      <div>
 			  <% flash.each do |key, value| %>
 					<div class="alert alert-<%= key %>"><%= value %></div>
 			<% end %>

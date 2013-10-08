@@ -1,26 +1,31 @@
 <!DOCTYPE html>
 
-    <link href="./assets/skitter/styles.css" type="text/css" media="all" rel="stylesheet" />
+ <!--    <link href="./assets/skitter/styles.css" type="text/css" media="all" rel="stylesheet" />
 
-	<!-- Skitter Styles -->
-	<link href="./assets/skitter/skitter.styles.css" type="text/css" media="all" rel="stylesheet" />
+	<link href="./assets/skitter/skitter.styles.css" type="text/css" media="all" rel="stylesheet" /> -->
 
+		<link href="./assets/jquery.bxslider.css" rel="stylesheet" />
 
 
 <body>
 
-
-
+<ul class="bxslider">
+	<li><img src="./assets/background.jpg" title="Matching investors with energy projects" /></li>
+	<li><img src="./assets/solar_2.jpg" title="Enhance your investment portfolio with low risk energy investments" /></li>
+	<li><img src="./assets/wind_2.jpg"title="Browse a large variety of projects" /></li>
+	<li><img src="./assets/eco-green.jpg" title="Support clean energy projects and help save the environment" /></li>	
+</ul>
+<!-- 
 <div id="carousel" class="">		
 	<div id="myCarousel" class="carousel slide mbottom0">
 	  <div class="carousel-inner">
 	    <div class="active item">
 			<div class="box_skitter box_skitter_large">
 					<ul>
-						<li><a href="#cube"><img src="./assets/background.jpg" class="cube" /></a><div class="label_text"><p>Matching investors with energy projects</p></div></li>
-						<li><a href="#cube"><img src="./assets/solar_2.jpg" class="block" /></a><div class="label_text"><p>Enhance your investment portfolio with low risk energy investments</p></div></li>
-						<li><a href="#block"><img src="./assets/wind_2.jpg" class="cubeRandom" /></a><div class="label_text"><p>Browse a large variety of projects</p></div></li>
-						<li><a href="#cubeStop"><img src="./assets/eco-green.jpg" class="paralell" /></a><div class="label_text"><p>Support clean energy projects and help save the environment</p></div></li>	
+						<li><img src="./assets/background.jpg" /></a><div class="label_text"><p>Matching investors with energy projects</p></div></li>
+						<li><img src="./assets/solar_2.jpg" /></a><div class="label_text"><p>Enhance your investment portfolio with low risk energy investments</p></div></li>
+						<li><img src="./assets/wind_2.jpg" /></a><div class="label_text"><p>Browse a large variety of projects</p></div></li>
+						<li><img src="./assets/eco-green.jpg" /></a><div class="label_text"><p>Support clean energy projects and help save the environment</p></div></li>	
 					</ul>
 			</div>
 
@@ -28,7 +33,7 @@
 		</div>
 	  </div>
 	</div>
-</div>
+</div> -->
  <img src="./assets/shadow.png" alt="shadow" id="main-shadow"/>
 
 		<!-- 	<% if user_signed_in? %>
@@ -41,23 +46,25 @@
 			<% end %> -->
 	
 <div class="socialbar">
-		<a href="#"><img src="../assets/socials/face.png" alt="facebook" /></a>
-		<a href="#"><img src="../assets/socials/twit.png" alt="twitter" /></a>
-		<a href="#"><img src="../assets/socials/link.png" alt="linkedin" /></a>
-		<a href="#"><img src="../assets/socials/you.png" alt="youtube" /></a>
+		<a href="#"><img src="./assets//facebook.png" alt="facebook" /></a>
+		<a href="#"><img src="./assets//twitter.png" alt="twitter" /></a>
+		<a href="#"><img src="./assets//linkedin.png" alt="linkedin" /></a>
+		<a href="#"><img src="./assets//googleplus.png" alt="g+" /></a>
+		<a href="#"><img src="./assets//youtube.png" alt="youtube" /></a>
 
 </div>
 
 
 <div class="content vspace40">
-	<div class="container marketing center">
+	<div class="marketing center">
 	
 				 
 		
-		<hr class="soften" />
-
-		<div class="row">
-			<div class="span12 marketing">
+<!-- 		<hr class="soften" />
+ -->
+		<div class="row theme_color " id="marketing-row">
+			<div class="container">
+			<div class="span12" >
 				<h2>Why should you invest </h2>
 				<br>
 				<br>
@@ -66,7 +73,7 @@
 						<img src="../assets/money_64.png" alt="v" />
 						<h3>Financial Benefits</h3>
 						<p>
-							Long term predictable returns with additional interest. <br>
+							Long term predictable returns with additional interest. 
 							Increase variety and spread risk for an existing portfolio. 
 							
 						</p>
@@ -75,7 +82,7 @@
 						<img src="../assets/globe_64.png" alt="v" />
 						<h3>Environment Benefits</h3>
 						<p>
-							Invest in projects that improve the world we live in.<br>
+							Invest in projects that improve the world we live in.
 							See how much CO2 emission your investments helped prevent.
 						</p>
 					</div>
@@ -84,8 +91,8 @@
 						<h3>Usability Benefits</h3>
 						<p>
 							Know what your money is doing, and how it is working for you.<br>
-							View portfolio stats and projected returns.<br>
-							See detailed reports on each project.<br>
+							View portfolio stats and projected returns.
+							See detailed reports on each project.
 							Compare between different projects.
 						</p>
 					</div>
@@ -93,82 +100,83 @@
 						<img src="../assets/laptop_64.png" alt="v" />
 						<h3>Accessibility Benefits</h3>
 						<p>
-							Gain access to projects from all over the world.<br>
-							Start investing in just a few clicks.<br>
+							Gain access to projects from all over the world.
+							Start investing in just a few clicks.
 							Get a direct contact channel to project managers.
 						</p>
 					</div>
 				</div>
-				
+				</div>
 			</div>
 
 		</div>
 
 
-		<hr class="soften" />
+<!-- 		<hr class="soften" />
+ -->		
+
+		<div class="row" id="projects-row">
 		
+			<div class="container">
+				<div class="row-fluid span12" id="bottom-market">
+					
+					
+					<div class="row-fluid span7" id="suc-projects">
+							<h2>Recently funded projects</h2>
 
-		
-		<div class="row-fluid span12" id="bottom-market">
-			
-			
-			<div class="row-fluid span7" id="suc-projects">
-					<h2>Recently funded projects</h2>
+							<div class="span6 zoom">
+								<a href="./project_1"  title="A solar farm near the delta of the Nile">
+									<img src="../assets/solar_1.jpg" alt="This is the Image Alt Attribute used as description">
+								</a>						
+							</div>
+							<div class="span6 zoom">
+								<a href="./project_2"  title="A new wind farm in the Netherlands">
+									<img src="../assets/wind_1.jpg" alt="This is the Image Alt Attribute used as description">
+								</a>
+							</div>
+							<div class="span6 zoom">
+								<a href="./project_3"  title="A new hydroelectric dam in northern Thailand">
+									<img src="../assets/solar_3.jpg"  alt="This is the Image Alt Attribute used as description">
+								</a>
+							</div>
+							<div class="span6 zoom">
+								<a href="./project_4"  title="A new project that takes the trash from landfills in New Delhi and turns it into electricity">
+									<img src="../assets/green-world.jpg" alt="This is the Image Alt Attribute used as description">
+								</a>
+							</div>
+					</div>
+					
+					<div class="span5" id="testimonials">
+						<h2>Testimonials</h2>
+						<blockquote class="testimonial">
+							<p>As a seasoned investor I must say that the platform gives a great amount of data regarding each project, and really makes it easy to make calculated investments </p>
+						</blockquote>	
+		<!-- 				<div class="arrow-down"></div>
+		 -->				<p class="testimonial-author">John Smith</p>
+						<br>
+						<br>
 
-					<div class="span6 zoom">
-						<a href="./project_1"  title="A solar farm near the delta of the Nile">
-							<img src="../assets/solar_1.jpg" alt="This is the Image Alt Attribute used as description">
-						</a>						
+						<blockquote class="testimonial">
+							<p>The analytics provided in this site are extremely helpful.  I was able to see many helpful data stats that assisted me in building a versatile portfolio </p>
+						</blockquote>	
+		<!-- 				<div class="arrow-down"></div>
+		 -->				<p class="testimonial-author">Lora Johnson</p>
 					</div>
-					<div class="span6 zoom">
-						<a href="./project_2"  title="A new wind farm in the Netherlands">
-							<img src="../assets/wind_1.jpg" alt="This is the Image Alt Attribute used as description">
-						</a>
-					</div>
-					<div class="span6 zoom">
-						<a href="./project_3"  title="A new hydroelectric dam in northern Thailand">
-							<img src="../assets/solar_3.jpg"  alt="This is the Image Alt Attribute used as description">
-						</a>
-					</div>
-					<div class="span6 zoom">
-						<a href="./project_4"  title="A new project that takes the trash from landfills in New Delhi and turns it into electricity">
-							<img src="../assets/green-world.jpg" alt="This is the Image Alt Attribute used as description">
-						</a>
-					</div>
+					
+				</div>
 			</div>
-			
-			<div class="span5" id="testimonials">
-				<h2>Testimonials</h2>
-				<blockquote class="testimonial">
-					<p>As a seasoned investor I must say that the platform gives a great amount of data regarding each project, and really makes it easy to make calculated investments </p>
-				</blockquote>	
-<!-- 				<div class="arrow-down"></div>
- -->				<p class="testimonial-author">John Smith</p>
-				<br>
-				<br>
-
-				<blockquote class="testimonial">
-					<p>The analytics provided in this site are extremely helpful.  I was able to see many helpful data stats that assisted me in building a versatile portfolio </p>
-				</blockquote>	
-<!-- 				<div class="arrow-down"></div>
- -->				<p class="testimonial-author">Lora Johnson</p>
-			</div>
-			
 		</div>
 		
-
 	</div>
 </div>
 
 	
 	<!-- Skitter JS -->
-	<script type="text/javascript" language="javascript" src="./assets/skitter/jquery-1.6.3.min.js"></script>
+	<!-- <script type="text/javascript" language="javascript" src="./assets/skitter/jquery-1.6.3.min.js"></script>
 	<script type="text/javascript" language="javascript" src="./assets/skitter/jquery.easing.1.3.js"></script>
-<!-- 	<script type="text/javascript" language="javascript" src="./assets/skitter/jquery.animate-colors-min.js"></script>
- -->	<script type="text/javascript" language="javascript" src="./assets/skitter/jquery.skitter.min.js"></script>
+	<script type="text/javascript" language="javascript" src="./assets/skitter/jquery.skitter.min.js"></script>
 
 	
-	<!-- Init Skitter -->
 	<script type="text/javascript" language="javascript">
 		$(document).ready(function() {
 			$('.box_skitter_large').skitter({
@@ -183,7 +191,19 @@
 				preview: true
 			});
 		});
-	</script>
+	</script> -->
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+		<script type="text/javascript" language="javascript" src="./assets/jquery.bxslider.min.js"></script>
 
+	<script>
+			$('.bxslider').bxSlider({
+			  mode: 'fade',
+			  captions: true,
+			  auto: true
+			  });
+
+
+	</script>
+	
 </body>
 </html>

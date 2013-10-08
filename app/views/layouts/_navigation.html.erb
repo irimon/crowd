@@ -23,13 +23,12 @@
 		   <li>   <div class="signup">
 					<% if user_signed_in? %>
  						<%= link_to current_user.name, "#"  , :id => "name_nav"%>
-						<br>
-						<%= link_to "Sign out",  destroy_user_session_path, :method => :delete , :id => "sign_out_nav"%>
-					
+<!-- 						<%= link_to "Sign out",  destroy_user_session_path, :method => :delete , :id => "sign_out_nav"%>
+ -->					
 					<% else %>
-							<%= link_to "Login", new_user_session_path, :id => "login" %> <br>
-							<%= link_to "Sign up", new_user_registration_path, :id => "sign_up_nav" %> 
-							
+							<%= link_to "Login", new_user_session_path, :id => "login" %> 
+<!-- 							<%= link_to "Sign up", new_user_registration_path, :id => "sign_up_nav" %> 
+ -->							
 					<% end %>
 				</div>
 			</li>
