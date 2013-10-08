@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130925183907) do
+ActiveRecord::Schema.define(:version => 20131008002207) do
 
   create_table "companies", :force => true do |t|
     t.string   "company_name"
@@ -28,6 +28,15 @@ ActiveRecord::Schema.define(:version => 20130925183907) do
     t.binary   "file_data"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
+  end
+
+  create_table "news_items", :force => true do |t|
+    t.string   "title"
+    t.text     "content"
+    t.string   "auther"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "project_id"
   end
 
   create_table "projects", :force => true do |t|
@@ -50,6 +59,7 @@ ActiveRecord::Schema.define(:version => 20130925183907) do
     t.float    "interese"
     t.integer  "payment_number"
     t.datetime "first_payment"
+    t.integer  "yearly_kwh"
   end
 
   create_table "relationships", :force => true do |t|

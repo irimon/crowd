@@ -22,6 +22,7 @@
 #  interese              :float
 #  payment_number        :integer
 #  first_payment         :datetime
+#  yearly_kwh            :integer
 #
 
 require 'test_helper'

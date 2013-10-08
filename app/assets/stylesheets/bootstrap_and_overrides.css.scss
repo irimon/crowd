@@ -3,6 +3,7 @@ body { padding-top: 20px; }
 @import "bootstrap-responsive";
 
 
+
 .debug_dump {
   clear: both;
   float: left;
@@ -12,6 +13,95 @@ body { padding-top: 20px; }
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
  }
+ 
+.theme_color {
+   background: #EFEFEF;
+
+/*    background: #2773AE;;
+ */}
+
+footer {
+   background-color: #EFEFEF;
+
+/* 	   background-color: #2773AE;;
+ */}
+ 
+ /********  navbar background color  **************************/
+ h2 {
+	letter-spacing: -2px;
+}
+ h3 {
+	letter-spacing: -1px;
+}
+ /*******************  home page  **********************/
+ /******  slider ***********/
+ 
+ .bx-wrapper {
+	height:500px;
+	
+}
+ 
+  .bx-wrapper img {
+  	height:500px;
+  	width:100%;
+	margin:0px;
+
+  }
+   .bx-wrapper  ul {
+		margin:0px;
+	}
+  
+   .bx-wrapper  li {
+		margin:0px;
+	}
+
+  /* Prevents slides from flashing */
+    #slides {
+      display:none;
+	  height:500px;
+	  margin-top:-25px;
+    }
+	 #slides img {
+	 	  height:500px;
+	 }
+ .slidesjs-container , .slidesjs-control{
+	height:500px;
+}
+ 
+ #main-shadow {
+	margin-left:auto;
+	margin-right:auto;
+	margin-top: -95px;
+	width:100%;
+}
+ 
+ #marketing-row {
+	padding-top:50px;
+	padding-bottom:50px;
+
+ }
+ 
+ #projects-row {
+	padding-top:50px;
+	padding-bottom:50px;
+
+ }
+ 
+ body, .top-pictures {
+  padding: 0;
+  margin: 0;
+  clear: both;
+}
+
+.container {
+	width:100%;
+	 padding: 0;
+  margin: 0;
+  clear: both;
+}
+ 
+ 
+ 
  
  /*************************  pagination ********************************/
  .previous_page {
@@ -28,6 +118,9 @@ body { padding-top: 20px; }
 }
 	
 .socialbar {
+	padding-top:0px;
+	padding-bottom:50px;
+
 		text-align:center;
 		 margin: auto;
 	a{
@@ -71,17 +164,30 @@ body { padding-top: 20px; }
 		border-top: 2px solid light-blue; */
 	}
 }
+
+#project_description {
+line-height: 16px;
+}
+
 #proj_bar {
-	height: 60%;
-	background-color: green;
+	background-color: theme-color;
 	background-image: linear-gradient(to bottom, #129632, #0D7956);
 }
 #project_progress {
+line-height: 10px;
+
 	margin-bottom: 0px;
+		width:65%;
+		float:left; 
+/*		height: 60%;
+ 	
+		
+*/
 }
 
 .progress {
 	box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.6);
+	line-height: 10px;
 	height: 10px;
 }
 .caption {
@@ -197,13 +303,14 @@ html {
 	box-shadow: 0px 0px 2px 1px rgba(119, 119, 119, 0.75);
 	-moz-box-shadow: 0px 0px 2px 1px rgba(119, 119, 119, 0.75);
 	-webkit-box-shadow: 0px 0px 2px 1px rgba(119, 119, 119, 0.75);
+	width:90%;
 }
 .thumbnail {
 	
 
 	img {
 		height: 130px;
-		width: 200px;
+		width: 100%;
 	}
 	.btn {
 		background-color: green;
@@ -273,7 +380,7 @@ html {
 	}
 	
 	.Feas-offer {
-			width: 100;
+			width: 100px;
 	}
 }	
 .top-form {	
@@ -335,8 +442,8 @@ html {
 }
 
 #project_description {
-	font-family:  helvetika;
-}
+/* 	font-family:  helvetika;
+ */}
 /* *****************  projects search page **************************** */
 
 #Current_projects {
@@ -386,10 +493,10 @@ html {
 	.span3 {
 		.caption {
 			p {
-				max-height: 100px;
-				min-height: 100px;
-				overflow: auto;
-				font-size:90%;
+				max-height: 80px;
+				min-height: 80px;
+				overflow: hidden;
+				font-size:85%;
 			}
 			h4 {
 				margin-top:0px;
@@ -438,17 +545,10 @@ html {
 			p {
 				max-height: 150px;
 				min-height: 150px;
-				overflow: auto;
+				overflow: hidden;
 			}
 		}
 		
-		.caption-fund {  // for demo
-			p {
-				max-height: 131px;
-				min-height: 131px;
-				overflow: auto;
-			}
-		}
 	}
 }
 
@@ -478,7 +578,13 @@ html {
 	overflow:auto;
 }
 
-
+/* *****************  project show page **************************** */
+.actual-feed {
+	
+	  text-align: left;
+	  padding:15px;
+	
+}
 /* footer */
 
 
@@ -488,20 +594,21 @@ footer {
 	   float: left;
        width: 100%;
    
-	  color: $grayLight;
+	  color: black;
 	  
 	  a {
-		color: #555;
+		color: black;
 		&:hover { 
-		   color: #222;
+		   color: white;
 		 }
 	  }
 	 
-		background-color: black;
-	
+/* 		background-color: black;
+ 
 	  .span3 {
 		background-color: black;
 	  }
+	  */	
 	  small {
 		float: left;
 	  }
@@ -526,9 +633,7 @@ footer {
 } */
 
 
-#main-shadow {
-	margin-top: 0;
-}
+
 /* .element
 {
 text-shadow: 4px 4px 8px rgba(32, 58, 120, 0.55);
@@ -982,12 +1087,19 @@ color: green;
 
 #piechart_type {
 	float:left;
-}
+	margin-left:-70px;
+	margin-right:0;
+	padding:0;
+
+	}
 
 #piechart_geo {
-	margin-left:0;
-	margin-top:-60px;
-	margin-bottom:-60px;
+	margin-left:-70px;
+	margin-right:0;
+	padding:0;
+	/* margin-top:-60px;
+	margin-bottom:-60px; */
+	
 }
 
 /****** sortable table ******************/
