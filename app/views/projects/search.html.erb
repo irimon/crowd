@@ -1,10 +1,13 @@
+ <% provide(:title, "Projects") %>
+
+
 <!DOCTYPE html>
 
-
+<div class="container">
 <body>
 	<h2 id="Current_projects">Projects </h2>
-	
-	<div class="span12 row-fluid" id="search-options">
+
+	<div class=" span12 row-fluid" id="search-options">
 		<div class="span3">
 			<form class="row-fluid navbar-search span3" id="search_projects" action="/projects" method="get">
 				<input type="text" id="search" name="search" class="search-query" placeholder="Search">
@@ -65,8 +68,10 @@
 								<% end %>
 								
 								<%= link_to image_tag("Location-32.png", id: "location-img") , {:controller => "projects", :action => "show_project_location", :selected_id => proj.id} %>
-								<h4><%= proj.name %></h4>
-								<h5>by <%= link_to company_list[rand_num], my_path %>
+								<h4><%= link_to proj.name, {:controller => "projects", :action => "show", :selected_id => proj.id} %></h4>
+
+								
+								<h5>by <%=  company_list[rand_num] %>
 <!-- 									<a href="static_pages/contact_company" class="btn" id="mail-button"><i class="icon-envelope"></i></a>
  -->								</h5>
 								<p id="project_description"><%= proj.description %></p>
@@ -74,11 +79,12 @@
 								<div class="progress" id="project_progress">
 									<div class="bar" id="proj_bar" style="width: <%= proj.percent_funded*100 %>%;"></div>
 								</div>
-								 <div>
+								<div><h6 id="funded_percent"><%= (proj.percent_funded*100).to_int %>% funded</h6></div>
+								<!--  <div>
 									<h5 id="funded_amount">Received $<%= proj.funding_received/1000 %>K</h5>
 									
 									<h5 id="funded_percent"><%= (proj.percent_funded*100).to_int %>% funded</h5>
-								 </div>
+								 </div> -->
 								 <!-- 	<% if proj.percent_funded*100 < 100 %>
 										<% remaining_time = proj.end_date.to_date - Date.today %>
 										<% if remaining_time > 0 %>
@@ -87,11 +93,12 @@
 									<% end %> -->
 							  </div>
 							  <% if proj.percent_funded*100 < 100 %>
-							  <%= link_to "Join in" , {:controller => "projects", :action => "show", :selected_id => proj.id}, :class=>"btn"  %>
-<!-- 									<a class="btn" href="#">Join in</a>
+<!-- 							  <%= link_to "Join in" , {:controller => "projects", :action => "show", :selected_id => proj.id}, :class=>"btn"  %>
+ --><!-- 									<a class="btn" href="#">Join in</a>
  -->							  <% else %>
-									<a class="btn" id="closed" href="#">Closed</a>
-							  <% end %>
+<!-- 									<a class="btn" id="closed" href="#">Closed</a>
+ -->							  <% end %>
+								<br>
 						</div>
 					</li>
 					
@@ -133,3 +140,4 @@
 	
 	
 </body>
+</div>
