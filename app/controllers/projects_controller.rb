@@ -218,9 +218,9 @@ end
 		render 'show'
 	end	
    def show_project_location
-		arr = ["http://spartanyouth.msu.edu/images/icon_sun.gif" , 
-		"http://wiki.openstreetmap.org/w/images/d/d5/Power_wind.png" ,
-		"http://www.vtenergyatlas-info.com/wp-content/uploads/2010/02/icon_hydro_potential.png"]
+		arr = ["https://spartanyouth.msu.edu/images/icon_sun.gif" , 
+		"https://wiki.openstreetmap.org/w/images/d/d5/Power_wind.png" ,
+		"https://www.vtenergyatlas-info.com/wp-content/uploads/2010/02/icon_hydro_potential.png"]
 		@project = Project.find_by_id(params[:selected_id])	
 		@json = @project.to_gmaps4rails do |project, marker|
 			 marker.infowindow render_to_string(:partial => "/projects/mapinfo", :locals => { :project => project})
