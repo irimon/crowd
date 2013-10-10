@@ -93,7 +93,7 @@
                  <%= image_tag( @project.picture_url)  %>
 				<div class="project-feed" >
 					<br><br>
-					<img src="./assets/RSS-64.png" width="48px" />			  	
+					<img src="../assets/RSS-64.png" width="48px" />			  	
 
 					
 						<% if  @project.news_items != nil %>
@@ -127,7 +127,12 @@
 								</div>
 								<table class="table table-striped table-condensed">
 										<tbody>
-											  <tr>
+											 
+												<tr>
+											  		<td>Yearly Output </td>
+													<td><%= @project.yearly_kwh/1000 %>MWh  </td>
+											  </tr>	
+											 <tr>
 													<td>Yearly interest</td>
 													<td> <%=@project.interese %>%</td>
 											  </tr>	
@@ -135,9 +140,7 @@
 													<td>Number of months of return</td>
 													<td>120</td>
 											  </tr>	
-											   <tr>
-											  				<%= @project.yearly_kwh/1000 %>MWh yearly
-											  </tr>	
+											  
 											   <tr>
 													<td>Date of first payment</td>
 													<td>Oct. 27th 2013</td>

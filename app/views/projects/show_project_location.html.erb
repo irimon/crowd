@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 
+  <div class="container">
 
 <body>
 	<h1>Project location</h1>
@@ -8,7 +9,7 @@
 <!-- <script src="/assets/gmaps4rails/gmaps4rails.googlemaps.js?body=1" type="text/javascript"></script>
  -->  
    <%= gmaps("markers" => {"data" => @json, "options" => {"custom_infowindow_class" => "map_info" } } , "map_options" => { "auto_zoom" => false} ) %> 
-
+</div>
 
 <script>
 Gmaps.map.infobox = function(boxText) {

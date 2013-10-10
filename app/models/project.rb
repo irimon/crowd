@@ -4,7 +4,7 @@
 #
 #  id                    :integer          not null, primary key
 #  name                  :string(255)
-#  amount                :string(255)
+#  amount                :integer
 #  phase                 :string(255)
 #  end_date              :datetime
 #  picture_url           :text

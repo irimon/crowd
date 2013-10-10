@@ -54,7 +54,7 @@ before_filter :authenticate_user! , :except => [:search, :projects_map]
 	kind_arry = ["Solar","Wind","Hydro","Other"]
 	pic_array = ["wind_1.jpg" , "wind_2.jpg", "wind_3.jpg",
 					"solar_1.jpg" , "solar_2.jpg", "solar_3.jpg",
-					"hydro_2.jpg", "recycle_1.jpg", "recycle_2.jpg","plant.jpg"]
+					"hydro_2.jpg", "big_waste.jpg", "energy-from-waste.jpg","plant.jpg"]
 					
 	proj_desc_list  = ['The Eastshore Wind Farms Project is a wind farm located on Backbone Mountain east of Oakland, Maryland, United States. 
 		The project has a rated capacity of 70 MW and uses 28 Liberty Wind Turbines manufactured by Clipper Windpower. Each of the wind turbines is about 415 feet tall. 
@@ -137,8 +137,19 @@ before_filter :authenticate_user! , :except => [:search, :projects_map]
 							  project_kind: kind_arry[rand_kind], latitude: rand(20..50), longitude: rand(-90..90) , interese: rand(5..15), 
 							payment_number: rand(10..20)*12 , first_payment: rand_date + rand(100..600), yearly_kwh: rand_kwh)
 					
-							  
-		#@project.update_funding(0)
+		 title_1 = 	rand_name + " starts funding round"
+		 content_1 = "On " +	" we will aim to raise " + rand_amount.to_s + "$ - come and join us"
+		 author = rand_name + "management"
+		 @news_item= NewsItem.create(title: title_1 , content: content_1, auther: author, project_id: @project.id)
+		 
+		 if fully_funded 
+			 title_1 = 	rand_name + " has successfully raised " + rand_amount.to_s + "$ !"
+			 content_1 = "Thank you so much for all our supporters.  Through your investment we will make a true impact on the environment and create new jobs.
+			 Expect to see periodic updates on the project's progress."
+			 author = rand_name +  "management"
+			 @news_item= NewsItem.create(title: title_1 , content: content_1, auther: author, project_id: @project.id)
+		 end
+		 
 	end
 	render 'projects/add_new'
 	
@@ -155,16 +166,39 @@ end
 		else
 			@projects = Project.paginate(page: params[:page],:per_page => 12)
 		end
+		
+		if params[:sort_by_type]
+			@projects = Project.paginate(page: params[:page],:per_page => 12).find(:all, :conditions => ['project_kind LIKE ?', "%#{params[:sort_by_type]}%"])
+		end
+		
+		
+		if params[:sort_by_pledged]
+			if params[:sort_by_pledged]=="high" 
+				@projects = Project.order("amount desc").paginate(page: params[:page],:per_page => 12)
+			end
+			if params[:sort_by_pledged]=="low" 
+				@projects = Project.order("amount asc").paginate(page: params[:page],:per_page => 12)
+			end
+		end
+		
+		if params[:sort_by_time]
+			@projects = Project.paginate(page: params[:page],:per_page => 12).order("end_date asc")
+		end
+		
+		if params[:sort_almost_funded]
+			@projects = Project.paginate(page: params[:page],:per_page => 12).order("percent_funded desc").find(:all, :conditions => ['percent_funded != "1"'])
+		end
+		
    end
    
-    def sort_by_type
-		if params[:sort]
-			@projects = Project.paginate(page: params[:page],:per_page => 12).find(:all, :conditions => ['project_kind LIKE ?', "%#{params[:sort]}%"])
-		else
-			@projects = Project.paginate(page: params[:page],:per_page => 12)
-		end
-		render 'projects/search'
-   end
+ #   def sort_by_type
+		# if params[:sort_type]
+			# @projects = Project.paginate(page: params[:page],:per_page => 12).find(:all, :conditions => ['project_kind LIKE ?', "%#{params[:sort]}%"])
+		# else
+			# @projects = Project.paginate(page: params[:page],:per_page => 12)
+		# end
+		# render 'projects/search'
+ #  end
    
    def show 
 		if params[:selected_id]

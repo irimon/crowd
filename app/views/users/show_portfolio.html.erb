@@ -28,6 +28,7 @@
 					  <th>Funding status</th>
 					   <th>Amount invested</th>
 					  <th>Annual return</th>
+					  <th>Percent funded</th>
 					  <th>Comments</th>  
 					  <th></th>  					  
 				  </tr>
@@ -56,9 +57,9 @@
 										<td><span class="label label-important">Not Funded</span></td>
 							<% end %>
 						<% end %>
-						<td><%= current_user.get_investment_amount(proj.id) %></td>
+						<td><%= number_with_delimiter(current_user.get_investment_amount(proj.id), :delimiter => ",") %></td>
 						<td><%= proj.interese %></td>
-					
+						<td><%= (proj.percent_funded * 100).round(0) %></td>
 						<td></td>
 						<td></td>
 				 </tr>
@@ -211,13 +212,13 @@
 
 	
 		<div id="panel3" class="tab-pane">
-			  <script type="text/javascript" src="assets/flipcounter.js"></script>
-<!-- 			  <script type="text/javascript" src="assets/modernizr.js"></script>
+<!-- 			  <script type="text/javascript" src="assets/flipcounter.js"></script>
+ --><!-- 			  <script type="text/javascript" src="assets/modernizr.js"></script>
  -->			  <!-- Counter styles -->
 <!-- 			  <link rel="stylesheet" type="text/css" href="css/style.css"/>
  -->			
-				<link href='http://fonts.googleapis.com/css?family=Kavoon' rel='stylesheet' type='text/css'>
-				<h2>Environmental impact</h2>
+<!-- 				<link href='http://fonts.googleapis.com/css?family=Kavoon' rel='stylesheet' type='text/css'>
+ -->				<h2>Environmental impact</h2>
 			
 				<img src="assets/home_48.png" id="home1">
 					<img src="assets/home_48.png" id="home2">
@@ -225,10 +226,10 @@
 				<% total_kwh=0 %>
 				<% for proj in current_user.projects %>
 						<% total_kwh=total_kwh+(proj.yearly_kwh)*current_user.get_investment_amount(proj.id)/proj.amount.to_f %>
-					<%= 	proj.yearly_kwh %>
-				<% end %>
-				<%= total_kwh %>
-				<h3>Your share in the projects is generating clean electricity that powers <%= total_kwh/11280 %> homes!"</h3>
+<!-- 					<%= 	proj.yearly_kwh %>
+ -->				<% end %>
+<!-- 				<%= total_kwh %>
+ -->				<h3>Your share in the projects is generating clean electricity that powers <%= (total_kwh/11280).round(0) %> homes!"</h3>
 				
 			
 			<!-- 	<div class="clearfix">

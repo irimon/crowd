@@ -10,11 +10,16 @@ before_filter :authenticate_user!
 				
 				Rails.logger.info(@inv)
 				new_amount = @project.funding_received + @inv.to_i
-				new_percent = new_amount.to_f/@project.amount.to_i
-				if new_percent > 1
+				new_percent = new_amount.to_f/@project.amount
+				old_percent =  @project.funding_received/@project.amount
+				if (new_percent >= 1) and (old_percent < 1)
 					new_percent=1
 					new_fully_funded = true
 					@project.update_attribute(:fully_funded, new_fully_funded)
+					title = 	 @project.name + " has successfully raised " +  @project.amount.to_s + "$ !"
+					content = ""
+					author = @project.name +  " management"
+					@news_item= NewsItem.create(title: title , content: content, auther: author, project_id: @project.id)
 				end
 				@project.update_attribute(:percent_funded, new_percent)
 				@project.update_attribute(:funding_received, new_amount)

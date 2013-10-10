@@ -33,6 +33,11 @@ footer {
  h3 {
 	letter-spacing: -1px;
 }
+
+#my-navbar {
+	border-width: 0 0 0px;
+}
+
  /*******************  home page  **********************/
  /******  slider ***********/
  
@@ -173,22 +178,16 @@ line-height: 16px;
 	background-color: theme-color;
 	background-image: linear-gradient(to bottom, #129632, #0D7956);
 }
+
 #project_progress {
-line-height: 10px;
-
-	margin-bottom: 0px;
-		width:65%;
+		width:85%;
 		float:left; 
-/*		height: 60%;
- 	
-		
-*/
-}
-
-.progress {
-	box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.6);
-	line-height: 10px;
-	height: 10px;
+		margin-top:5px;
+		margin-bottom: 0px;
+		box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.6);
+		line-height: 10px;
+		height: 10px;
+		background-image: linear-gradient(to bottom, whitesmoke, #C7BEBE);
 }
 .caption {
 	p {
@@ -445,6 +444,49 @@ html {
 /* 	font-family:  helvetika;
  */}
 /* *****************  projects search page **************************** */
+#search-projects-nav  {
+	padding-left:0px;
+	text-align:left;
+	margin-left:0px;
+	margin-top:60px;
+	/* display: inline-block;
+	.well {
+		display: inline-block;
+	} */
+		
+}
+#search-projects-nav {
+	a {
+		padding-right: 5px;
+ 	}
+}
+
+#pledged-amount {
+	text-align:left;
+	float:left;
+	margin-top: -10px;
+	h6 {
+		margin-top:0;
+		margin-bottom:0;
+	}
+	
+
+}
+
+#remaining-time {
+	text-align:right;
+	float:right;
+	margin-top: -10px;
+	h6 {
+		margin-top:0;
+		margin-bottom:0;
+	}
+}
+
+#search {
+	width: 140px;
+}
+
 
 #Current_projects {
 	text-align:left;
@@ -463,8 +505,12 @@ html {
 }
 #switch_to_map {
 	margin-left:0px;
-	margin-right:0px;
+	margin-right:20px;
 	float:left;
+	img {
+		width: 16px;
+		height: 16px;
+	}
 }
 #enable-compare {
 	margin-left:0px;
@@ -520,7 +566,13 @@ html {
 				display: inline-block;
 				float:right;
 				margin-left: 0px;
+				margin-right:-10px;
 				margin-top: 0px;
+			   -webkit-margin-after: 0em;
+			   -moz-margin-after: 0em;
+			   margin-after: 0em;
+
+
 			}
 			#funded_amount {
 				float:left;
@@ -584,6 +636,10 @@ html {
 	  text-align: left;
 	  padding:15px;
 	
+}
+
+.feed-page {
+	text-align: left;
 }
 /* footer */
 

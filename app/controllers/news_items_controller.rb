@@ -18,12 +18,13 @@ def create
 end 
 
  def feed
-    @title = "FEED title"
 	
 	if (params[:project_id].nil?)
+	    @title =  "All feeds"
 		@news_items = NewsItem.order("updated_at desc")
 	else 
 		@project = Project.find_by_id(params[:project_id])
+		   @title = @project.name + " feeds"
 		@news_items = @project.news_items.sort_by{|i| i.updated_at}
 	end
   
