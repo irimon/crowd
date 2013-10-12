@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
 before_filter :authenticate_user! , :except => [:search, :projects_map]
-# before_filter :admin_user,     only: [:add_new]
+before_filter :admin_user,     only: [:add_new]
  helper_method :sort_column, :sort_direction
 
  def add_new
@@ -186,7 +186,7 @@ end
 		end
 		
 		if params[:sort_almost_funded]
-			@projects = Project.paginate(page: params[:page],:per_page => 12).order("percent_funded desc").find(:all, :conditions => ['percent_funded != "1"'])
+			@projects = Project.paginate(page: params[:page],:per_page => 12).order("percent_funded desc")#.find(:all, :conditions => ['percent_funded != "1"'])
 		end
 		
    end

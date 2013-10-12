@@ -1,4 +1,23 @@
 <header class="navbar ">
+	<link rel="stylesheet" href="https://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+	<script src="https://code.jquery.com/jquery-1.9.1.js"></script>
+	<script src="https://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+
+<script>
+ $(function() {
+ 
+	 
+   $('#user-form').hide();
+	
+   $('#name_nav')
+      .click(function() {
+        $('#user-form').show();
+     });
+	  
+});
+</script>
+
+
 
 
   <div class="navbar-inner" id="my-navbar">
@@ -23,6 +42,15 @@
 		   <li>   <div class="signup">
 					<% if user_signed_in? %>
   						<%= link_to current_user.name, "#"  , :id => "name_nav"%>
+						
+						<div id="user-form">
+ 
+							<ul class="menu"">
+								<li><a href="#"><i class="icon-cog"></i> Settings</a></li>
+								<li><%= link_to "SignOut",  destroy_user_session_path, :method => :delete , :id => "sign_out_nav"%></li>
+							</ul>
+						</div>
+
  <!--				<li class="dropdown" id="name_nav"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.name %></a>
 							<ul class="dropdown-menu">
 								<li><a href="#"><i class="icon-cog"></i> Settings</a></li>
