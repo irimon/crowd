@@ -5,7 +5,6 @@
 
 <script>
  $(function() {
- 
 	 
    $('#user-form').hide();
 	
@@ -36,7 +35,11 @@
 <!-- 		   <li><img src="assets/rails.png"></li>
  -->           <li><%= link_to "Home", home_path %></li>
           <li><%= link_to "Projects", projects_path %></li>
-		  <li><%= link_to "New project", start_project_path %></li>
+		  <% if user_signed_in? %>
+				<% if current_user.admin? %>
+					<li><%= link_to "New project", start_project_path %></li>
+				<% end %>
+		  <% end %>
           <li><%= link_to "Portfolio", portfolio_path %></li>
 		  <li><%= link_to "Reports", reports_path, :id => "reports_nav" %></li>
 		   <li>   <div class="signup">
@@ -46,7 +49,7 @@
 						<div id="user-form">
  
 							<ul class="menu"">
-								<li><a href="#"><i class="icon-cog"></i> Settings</a></li>
+							    <li><%= link_to "Settings", "#" %></li>
 								<li><%= link_to "SignOut",  destroy_user_session_path, :method => :delete , :id => "sign_out_nav"%></li>
 							</ul>
 						</div>
