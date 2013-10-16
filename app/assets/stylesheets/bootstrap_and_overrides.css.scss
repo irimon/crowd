@@ -22,7 +22,10 @@ body { padding-top: 20px; }
 
 footer {
    background-color: #EFEFEF;
-
+	text-align:left;
+	ul {
+		margin:0;
+	}
 /* 	   background-color: #2773AE;;
  */}
  
@@ -532,8 +535,13 @@ html {
 	float:right;
 }
 
+#Projects_block {
+	margin-left: 60px;
+}
+
 .projects_list {
-	.span12 {
+	
+    .span12 {
 		margin-left: -30px
 	}
 
@@ -841,6 +849,9 @@ box-shadow:none;
 	overflow-y: scroll;
 	
 
+}
+ #soften-map-info {
+	margin:3px 0;
 }
  
  #all-map {

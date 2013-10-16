@@ -7,7 +7,7 @@
 	
 		<h2 style="text-align:left">Portfolio </h2>
 		<ul class="nav nav-tabs">
-			<li><a href="#panel1" data-toggle="tab">Current projects</a></li>
+			<li><a href="#panel1" data-toggle="tab">Current Projects</a></li>
 			<li class="active"><a href="#panel2" data-toggle="tab">Statistics</a></li>
 			<li><a href="#panel3" data-toggle="tab">Green Footprint</a></li>
 
@@ -28,7 +28,7 @@
 					  <th>Funding status</th>
 					   <th>Amount invested</th>
 					  <th>Annual return</th>
-					  <th>Percent funded</th>
+					  <th>Funded percentage </th>
 					  <th>Comments</th>  
 					  <th></th>  					  
 				  </tr>
@@ -57,8 +57,8 @@
 										<td><span class="label label-important">Not Funded</span></td>
 							<% end %>
 						<% end %>
-						<td><%= number_with_delimiter(current_user.get_investment_amount(proj.id), :delimiter => ",") %></td>
-						<td><%= proj.interese %></td>
+						<td>$<%= number_with_delimiter(current_user.get_investment_amount(proj.id), :delimiter => ",") %></td>
+						<td><%= proj.interese %>%</td>
 						<td><%= (proj.percent_funded * 100).round(0) %></td>
 						<td></td>
 						<td></td>
@@ -78,7 +78,7 @@
 						<th>Month <br></th>
 						<% for proj in current_user.projects %>
 						<th><%= proj.name %> <br>
-							invested <%= number_with_delimiter(current_user.get_investment_amount(proj.id), :delimiter => ",")%>$
+							invested $<%= number_with_delimiter(current_user.get_investment_amount(proj.id), :delimiter => ",")%>
 						</th>
 						<% end %>
 						<th>Total <br></th>  			  
@@ -219,17 +219,25 @@
  -->			
 <!-- 				<link href='http://fonts.googleapis.com/css?family=Kavoon' rel='stylesheet' type='text/css'>
  -->				<h2>Environmental impact</h2>
-			
+			<br>
+			<br>
+			<br>
+			<br>
 				<img src="assets/home_48.png" id="home1">
 					<img src="assets/home_48.png" id="home2">
 						<img src="assets/home_48.png" id="home3">
+			<br>			
+			<br>
+			<br>
+			<br>
+
 				<% total_kwh=0 %>
 				<% for proj in current_user.projects %>
 						<% total_kwh=total_kwh+(proj.yearly_kwh)*current_user.get_investment_amount(proj.id)/proj.amount.to_f %>
 <!-- 					<%= 	proj.yearly_kwh %>
  -->				<% end %>
 <!-- 				<%= total_kwh %>
- -->				<h3>Your share in the projects is generating clean electricity that powers <%= (total_kwh/11280).round(0) %> homes!"</h3>
+ -->				<h3>Your share in the projects is generating clean electricity that powers <%= (total_kwh/11280).round(0) %> homes</h3>
 				
 			
 			<!-- 	<div class="clearfix">

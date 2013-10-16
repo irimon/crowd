@@ -20,14 +20,16 @@
 						</form>
 					</li>
 					<br><br>
-					<li class="nav-header">Advance search</li>
+					<li id="switch_to_map"><%= link_to  image_tag("globe_24.png"), projects_map_path %> </li>
+					<li> <%= link_to  " Map view", projects_map_path %> </li>
 					<li class="divider"></li>
+					<li class="nav-header">Advance search</li>
+					
 					<li>	<%= link_to "All", {:controller => "projects", :action => "search"} %>  					</li>
 					<li>	<%= link_to "Solar",{:controller => "projects", :action => "search", :sort_by_type => "Solar"} %>		</li>
 					<li>	<%= link_to "Wind", {:controller => "projects", :action => "search", :sort_by_type => "Wind"} %>		</li>
 					<li>	<%= link_to "Hydro", {:controller => "projects", :action => "search", :sort_by_type => "Hydro"} %>	</li>
-					<li id="switch_to_map"><%= link_to  image_tag("globe_24.png"), projects_map_path %> </li>
-					<li> <%= link_to  " Map view", projects_map_path %> </li>
+				
 					
 					<li class="divider"></li>
 					<li class="nav-header">Impact</li>
@@ -38,10 +40,10 @@
 					<li class="nav-header">Geography</li>
 					
 					<li class="divider"></li>
-					<li class="nav-header">Funding</li>
-					<li>	<%= link_to "Requested funds(high)", {:controller => "projects", :action => "search", :sort_by_pledged => "high"} %>		</li>
-					<li>	<%= link_to "Requested funds(low)", {:controller => "projects", :action => "search", :sort_by_pledged => "low"} %>		</li>
-					<li>	<%= link_to "Almost funded", {:controller => "projects", :action => "search", :sort_almost_funded=> "true"} %>		</li>
+					<li class="nav-header">Sort By</li>
+					<li>	<%= link_to "Funding Goal", {:controller => "projects", :action => "search", :sort_by_pledged => "high"} %>		</li>
+<!-- 					<li>	<%= link_to "Funding Goal - descending", {:controller => "projects", :action => "search", :sort_by_pledged => "low"} %>		</li>
+ -->					<li>	<%= link_to "Almost funded", {:controller => "projects", :action => "search", :sort_almost_funded=> "true"} %>		</li>
 					<li>	<%= link_to "Ending soon ", {:controller => "projects", :action => "search", :sort_by_time => "true"} %>		</li>
 					
 
@@ -83,7 +85,7 @@
 	<h5 id="compare_message">Mark the projects you wish to compare and press the button</h5> -->
 	
 	
-	<div class="span9 projects_list">
+	<div class="span9 projects_list" id= "Projects_block" >
 			
 				
 
