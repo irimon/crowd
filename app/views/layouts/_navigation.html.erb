@@ -5,9 +5,7 @@
 
 <script>
  $(function() {
-	 
-   $('#user-form').hide();
-	
+	 	
    $('#name_nav')
       .hover(function() {
         $('#user-form').show();
@@ -44,9 +42,9 @@
 		  <li><%= link_to "Reports", reports_path, :id => "reports_nav" %></li>
 		   <li>   <div class="signup">
 					<% if user_signed_in? %>
-  						<%= link_to current_user.name, "#"  , :id => "name_nav"%>
+  						<%= link_to current_user.name, "#"  , :id => "name_nav" %>
 						
-						<div id="user-form">
+						<div class = "user_drop_down" id="user-form">
  
 							<ul class="menu"">
 							    <li><%= link_to "Settings", "#" %></li>
