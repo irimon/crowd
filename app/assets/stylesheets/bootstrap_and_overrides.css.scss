@@ -19,7 +19,42 @@ body { padding-top: 20px; }
 
 /*    background: #2773AE;;
  */}
+ 
+ #project_contenet {
+	margin-left:0px;
+	margin-top:30px;
+	
+}
 
+#project-description {
+	margin-top:0px;
+	padding-right:20px;
+}
+
+ #news-feed-title , #company-name{
+	display: inline-block;
+ }
+ 
+ #company-name {
+	margin-left:10px;
+	margin-bottom:20px;
+ }
+ 
+ #progress-project-view {
+	margin-left:0;
+	min-height:15px;
+
+ } 
+ 
+ #pane1 {
+	h4 {
+		display: inline-block;
+	}
+	li {
+		margin-bottom:10px;
+	}
+}	
+ 
 footer {
    background-color: #EFEFEF;
 	text-align:left;
@@ -462,6 +497,13 @@ html {
 	} */
 		
 }
+
+#search {
+	background-image: url("search.png");
+	background-repeat: no-repeat;
+	background-position: right;
+/* 	 background: transparent;
+ */}
 #search-projects-nav {
 	a {
 		padding-right: 5px;
@@ -519,6 +561,19 @@ html {
 		height: 16px;
 	}
 }
+#search-projects-nav {
+	img {
+		width: 16px;
+		height: 16px;
+	}
+}
+#search {
+
+}
+/* #my_search_icon {
+	float:right;
+	display:inline;
+} */
 #enable-compare {
 	margin-left:0px;
 }
@@ -533,13 +588,17 @@ html {
 }
  */
 #location-img {
-	width: 20px;
+	width: 30px;
 	height: 30px;
 	float:right;
 }
 
 #Projects_block {
 	margin-left: 60px;
+}
+
+.project_page {
+	text-align:left;
 }
 
 .projects_list {
