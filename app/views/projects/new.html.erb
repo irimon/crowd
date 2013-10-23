@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+
+<body>
+<div class="container">
+
+	<div class="new_project">
+		
+		<%= link_to "new company", new_company_path,  class: "btn btn-small btn-primary" %> 
+		
+		<h3>For demo</h3>
+
+		<a href="create_demo_projects" class="btn" id="demo-button"><strong>Add demo projects</Demo></a>
+	    <a href="reset_demo_projects" class="btn" id="demo-button"><strong>Reset projects</Demo></a>
+		
+		<h1>Add new project </h1>
+		
+		<%= form_for @project do |pr|  %>
+			
+		  
+              <%= pr.label :name, 'Project name' %>
+			  <%= pr.text_field :name %>
+
+			  <%= pr.label :description, 'Project Description' %>
+			  <%= pr.text_area :description %>
+			
+			  <%= pr.label :project_kind, 'Type of project' %>
+			  <%= pr.select(:project_kind, [['Solar',1], ['Wind',2], ['Trash to electricity',3], ['Hydro',4], ['Other',5]]) %>
+ 			
+			    
+			
+			 <%= pr.text_field :project_kind , :id => "Other-text" %>
+			  
+			
+ 			  <%= pr.label :amount, 'Requested funding' %>
+			  <%= pr.text_field :amount %>
+
+			  <%= pr.label :end_date, 'Final funding date' %>
+		 	 <%= pr.date_select :end_date, :start_year => 2013%>
+			 <%= pr.label :first_payment, 'First payment due' %>
+		 	 <%= pr.date_select :first_payment, :start_year => 2013%>
+			  <%= pr.label :payment_number, 'Number of payments' %>
+			  <%= pr.text_field :payment_number %>
+			 <%= pr.label :latitude, 'Latitude' %>
+			  <%= pr.text_field :latitude %>
+			  <%= pr.label :longitude, 'Longitude' %>
+			  <%= pr.text_field :longitude %>
+			  <%= pr.label :interese, 'Interest' %>
+			  <%= pr.text_field :interese %>
+			  <%= pr.label :yearly_kwh, 'Yearly KWH' %>
+			  <%= pr.text_field :yearly_kwh %>
+			  <%= pr.label :picture_url, 'picture' %>
+			  <%= pr.text_field :picture_url %>
+			  
+			  
+
+ 			  <%= pr.submit %>
+			 
+	
+
+
+		<% end %>
+	
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+		<script>
+		(function() {
+		    $('#Other-text').hide(); 
+			$("#project_project_kind").change(function() {
+				var cur = $("#project_project_kind").val();
+<!-- 				console.log(cur);
+ -->				
+				if (cur == 5) {
+					$('#Other-text').show(); 
+				} else {
+					$('#Other-text').hide(); 
+				};	
+			});		
+			
+			$("#project_project_kind_solar").change(function() {
+				$('#Other-text').hide(); 
+				
+			});		
+			$("#project_project_kind_wind").change(function() {
+				$('#Other-text').hide(); 
+			});		
+			$("#project_project_kind_trash").change(function() {
+				$('#Other-text').hide(); 
+			});		
+			
+			
+				
+			
+			$('#Feasabilty').change(function() {
+				$('#Feas-offer').show();
+				$('#Ong-offer').hide();
+			});
+			
+			$('#Ongoing').change(function() {
+				$('#Feas-offer').hide();
+				$('#Ong-offer').show();	
+			});
+			
+			$('#AlwaysCon').change(function() {
+				confirm("Are you sure you want to allow every investor to contact you directly?");
+			});
+			
+		})();
+
+
+	</script>
+	
+	</div>
+</div>
+</body>
