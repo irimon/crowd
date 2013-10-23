@@ -12,4 +12,6 @@
 
 class Company < ActiveRecord::Base
   attr_accessible :company_name, :description, :website
+  
+  has_many :projects
 end

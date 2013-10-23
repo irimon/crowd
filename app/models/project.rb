@@ -23,11 +23,12 @@
 #  payment_number        :integer
 #  first_payment         :datetime
 #  yearly_kwh            :integer
+#  company_id            :integer
 #
 
 class Project < ActiveRecord::Base
   attr_accessible :amount, :name, :description, :phase, :project_kind, :end_date, :picture_url, :funding_received,  :latitude, :longitude, :interese, 
-				  :fully_funded, :percent_funded, :payment_number, :first_payment, :yearly_kwh
+				  :fully_funded, :percent_funded, :payment_number, :first_payment, :yearly_kwh, :company_id
   belongs_to :company
    before_save :default_values
   
