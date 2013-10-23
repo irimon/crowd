@@ -23,6 +23,7 @@
 #  payment_number        :integer
 #  first_payment         :datetime
 #  yearly_kwh            :integer
+#  company_id            :integer
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html

@@ -23,6 +23,7 @@
 #  payment_number        :integer
 #  first_payment         :datetime
 #  yearly_kwh            :integer
+#  company_id            :integer
 #
 
 require 'test_helper'
