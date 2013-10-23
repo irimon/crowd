@@ -50,6 +50,7 @@ before_filter :admin_user,     only: [:add_new]
 	else
 		ind=1
 	end
+									
 	years = [2013,2014]
 	kind_arry = ["Solar","Wind","Hydro","Other"]
 	pic_array = ["wind_1.jpg" , "wind_2.jpg", "wind_3.jpg",
@@ -151,6 +152,29 @@ before_filter :admin_user,     only: [:add_new]
 		 end
 		 
 	end
+
+	@company = Company.create(company_name: "Focal" , description: "An Active Management and Holding Company that develops, manages and owns renewable energy power plants 
+									The company runs projects in Biomass (farming waste), Hydro (run-of-the-river), Solar and Wind, with an initial focus on India.
+									The company  has a steady cash flow from income-generating conservative projects", website: "http://focal-energy.com")
+									
+	@project = Project.create( name: "Sathyam" , amount: 3800000,
+							  phase: nil, end_date: DateTime.now - 500.day, picture_url: "sathyam.png", description: "10 Mw mustard-based power plant in Rajasthan, India. 
+										A Joint enterprise with an experienced local group as a junior partner. 20-year power purchase agreement with plentiful supply of fuel in the area.  
+										Fuel is procured directly from farmers or intermediaries who in turn buy directly from individual farmers.  
+										Farmers and intermediaries bring the fuel with tractors and trucks from the fields to our plant location ", 
+										funding_received: 3800000 , fully_funded: true, percent_funded: 1,
+										project_kind: "Biomass", latitude: 26.65, longitude: 74.03 , interese: 5, 
+										payment_number: 120 , first_payment: DateTime.now - 200.day, yearly_kwh: 10000, company_id: @company.id)
+	
+	@project = Project.create( name: "Prakriti" , amount: 5500000,
+							  phase: nil, end_date: DateTime.now + 100.day, picture_url: "Prakriti.jpg", description: "12 Mw mustard-based power plant in Rajasthan, India. 
+										Partnership with a junior experienced local group. 20-year Power Purchase Agreement with plentiful supply of fuel in the area. 
+										All steps till the clearance from SLEC (Project awarding body of State Government) have been completed. Board Government of Rajasthan will not
+											allow any new plant within 80 km radius from the plant for safeguarding biomass procurement. ", 
+											funding_received: 1000000 , fully_funded: false, percent_funded: 0.18,
+							  project_kind: "Biomass", latitude: 26.014, longitude: 76.35 , interese: 5, 
+							  payment_number: 120 , first_payment: DateTime.now + 800.day, yearly_kwh: 12000, company_id: @company.id)
+							  
 	render 'projects/add_new'
 	
 end
@@ -260,7 +284,7 @@ end
 			 marker.infowindow render_to_string(:partial => "/projects/mapinfo", :locals => { :project => project})
 			marker.title "#{project.name}"
 			marker.picture({
-					:picture => arr[(project.project_kind == "Solar") ? 0 : ((project.project_kind == "Wind") ? 1 : 2)]
+					:picture => arr[(project.project_kind == "hydro") ? 2 : ((project.project_kind == "Wind") ? 1 : 0)]
 			})
 		end
 	end
@@ -283,7 +307,7 @@ end
 			marker.infowindow render_to_string(:partial => "/projects/mapinfo", :locals => { :project => project})
 			marker.title "#{project.name}"
 			marker.picture({
-					:picture => arr[(project.project_kind == "Solar") ? 0 : ((project.project_kind == "Wind") ? 1 : 2)]
+					:picture => arr[(project.project_kind == "Hydro") ? 2 : ((project.project_kind == "Wind") ? 1 : 0)]
 			})
 		end
 		
