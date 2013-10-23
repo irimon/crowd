@@ -15,7 +15,7 @@
 	<!-- 		<div class="well" style="width:200px; padding: 8px 0;">
 	 -->			<ul class="nav nav-list">
 					<li class="nav-header">Search Menu</li>
-					<li><form class="row-fluid navbar-search span2" id="search_projects" action="/projects" method="get">
+					<li><form class="row-fluid navbar-search span2" id="search_projects" action="/projects" method="get"><!-- <i class="icon-search"></i> -->
 							<input type="text" id="search" name="search" class="search-query" placeholder="Search">
 						</form>
 					</li>
@@ -129,9 +129,12 @@
 								<h4><%= link_to proj.name, {:controller => "projects", :action => "show", :selected_id => proj.id} %></h4>
 								<%= link_to image_tag("Location-32.png", id: "location-img") , {:controller => "projects", :action => "show_project_location", :selected_id => proj.id} %>
 								
-								<h5>by <%=  company_list[rand_num] %>
-<!-- 									<a href="static_pages/contact_company" class="btn" id="mail-button"><i class="icon-envelope"></i></a>
- -->								</h5>
+								<% if proj.company_id.nil? %>
+									<h5>by <%=  company_list[rand_num] %> </h5>
+								<% else %>
+									<h5>by <%= Company.find(proj.company_id).company_name %></h5><!--  -->
+								<% end %>
+								
 								<p id="project_description"><%= proj.description %></p>
 								<hr id="project_viw_hr"/>
 								<div id="pledged-amount"><h6>$<%= number_with_delimiter(Integer(proj.amount)/1000, :delimiter => ",") %>K</h6></div> 
