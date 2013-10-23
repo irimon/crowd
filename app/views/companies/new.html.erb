@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+
+<body>
+<div class="container">
+	<%= form_for @company do |comp|  %>
+			
+		  
+              <%= comp.label :company_name, 'Company name' %>
+			  <%= comp.text_field :company_name %>
+
+			  <%= comp.label :description, 'Company Description' %>
+			  <%= comp.text_area :description %>
+
+			    <%= comp.label :website, 'Company website' %>
+			  <%= comp.text_field :website %>
+			  
+			<%= comp.submit %>
+				  
+	<% end %>
+</div>
+</body>
