@@ -1,6 +1,6 @@
 class ChangeAmountFormatInProjects < ActiveRecord::Migration
   def self.up
-   change_column :projects, :amount, :integer
+   change_column :projects, :amount, 'integer USING CAST(amount AS integer)'
   end
 
   def self.down
