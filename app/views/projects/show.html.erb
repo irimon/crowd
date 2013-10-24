@@ -194,10 +194,11 @@
 					
 					<div class="tab-content">
 							<div id="pane1" class="tab-pane active">
-								<% @copmany = Company.find(@project.company_id) %>
-								<% if  @copmany.nil? %>
+								
+								<% if  @project.company_id.nil? %>
 									<h2>No data on company</h2> 
 								<% else %>
+									<% @copmany = Company.find(@project.company_id) %>
 									<img src="../assets/focal.jpg" width="48px" />
 									<h2 id="company-name"> Focal</h2><!--  company name -->
 									<p>An Active Management and Holding Company that develops, manages and owns renewable energy power plants 
@@ -230,8 +231,54 @@
 							
 							<div id="pane2" class="tab-pane">
 							
-								<h2> Financials holder </h2>
-
+								<h3>General</h3>
+								<table class="table table-condensed">
+									<tbody>
+										 
+											<tr>
+												<td>Power purchase agreement</td>
+												<td>20 years</td>
+										  </tr>	
+										 <tr>
+												<td>Purchesing clients</td>
+												<td></td>
+										  </tr>	
+										   <tr>
+												<td>IRR</td>
+												<td>23%</td>
+										  </tr>	
+										  
+										   <tr>
+												<td>Yield</td>
+												<td>5%</td>
+										  </tr>	
+									</tbody>
+								</table>
+								
+								<h3>P&L</h3>
+								<table class="table table-condensed">
+								  
+									<tbody>
+										 
+											<tr>
+												<td>Year</td>
+												<td>2016</td>
+												<td>2017</td>
+												<td>2018</td>
+												<td>2019</td>
+												<td>2020</td>
+										  </tr>	
+										 <tr>
+												<td>Revenues</td>
+												<td>$3.1M US</td>
+												<td>$6.9M US</td>
+												<td>$7.6M US</td>
+												<td>$7.8M US</td>
+												<td>$8.0M US</td>
+										  </tr>	
+									</tbody>
+								</table>
+								
 							</div>
 							
 							<div id="pane3" class="tab-pane">
