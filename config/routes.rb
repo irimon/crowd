@@ -22,7 +22,7 @@ CrowdMoc::Application.routes.draw do
       # :defaults => { :format => 'atom' }
   resources :relationships, only: [:create]
   resources :users
-  resources :companies
+  # resources :companies
   
   resources :news_items
 	match '/feed' => 'news_items#feed',
