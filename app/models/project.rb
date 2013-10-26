@@ -49,7 +49,7 @@ class Project < ActiveRecord::Base
 		self.funding_received = 0
 	end
   end
-  acts_as_gmappable :process_geocoding => false
+  #acts_as_gmappable :process_geocoding => false
   
   def gmaps4rails_address
 	"bla"
