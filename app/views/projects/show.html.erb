@@ -188,7 +188,11 @@
 					<ul class="nav nav-tabs project_navs">
 							<li class="active"><a href="#pane1" data-toggle="tab">Company</a></li>
 							<li><a href="#pane2" data-toggle="tab">Project financials</a></li>
-							<li><a href="#pane3" data-toggle="tab">Projections</a></li>
+							<% if @project.percent_funded == 1 %> 
+								<li><a href="#pane3" data-toggle="tab">Previous returns</a></li>
+							<% else %>
+								<li><a href="#pane3" data-toggle="tab">Projections</a></li>
+							<% end %>
 					</ul>
 					
 					
@@ -206,7 +210,7 @@
 										The company  has a steady cash flow from income-generating conservative projects
 									</p><!--  company description -->
 									<a href= <%= @copmany.website %> ><%= @copmany.website %></a>
-									<h3>Company future projects</h3>
+									<h3>Company open projects</h3>
 									<%  for proj in Project.find(:all, :conditions => {:company_id => @project.company_id })  %>
 										<%  if proj.percent_funded < 1 %>
 											<li>
@@ -217,7 +221,7 @@
 										<% end %>
 									<% end %>
 									
-									<h3>Company past and current projects</h3>
+									<h3>Previos company projects</h3>
 									<%  for proj in Project.find(:all, :conditions => {:company_id => @project.company_id })  %>
 										<%  if proj.percent_funded == 1 %>
 										<li>
@@ -282,7 +286,11 @@
 							</div>
 							
 							<div id="pane3" class="tab-pane">
-								<h2>Projections holder </h2>
+								<% if @project.percent_funded == 1 %> 
+									<h2>Projections holder </h2>
+								<% else %>
+									<h2>Projections holder </h2>
+								<% end %>
 							</div>
 							
 					</div>
