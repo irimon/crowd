@@ -13,5 +13,4 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
-//= require gmaps4rails/gmaps4rails.base
 //= require_tree .
