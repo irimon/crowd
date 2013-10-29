@@ -316,10 +316,7 @@
 									</tbody>
 								</table>
 								
-								<h3>P&L</h3>
-								<% if @project.name == "Prakriti" %>
-									<%= image_tag("Prakriti_PL.png") %>
-								 <% end %>
+								
 							<!-- 	<table class="table table-condensed">
 								  	
 									<tbody>
@@ -395,7 +392,11 @@
 							
 							<div id="pane5" class="tab-pane">
 								<% if current_user.relationships.find_by_project_id(@project.id) %> 
-									<h2>Projections holder </h2>
+								
+									<% if @project.name == "Prakriti" %>
+										<h3>P&L</h3>
+										<%= image_tag("Prakriti_PL.png") %>
+									<% end %>
 								<% else %>
 									<h4>Only investors in this project have access to the operational reports</h4>
 								<% end %>
