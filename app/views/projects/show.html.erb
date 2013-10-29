@@ -121,10 +121,15 @@
 										<td>Capacity</td>
 										<td><%= @project.yearly_kwh/1000 %>MWh  </td>
 								  </tr>	
+								  <tr>
+										<td>Technology</td>
+										<td><%= @project.project_kind %>  </td>
+								  </tr>	
 								 <tr>
-										<td>Yearly interest</td>
+										<td>Yield</td>
 										<td> <%=@project.interese %>%</td>
 								  </tr>	
+									
 								   <tr>
 										<td>Number of months of return</td>
 										<td>120</td>
@@ -132,16 +137,13 @@
 								  
 								   <tr>
 										<td>Date of first payment</td>
-										<td><%= @project.first_payment %></td>
+										<td><%= @project.first_payment.strftime("%b/%d/%Y") %></td>
 								  </tr>	
 								   <tr>
 										<td>Legal documents</td>
 										<td><%= link_to "Legals" , "#" %></td>
 								  </tr>	
-								  <tr>
-										<td>Company website</td>
-										<td><%= link_to "wwww.middle-east-solar.com" , "#" %></td>
-								  </tr>	
+								
 								<!--   <tr>
 										<td>Contact Company </td>
 										<td><td><a href="#" class="btn" id="contact-company-btn" ><i class="icon-envelope" ></i></a></td></td>
@@ -155,7 +157,7 @@
 							<% end %>	
 							
 							<% if @project.percent_funded*100 >= 100 %>
-									<a class="btn" id="closed" href="#">Closed</a>
+									<h4>Project is funded </h4>
 							<% end %>
 <!-- 						  <div class="empty-space"></div>
  -->						  
@@ -163,7 +165,7 @@
 				<hr/>
 				<div class="project-feed">  
 					<br><br>
-					<img src="../assets/RSS-64.png" width="48px" /> <h3 id="news-feed-title">News Feed </h3>			  	
+					<img style="width: 48px;" src="../assets/RSS-64.png"/> <h3 id="news-feed-title">News Feed </h3>			  	
 
 					
 						<% if  @project.news_items != nil %>
@@ -193,6 +195,9 @@
 							<% else %>
 								<li><a href="#pane3" data-toggle="tab">Projections</a></li>
 							<% end %>
+							<li><a href="#pane4" data-toggle="tab">Technical details</a></li>
+							<li><a href="#pane5" data-toggle="tab">Opperational Reports</a></li>
+
 					</ul>
 					
 					
@@ -203,33 +208,54 @@
 									<h2>No data on company</h2> 
 								<% else %>
 									<% @copmany = Company.find(@project.company_id) %>
-									<img src="../assets/focal.jpg" width="48px" />
+									<img style="width: 48px;" src="../assets/focal.jpg" />
 									<h2 id="company-name"> Focal</h2><!--  company name -->
 									<p>An Active Management and Holding Company that develops, manages and owns renewable energy power plants 
 										The company runs projects in Biomass (farming waste), Hydro (run-of-the-river), Solar and Wind, with an initial focus on India.
 										The company  has a steady cash flow from income-generating conservative projects
 									</p><!--  company description -->
 									<a href= <%= @copmany.website %> ><%= @copmany.website %></a>
-									<h3>Company open projects</h3>
+									<h3>Open projects</h3>
 									<%  for proj in Project.find(:all, :conditions => {:company_id => @project.company_id })  %>
 										<%  if proj.percent_funded < 1 %>
 											<li>
-											<%= link_to image_tag(proj.picture_url, :width=>"64px"), {:controller => "projects", :action => "show", :selected_id => proj.id} %>
+											<%= link_to image_tag(proj.picture_url, :style => "width: 64px"), {:controller => "projects", :action => "show", :selected_id => proj.id} %>
 											<h4><%= proj.name %></h4>
 											<br>
 											</li>
 										<% end %>
 									<% end %>
 									
-									<h3>Previos company projects</h3>
+									<h3>Running projects</h3>
 									<%  for proj in Project.find(:all, :conditions => {:company_id => @project.company_id })  %>
 										<%  if proj.percent_funded == 1 %>
 										<li>
-											<%= link_to image_tag(proj.picture_url, :width=>"64px"), {:controller => "projects", :action => "show", :selected_id => proj.id} %>
+											<%= link_to image_tag(proj.picture_url, :style => "width: 64px"), {:controller => "projects", :action => "show", :selected_id => proj.id} %>
 											<h4><%= proj.name %></h4>
 											</li>
 										<% end %>
 									<% end %>
+									<br>
+									<h3>Track Record</h3>
+									<table class="table table-condensed">
+										<tbody>
+										 	<tr>
+												<td>Duration</td>
+												<td>1 Year</td>
+												<td>3 Years</td>
+												<td>5 Years</td>
+											</tr>
+											
+											<tr>
+												<td>Anaul IRR</td>
+												<td>30%</td>
+												<td>25%</td>
+												<td>---</td>
+											</tr>
+
+										</tbody>
+									</table>
+										
 								<% end %>
 							</div>
 							
@@ -238,30 +264,64 @@
 								<h3>General</h3>
 								<table class="table table-condensed">
 									<tbody>
-										 
+										 	<tr>
+												<td>Project Cost</td>
+												<% if @project.name == "Prakriti" %>
+													<td>13.7M USD</td>
+												<% else %> <td></td>  <% end %>
+										  </tr>	
+										  <tr>
+												<td>Financial sources</td>
+												<% if @project.name == "Prakriti" %>
+												<td></td>
+												<% else %> <td></td>  <% end %>
+										  </tr>	
+										  <tr>
+												<td><span class="tab"></span>Debt</td>
+												<% if @project.name == "Prakriti" %>
+												<td>40%</td>
+												<% else %> <td></td>  <% end %>
+										  </tr>	
+										  <tr>
+												<td><span class="tab"></span>Equity</td>
+												<% if @project.name == "Prakriti" %>
+												<td>60%</td>
+												<% else %> <td></td>  <% end %>
+										  </tr>	
 											<tr>
 												<td>Power purchase agreement</td>
+												<% if @project.name == "Prakriti" %>
 												<td>20 years</td>
+												<% else %> <td></td>  <% end %>
 										  </tr>	
 										 <tr>
 												<td>Purchesing clients</td>
+												<% if @project.name == "Prakriti" %>
 												<td></td>
+												<% else %> <td></td>  <% end %>
 										  </tr>	
 										   <tr>
 												<td>IRR</td>
+												<% if @project.name == "Prakriti" %>
 												<td>23%</td>
+												<% else %> <td></td>  <% end %>
 										  </tr>	
 										  
 										   <tr>
 												<td>Yield</td>
+												<% if @project.name == "Prakriti" %>
 												<td>5%</td>
+												<% else %> <td></td>  <% end %>
 										  </tr>	
 									</tbody>
 								</table>
 								
 								<h3>P&L</h3>
-								<table class="table table-condensed">
-								  
+								<% if @project.name == "Prakriti" %>
+									<%= image_tag("Prakriti_PL.png") %>
+								 <% end %>
+							<!-- 	<table class="table table-condensed">
+								  	
 									<tbody>
 										 
 											<tr>
@@ -281,7 +341,7 @@
 												<td>$8.0M US</td>
 										  </tr>	
 									</tbody>
-								</table>
+								</table>  -->
 								
 							</div>
 							
@@ -293,6 +353,55 @@
 								<% end %>
 							</div>
 							
+							<div id="pane4" class="tab-pane">
+									<h3>The technology</h3>
+									
+									<h3>Equipment</h3>
+									<table class="table table-condensed">
+										
+										 <thead>
+											<tr>
+												<td>Key equipment</td>
+												<td>Supplier</td>
+											</tr>
+										</thead>
+										<tbody>
+										 
+										
+											 <tr>
+												<td>Boiler</td>
+												<td>Walchandnagar Industries</td>
+											</tr>
+											 <tr>
+												<td>Turbine</td>
+												<td>Siemens</td>
+											</tr>
+											 <tr>
+												<td>Generator</td>
+												<td>TPE, supplied by Siemens</td>
+											</tr>
+											 <tr>
+												<td>Gearbox</td>
+												<td>Walchandnagar Industries</td>
+											</tr>
+											 <tr>
+												<td>Air cooled condencer</td>
+												<td>GEI, Bhopal</td>
+										     </tr>	
+										
+										</tbody>
+									</table>
+							</div>
+							
+							<div id="pane5" class="tab-pane">
+								<% if current_user.relationships.find_by_project_id(@project.id) %> 
+									<h2>Projections holder </h2>
+								<% else %>
+									<h4>Only investors in this project have access to the operational reports</h4>
+								<% end %>
+							</div>
+							
+
 					</div>
 					
 				</div>

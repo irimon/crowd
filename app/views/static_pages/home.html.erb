@@ -126,7 +126,20 @@
 					
 					<div class="row-fluid span7" id="suc-projects">
 							<h2>Recently funded projects</h2>
-
+							<% if Project.all.count > 4 %>
+								<% ind = 0 %>
+								<% for proj in Project.all %>
+									<% if ind < 4 %>
+										<div class="span6 zoom">
+											<%= link_to image_tag(proj.picture_url), {:controller => "projects", :action => "show", :selected_id => proj.id} %>
+											<!-- <a href="./project_1"  title="A solar farm near the delta of the Nile">
+												<img src="../assets/solar_1.jpg" alt="This is the Image Alt Attribute used as description">
+											</a>	 -->					
+										</div>
+										<% ind = ind + 1 %>
+									<% end %>
+								<% end %>
+							<% else %>
 							<div class="span6 zoom">
 								<a href="./project_1"  title="A solar farm near the delta of the Nile">
 									<img src="../assets/solar_1.jpg" alt="This is the Image Alt Attribute used as description">
@@ -147,6 +160,8 @@
 									<img src="../assets/green-world.jpg" alt="This is the Image Alt Attribute used as description">
 								</a>
 							</div>
+							
+							<% end %>
 					</div>
 					
 					<div class="span5" id="testimonials">

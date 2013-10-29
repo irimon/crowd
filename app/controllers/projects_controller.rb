@@ -166,6 +166,29 @@ before_filter :admin_user,     only: [:add_new]
 										project_kind: "Biomass", latitude: 26.65, longitude: 74.03 , interese: 5, 
 										payment_number: 120 , first_payment: DateTime.now - 200.day, yearly_kwh: 10000, company_id: @company.id)
 	
+	title_1 = 	"Great news! Tariff is higher than we originally projected"
+	content_1 = "Recent data from the local government shows we are looking at better tariff than what we originally planned. 
+				 We will update our projections accordingly."
+	author = "The Focal team"
+	@news_item= NewsItem.create(title: title_1 , content: content_1, auther: author, project_id: @project.id)
+	
+	title_1 = 	"Plant utilization status report"
+	content_1 = "Even though average plant utilization thus far is much below post-stabilization expectations, 
+				the project has occasionally performed at its full potential. 
+				
+				Average plant utilization has not achieved desirable levels due to boiler temperature control 
+				issues associated specifically with the use of mustard husk, which led to frequent leakages and a 
+				need to operate at partial capacity. A shutdown and some design modifications was carried out 2012 to address some of the above boiler issues.  
+				Remaining boiler desired enhancements have been analyzed and solution shall be implemented in late 2013.
+				"
+	author = "The Focal team"
+	@news_item= NewsItem.create(title: title_1 , content: content_1, auther: author, project_id: @project.id)
+
+	title_1 = 	"Consumption numbers are looking promising"
+	content_1 = "Fuel consumption per unit and auxiliary consumption (both critical technical measures) are already good and on a positive improvement trend"
+	author = "The Focal team"
+	@news_item= NewsItem.create(title: title_1 , content: content_1, auther: author, project_id: @project.id)
+
 	@project = Project.create( name: "Prakriti" , amount: 5500000,
 							  phase: nil, end_date: DateTime.now + 100.day, picture_url: "Prakriti.jpg", description: "12 Mw mustard-based power plant in Rajasthan, India. 
 										Partnership with a junior experienced local group. 20-year Power Purchase Agreement with plentiful supply of fuel in the area. 
