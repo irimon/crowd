@@ -177,11 +177,12 @@
 								<% end %>
 							</div>
 							<br>
-							<%= link_to "View entire feed", feed_path(:project_id => @project.id) %>
+							<%= link_to "View entire feed", feed_path(:project_id => @project.id), :id=> "view_feed" %>
 
 					<% end %>
 				
 						<%= link_to "Add news item", "#", :class => "btn-small", :id=> "add-news-btn" %> <!--  TODO - add access to admin only -->
+						<br><br>
 				</div>
 		</div>
 		
