@@ -7,7 +7,9 @@ gem 'rails', '3.2.13'
 
 
 group :development do
-  gem 'sqlite3', '1.3.7'
+   gem 'sqlite3', '1.3.7'
+   # gem 'pg', '0.15.1'
+
 end
 
 
@@ -43,7 +45,7 @@ gem 'devise', '3.0.0'
 # gem 'jbuilder'
 gem "node"
 gem 'annotate'
-gem 'gmaps4rails'
+gem 'gmaps4rails', '1.5.6'
 #gem 'geokit'
 # Use unicorn as the app server
 # gem 'unicorn'
