@@ -28,8 +28,11 @@
 			<% end %>
 			<% ind=ind+1 %>
 				<h4><%= proj.name %> Reports</h4>
-				<img src="assets/Financial-Statement.jpg", alt="report" >
-				</div>
+				<% if proj.name == "Prakriti" %>
+					<img src="assets/Prakriti_PL.png", alt="report" >
+				<% end %>
+<!-- 				<img src="assets/Financial-Statement.jpg", alt="report" >
+ -->				</div>
 		<% end %>	
 			
   </div><!-- /.tab-content -->

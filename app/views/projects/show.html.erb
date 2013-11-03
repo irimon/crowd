@@ -173,11 +173,16 @@
 								<% for feed in  @project.news_items %>
 									<br>
 									<%= link_to feed.title, {:controller => "news_items", :action => "show", :id => feed.id} %> <br>
-									<%= feed.updated_at %><br>
+									<%= feed.updated_at.strftime("%A, %B %d, %Y") %><br>
 								<% end %>
 							</div>
 							<br>
-							<%= link_to "View entire feed", feed_path(:project_id => @project.id), :id=> "view_feed" %>
+							<% user_agent =  request.env["HTTP_USER_AGENT"].downcase %>
+							<% if user_agent.index("chrome/") %>
+								<p>To view feeds in Chrome you need to install a helper app, or change a browser</p>
+							<% else %>
+								<%= link_to "View entire feed", feed_path(:project_id => @project.id), :id=> "view_feed" %>
+							<% end %>
 
 					<% end %>
 				
@@ -191,13 +196,17 @@
 					<ul class="nav nav-tabs project_navs">
 							<li class="active"><a href="#pane1" data-toggle="tab">Company</a></li>
 							<li><a href="#pane2" data-toggle="tab">Project financials</a></li>
-							<% if @project.percent_funded == 1 %> 
+							<!-- <% if @project.percent_funded == 1 %> 
 								<li><a href="#pane3" data-toggle="tab">Previous returns</a></li>
 							<% else %>
 								<li><a href="#pane3" data-toggle="tab">Projections</a></li>
-							<% end %>
-							<li><a href="#pane4" data-toggle="tab">Technical details</a></li>
-							<li><a href="#pane5" data-toggle="tab">Opperational Reports</a></li>
+							<% end %> -->
+							<li><a href="#pane3" data-toggle="tab">Operations</a></li>
+							<li><a href="#pane4" data-toggle="tab">Technicals</a></li>
+							<li><a href="#pane7" data-toggle="tab">Partners</a></li>
+							<li><a href="#pane5" data-toggle="tab">Reports</a></li>
+							<li><a href="#pane6" data-toggle="tab">Social Impact</a></li>
+
 
 					</ul>
 					
@@ -237,7 +246,7 @@
 										<% end %>
 									<% end %>
 									<br>
-									<h3>Track Record</h3>
+									<h3>Company Track Record</h3>
 									<table class="table table-condensed">
 										<tbody>
 										 	<tr>
@@ -296,9 +305,9 @@
 												<% else %> <td></td>  <% end %>
 										  </tr>	
 										 <tr>
-												<td>Purchesing clients</td>
+												<td>Purchasing clients</td>
 												<% if @project.name == "Prakriti" %>
-												<td></td>
+												<td>Rajasthan State Electricity Board (SEB) <a id="Purchasing_client" title="To be signed before contraction begins">(i)</a></td>
 												<% else %> <td></td>  <% end %>
 										  </tr>	
 										   <tr>
@@ -403,7 +412,49 @@
 								<% end %>
 							</div>
 							
+							<div id="pane6" class="tab-pane">
+								<% if @project.name == "Prakriti" or @project.name == "Sathyam" %>
+									<p>The project is located in a rural region of India. The construction and operation of the project
+									   will rely heavily on the local population and will create many new jobs with above average salaries. <br>
+									   The mustard for operation the plants will be bought from local farmers, which will again help the local population.</p>
+								<% end %>
+							</div>
 
+							<div id="pane7" class="tab-pane">
+								<table class="table table-condensed">
+								<tbody>
+									<tr>
+										<td>Partner</td>
+										<td>
+										<% if @project.name == "Prakriti" or @project.name == "Sathyam" %>
+											M C Bagrodia Associates and Mr. Sanjay Bagrodia
+										<% end %>
+										</td>
+									</tr>
+									<tr>
+										<td>Previous Experiance</td>
+										<td>
+										<% if @project.name == "Prakriti" %> 
+										Prior to associating with Focal, the Promoter Group built a 7.5 MW plant in the region, 
+											which has been running successfully, with excellent operational and financial results. 
+											Further, along with Focal, the group built and commissioned the Sathyam 10 Mw biomass project
+										<% end %>
+										<% if @project.name == "Sathyam" %>
+											Before Focal’s investment, the group built 7.5 MW plant in the region which has been running successfully
+										<% end %>
+										</td>
+									</tr>
+									<tr>
+										<td>Team</td>
+										<td>
+										<% if @project.name == "Prakriti" or @project.name == "Sathyam" %>
+											Excellent dedicated team on the ground in Rajasthan and Mumbai
+										<% end %>
+										</td>
+									</tr>
+								</tbody>
+								</table>
+							</div>
 					</div>
 					
 				</div>
@@ -414,7 +465,7 @@
 	 
 	<% end %>
 	
-</div>
+</div>			
 		
 </body>
 

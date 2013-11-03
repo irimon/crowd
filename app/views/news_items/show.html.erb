@@ -1,7 +1,7 @@
 <div class="container">
 	<div class="feed-page"> 
-		<h3><%= @news_item.title %></h3> <br>
-		<%= @news_item.content %> <br>
-		<%= @news_item.auther %> <br>
+		<div class="feed-title"><h3><%= @news_item.title %></h3></div>
+		<div class="feed-date"><%=  @news_item.updated_at.strftime("%A, %B %d, %Y, %I:%M %p") %> | <%= @news_item.auther %></div>
+		<div class="feed-content"><%= @news_item.content %></div>
 	</div>
 </div>
